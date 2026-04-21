@@ -171,7 +171,7 @@
 {% block javascripts %}
     {{ parent() }}
     <script>
-    (function () {
+    document.addEventListener('DOMContentLoaded', function () {
         var sliderPrix = document.getElementById('slider-prix');
         var sliderOcc  = document.getElementById('slider-occ');
         var valPrix    = document.getElementById('val-prix');
@@ -180,8 +180,10 @@
         var resComm    = document.getElementById('res-commission');
         var resNet     = document.getElementById('res-net');
 
+        if (!sliderPrix || !sliderOcc) return;
+
         function fmt(n) {
-            return n.toLocaleString('fr-FR') + ' €';
+            return n.toLocaleString('fr-FR') + '\u202f€';
         }
 
         function updateSliderTrack(slider) {
@@ -191,8 +193,8 @@
         }
 
         function compute() {
-            var prix = +sliderPrix.value;
-            var occ  = +sliderOcc.value / 100;
+            var prix  = +sliderPrix.value;
+            var occ   = +sliderOcc.value / 100;
             var nuits = Math.round(30 * occ);
             var brut  = Math.round(prix * nuits);
             var comm  = Math.round(brut * 0.18);
@@ -201,7 +203,7 @@
             valPrix.textContent = prix;
             valOcc.textContent  = sliderOcc.value;
             resBrut.textContent = fmt(brut);
-            resComm.textContent = '– ' + fmt(comm);
+            resComm.textContent = '\u2013\u202f' + fmt(comm);
             resNet.textContent  = fmt(net);
 
             updateSliderTrack(sliderPrix);
@@ -211,6 +213,6 @@
         sliderPrix.addEventListener('input', compute);
         sliderOcc.addEventListener('input', compute);
         compute();
-    }());
+    });
     </script>
 {% endblock %}
