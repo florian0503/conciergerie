@@ -39,7 +39,7 @@
                 <a class="nav-link{% if _route == 'app_services' %} active{% endif %}" href="{{ path('app_services') }}">Services</a>
                 <a class="nav-link{% if _route == 'app_offres' %} active{% endif %}" href="{{ path('app_offres') }}">Offres</a>
                 <a class="nav-link{% if _route == 'app_equipe' %} active{% endif %}" href="{{ path('app_equipe') }}">Équipe</a>
-                <a class="nav-link" href="#">Logements</a>
+                <a class="nav-link{% if _route == 'app_logements' %} active{% endif %}" href="{{ path('app_logements') }}">Logements</a>
                 <a class="nav-link" href="#">Avis</a>
             </nav>
 
@@ -78,7 +78,7 @@
             <a class="drawer-link" href="{{ path('app_services') }}"><span class="drawer-num">03</span>Services</a>
             <a class="drawer-link" href="{{ path('app_offres') }}"><span class="drawer-num">04</span>Offres</a>
             <a class="drawer-link" href="{{ path('app_equipe') }}"><span class="drawer-num">05</span>Équipe</a>
-            <a class="drawer-link" href="#"><span class="drawer-num">06</span>Logements</a>
+            <a class="drawer-link" href="{{ path('app_logements') }}"><span class="drawer-num">06</span>Logements</a>
             <a class="drawer-link" href="#"><span class="drawer-num">07</span>Avis</a>
         </nav>
 
@@ -132,7 +132,7 @@
                     <li><a href="#" class="footer-nav-link">Services</a></li>
                     <li><a href="{{ path('app_offres') }}" class="footer-nav-link">Offres</a></li>
                     <li><a href="{{ path('app_equipe') }}" class="footer-nav-link">Équipe</a></li>
-                    <li><a href="#" class="footer-nav-link">Logements</a></li>
+                    <li><a href="{{ path('app_logements') }}" class="footer-nav-link">Logements</a></li>
                     <li><a href="#" class="footer-nav-link">Avis</a></li>
                 </ul>
             </div>

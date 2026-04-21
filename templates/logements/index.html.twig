@@ -1,0 +1,175 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Logements — Maison Mathis{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('styles/logements.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<!-- ══ HERO ════════════════════════════════════════════════ -->
+<section class="lg-hero">
+    <div class="lg-wrap">
+        <p class="eyebrow">Les logements</p>
+        <h1 class="lg-title">
+            Une sélection<br>
+            de <em>belles adresses</em><br>
+            à Lyon.
+        </h1>
+        <p class="lg-subtitle">Chaque bien est choisi pour son caractère, sa localisation, et l'envie que nous avons d'y passer nous-mêmes un week-end.</p>
+    </div>
+</section>
+
+<!-- ══ FILTRES + GRILLE ═══════════════════════════════════ -->
+<section class="lg-catalog">
+    <div class="lg-wrap">
+
+        <div class="lg-filters-bar">
+            <div class="lg-filters">
+                <button class="lg-filter is-active" data-filter="tous">Tous</button>
+                <button class="lg-filter" data-filter="presquile">Presqu'île</button>
+                <button class="lg-filter" data-filter="vieux-lyon">Vieux Lyon</button>
+                <button class="lg-filter" data-filter="croix-rousse">Croix-Rousse</button>
+                <button class="lg-filter" data-filter="confluence">Confluence</button>
+                <button class="lg-filter" data-filter="terreaux">Terreaux</button>
+                <button class="lg-filter" data-filter="monts-dor">Monts d'Or</button>
+                <button class="lg-filter" data-filter="part-dieu">Part-Dieu</button>
+            </div>
+            <span class="lg-count"><span id="lg-count-num">8</span> biens</span>
+        </div>
+
+        <div class="lg-grid" id="lg-grid">
+
+            <article class="lg-card" data-quartier="presquile">
+                <div class="lg-img" style="background-image:url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80')">
+                    <span class="lg-badge">Appartement</span>
+                    <span class="lg-rating">★ 4.97</span>
+                </div>
+                <div class="lg-info">
+                    <h2 class="lg-name">Le Presqu'île</h2>
+                    <p class="lg-meta">Presqu'île · 6 voyageurs · 3 ch.</p>
+                    <p class="lg-price">189 € <span>/ nuit</span></p>
+                </div>
+            </article>
+
+            <article class="lg-card" data-quartier="vieux-lyon">
+                <div class="lg-img" style="background-image:url('https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&q=80')">
+                    <span class="lg-badge">Duplex</span>
+                    <span class="lg-rating">★ 4.93</span>
+                </div>
+                <div class="lg-info">
+                    <h2 class="lg-name">Haut-Pavé</h2>
+                    <p class="lg-meta">Vieux Lyon · 4 voyageurs · 3 ch.</p>
+                    <p class="lg-price">149 € <span>/ nuit</span></p>
+                </div>
+            </article>
+
+            <article class="lg-card" data-quartier="croix-rousse">
+                <div class="lg-img" style="background-image:url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&q=80')">
+                    <span class="lg-badge">Loft</span>
+                    <span class="lg-rating">★ 4.98</span>
+                </div>
+                <div class="lg-info">
+                    <h2 class="lg-name">Atelier Croix-Rousse</h2>
+                    <p class="lg-meta">Croix-Rousse · 2 voyageurs · 1 ch.</p>
+                    <p class="lg-price">169 € <span>/ nuit</span></p>
+                </div>
+            </article>
+
+            <article class="lg-card" data-quartier="confluence">
+                <div class="lg-img" style="background-image:url('https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?w=800&q=80')">
+                    <span class="lg-badge">Maison</span>
+                    <span class="lg-rating">★ 4.89</span>
+                </div>
+                <div class="lg-info">
+                    <h2 class="lg-name">Soierie Confluence</h2>
+                    <p class="lg-meta">Confluence · 8 voyageurs · 3 ch.</p>
+                    <p class="lg-price">329 € <span>/ nuit</span></p>
+                </div>
+            </article>
+
+            <article class="lg-card" data-quartier="vieux-lyon">
+                <div class="lg-img" style="background-image:url('https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=800&q=80')">
+                    <span class="lg-badge">Appartement</span>
+                    <span class="lg-rating">★ 4.85</span>
+                </div>
+                <div class="lg-info">
+                    <h2 class="lg-name">Rive de Saône</h2>
+                    <p class="lg-meta">Vieux Lyon · 8 voyageurs · 3 ch.</p>
+                    <p class="lg-price">199 € <span>/ nuit</span></p>
+                </div>
+            </article>
+
+            <article class="lg-card" data-quartier="terreaux">
+                <div class="lg-img" style="background-image:url('https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=800&q=80')">
+                    <span class="lg-badge">Appartement</span>
+                    <span class="lg-rating">★ 4.93</span>
+                </div>
+                <div class="lg-info">
+                    <h2 class="lg-name">Terreaux Haussmann</h2>
+                    <p class="lg-meta">Terreaux · 5 voyageurs · 2 ch.</p>
+                    <p class="lg-price">175 € <span>/ nuit</span></p>
+                </div>
+            </article>
+
+            <article class="lg-card" data-quartier="monts-dor">
+                <div class="lg-img" style="background-image:url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80')">
+                    <span class="lg-badge">Villa</span>
+                    <span class="lg-rating">★ 4.96</span>
+                </div>
+                <div class="lg-info">
+                    <h2 class="lg-name">Villa des Monts d'Or</h2>
+                    <p class="lg-meta">Monts d'Or · 10 voyageurs · 4 ch.</p>
+                    <p class="lg-price">489 € <span>/ nuit</span></p>
+                </div>
+            </article>
+
+            <article class="lg-card" data-quartier="part-dieu">
+                <div class="lg-img" style="background-image:url('https://images.unsplash.com/photo-1554995207-c18c203602cb?w=800&q=80')">
+                    <span class="lg-badge">Studio</span>
+                    <span class="lg-rating">★ 4.91</span>
+                </div>
+                <div class="lg-info">
+                    <h2 class="lg-name">Studio Part-Dieu</h2>
+                    <p class="lg-meta">Part-Dieu · 2 voyageurs · 1 ch.</p>
+                    <p class="lg-price">89 € <span>/ nuit</span></p>
+                </div>
+            </article>
+
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var filters  = document.querySelectorAll('.lg-filter');
+        var cards    = document.querySelectorAll('.lg-card');
+        var countEl  = document.getElementById('lg-count-num');
+
+        filters.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                var val = btn.getAttribute('data-filter');
+
+                filters.forEach(function (b) { b.classList.remove('is-active'); });
+                btn.classList.add('is-active');
+
+                var visible = 0;
+                cards.forEach(function (card) {
+                    var match = val === 'tous' || card.getAttribute('data-quartier') === val;
+                    card.style.display = match ? '' : 'none';
+                    if (match) visible++;
+                });
+
+                countEl.textContent = visible;
+            });
+        });
+    });
+    </script>
+{% endblock %}
