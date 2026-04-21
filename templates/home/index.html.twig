@@ -1,3 +1,303 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ma Conciergerie{% endblock %}
+{% block title %}Maison Mathis — Conciergerie Airbnb premium à Lyon{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('styles/home.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<!-- ═══════════════════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════════════════════ -->
+<section class="hero">
+    <div class="hero-inner">
+        <div class="hero-left">
+            <p class="hero-eyebrow"><span>Conciergerie Airbnb</span><span class="sep">·</span><span>Lyon</span></p>
+            <h1 class="hero-title">
+                Votre bien,<br>
+                entre <em>les<br>meilleures</em><br>
+                mains de Lyon.
+            </h1>
+            <p class="hero-desc">Nous gérons votre location courte durée de A à Z — annonces, voyageurs, ménage, revenus — pendant que vous profitez de tout le reste.</p>
+            <div class="hero-actions">
+                <a href="#" class="btn btn--primary">Estimer mes revenus →</a>
+                <a href="#" class="btn btn--ghost">Découvrir nos services</a>
+            </div>
+        </div>
+        <div class="hero-right">
+            <div class="hero-img-wrap">
+                <div class="hero-img-placeholder"></div>
+                <div class="hero-badge">
+                    <span class="hero-badge-stars">★★★★★</span>
+                    <span class="hero-badge-text">4.94 · Note moyenne voyageurs</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     TICKER QUARTIERS
+════════════════════════════════════════════════════════════ -->
+<div class="quartiers-ticker" aria-hidden="true">
+    <div class="quartiers-track">
+        <span>Vieux Lyon</span><span class="q-sep">✦</span>
+        <span>Croix-Rousse</span><span class="q-sep">✦</span>
+        <span>Confluence</span><span class="q-sep">✦</span>
+        <span>Terreaux</span><span class="q-sep">✦</span>
+        <span>Part-Dieu</span><span class="q-sep">✦</span>
+        <span>Monts d'Or</span><span class="q-sep">✦</span>
+        <span>Presqu'île</span><span class="q-sep">✦</span>
+        <span>Vieux Lyon</span><span class="q-sep">✦</span>
+        <span>Croix-Rousse</span><span class="q-sep">✦</span>
+        <span>Confluence</span><span class="q-sep">✦</span>
+        <span>Terreaux</span><span class="q-sep">✦</span>
+        <span>Part-Dieu</span><span class="q-sep">✦</span>
+        <span>Monts d'Or</span><span class="q-sep">✦</span>
+        <span>Presqu'île</span><span class="q-sep">✦</span>
+    </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     STATS
+════════════════════════════════════════════════════════════ -->
+<section class="stats">
+    <div class="stats-inner">
+        <div class="stat-item">
+            <p class="stat-number">+34<span class="stat-sup">%</span></p>
+            <p class="stat-label">de revenus en moyenne<br>pour nos propriétaires</p>
+        </div>
+        <div class="stat-item">
+            <p class="stat-number">4.94<span class="stat-sup">★</span></p>
+            <p class="stat-label">note moyenne<br>voyageurs</p>
+        </div>
+        <div class="stat-item">
+            <p class="stat-number">120<span class="stat-sup">+</span></p>
+            <p class="stat-label">biens gérés<br>à Lyon et alentour</p>
+        </div>
+        <div class="stat-item">
+            <p class="stat-number">15<span class="stat-sup">min</span></p>
+            <p class="stat-label">temps de réponse moyen<br>aux voyageurs</p>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SERVICES
+════════════════════════════════════════════════════════════ -->
+<section class="services">
+    <div class="section-inner">
+        <div class="section-head">
+            <div class="section-head-left">
+                <p class="eyebrow">Nos services</p>
+                <h2 class="section-title">Tout ce qu'il faut<br>pour louer <em>sereinement.</em></h2>
+            </div>
+            <a href="#" class="link-arrow">Détail des services →</a>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-item">
+                <div class="service-top">
+                    <span class="service-num">01</span>
+                    <h3 class="service-name service-name--active">Création &amp; optimisation des annonces</h3>
+                </div>
+                <p class="service-desc">Photos, descriptions, tarifs dynamiques. Nous construisons des annonces qui convertissent et remontent dans les résultats.</p>
+            </div>
+            <div class="service-item">
+                <div class="service-top">
+                    <span class="service-num">02</span>
+                    <h3 class="service-name">Réponses aux voyageurs</h3>
+                </div>
+                <p class="service-desc">Communication 7/7, en français et en anglais. Réactivité sous 15 minutes en moyenne.</p>
+            </div>
+            <div class="service-item">
+                <div class="service-top">
+                    <span class="service-num">03</span>
+                    <h3 class="service-name">Arrivées &amp; départs</h3>
+                </div>
+                <p class="service-desc">Remise de clés, accueil, check-out. Une expérience soignée de bout en bout.</p>
+            </div>
+            <div class="service-item">
+                <div class="service-top">
+                    <span class="service-num">04</span>
+                    <h3 class="service-name">Assistance pendant le séjour</h3>
+                </div>
+                <p class="service-desc">Nous sommes le point de contact unique pour tous les imprévus, 24/7.</p>
+            </div>
+            <div class="service-item">
+                <div class="service-top">
+                    <span class="service-num">05</span>
+                    <h3 class="service-name">Ménage &amp; linge hôtelier</h3>
+                </div>
+                <p class="service-desc">Prestataires certifiés, linge plat livré, produits premium. Qualité hôtel à chaque rotation.</p>
+            </div>
+            <div class="service-item">
+                <div class="service-top">
+                    <span class="service-num">06</span>
+                    <h3 class="service-name">Suivi qualité</h3>
+                </div>
+                <p class="service-desc">Contrôle après chaque séjour, rapports d'état, maintenance préventive.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     ENGAGEMENT (dark)
+════════════════════════════════════════════════════════════ -->
+<section class="engagement">
+    <div class="section-inner">
+        <p class="eyebrow eyebrow--light">Notre engagement</p>
+        <blockquote class="engagement-quote">
+            Nous prenons soin de votre bien<br>
+            <em>comme du nôtre</em> — et de vos voyageurs<br>
+            comme de nos invités.
+        </blockquote>
+        <div class="engagement-rule"></div>
+        <p class="engagement-sig">— Sierra Mathis, fondatrice</p>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PROCESS
+════════════════════════════════════════════════════════════ -->
+<section class="process">
+    <div class="section-inner">
+        <p class="eyebrow">Comment ça marche</p>
+        <h2 class="section-title">De la première visite<br>au premier voyageur.</h2>
+
+        <div class="process-steps">
+            <div class="process-step">
+                <div class="step-circle">01</div>
+                <div class="step-line"></div>
+                <h3 class="step-title">Rencontre</h3>
+                <p class="step-desc">Visite du bien, échange sur vos attentes, estimation des revenus et proposition détaillée.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-circle">02</div>
+                <div class="step-line"></div>
+                <h3 class="step-title">Mise en scène</h3>
+                <p class="step-desc">Home staging léger, shooting photo professionnel, rédaction des annonces.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-circle">03</div>
+                <div class="step-line"></div>
+                <h3 class="step-title">Lancement</h3>
+                <p class="step-desc">Paramétrage Airbnb, Booking, Vrbo. Tarification dynamique et calendrier synchronisé.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-circle">04</div>
+                <h3 class="step-title">Exploitation</h3>
+                <p class="step-desc">Nous gérons tout. Vous recevez vos reportings mensuels et vos virements — c'est tout.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     LOGEMENTS
+════════════════════════════════════════════════════════════ -->
+<section class="listings">
+    <div class="section-inner">
+        <div class="section-head">
+            <div class="section-head-left">
+                <h2 class="section-title">Une sélection de<br><em>belles adresses.</em></h2>
+            </div>
+            <a href="#" class="link-arrow">Voir toute la galerie →</a>
+        </div>
+        <div class="listings-grid">
+            <div class="listing-card listing-card--large">
+                <div class="listing-img listing-img--1"></div>
+                <div class="listing-info">
+                    <p class="listing-name">Éliane Park</p>
+                    <p class="listing-meta">Vieux Lyon · Maison · 8 voyageurs</p>
+                </div>
+            </div>
+            <div class="listing-card">
+                <div class="listing-img listing-img--2"></div>
+                <div class="listing-info">
+                    <p class="listing-name">Atelier Croix-Rousse</p>
+                    <p class="listing-meta">Croix-Rousse · Loft · 4 voyageurs</p>
+                </div>
+            </div>
+            <div class="listing-card listing-card--bottom-left">
+                <div class="listing-img listing-img--3"></div>
+                <div class="listing-info">
+                    <p class="listing-name">La Presqu'île</p>
+                    <p class="listing-meta">Presqu'île · Appartement · 2 voyageurs</p>
+                </div>
+            </div>
+            <div class="listing-card">
+                <div class="listing-img listing-img--4"></div>
+                <div class="listing-info">
+                    <p class="listing-name">Source Confluence</p>
+                    <p class="listing-meta">Confluence · Studio · 2 voyageurs</p>
+                </div>
+            </div>
+            <div class="listing-card">
+                <div class="listing-img listing-img--5"></div>
+                <div class="listing-info">
+                    <p class="listing-name">Rive de Saône</p>
+                    <p class="listing-meta">Vieux Lyon · Duplex · 5 voyageurs</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     AVIS
+════════════════════════════════════════════════════════════ -->
+<section class="reviews">
+    <div class="section-inner">
+        <div class="section-head">
+            <div class="section-head-left">
+                <p class="eyebrow">Ils nous confient leur bien</p>
+                <h2 class="section-title">Propriétaires <em>sereins.</em></h2>
+            </div>
+            <a href="#" class="link-arrow">Lire tous les avis →</a>
+        </div>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <p class="review-stars">★ ★ ★ ★ ★</p>
+                <blockquote class="review-text">"Une prise en charge impeccable du premier jour. Sierra et son équipe sont d'une rigueur et d'une discrétion exemplaires — notre appartement n'a jamais été aussi bien tenu."</blockquote>
+                <div class="review-author">
+                    <span class="review-name">Claire B.</span>
+                    <span class="review-sep">·</span>
+                    <span class="review-role">Propriétaire, Presqu'île</span>
+                </div>
+            </div>
+            <div class="review-card">
+                <p class="review-stars">★ ★ ★ ★ ★</p>
+                <blockquote class="review-text">"Le rendement a augmenté de 34% dès le premier trimestre. Communication fluide, reportings clairs, zéro stress de mon côté."</blockquote>
+                <div class="review-author">
+                    <span class="review-name">Antoine L.</span>
+                    <span class="review-sep">·</span>
+                    <span class="review-role">Propriétaire, Vieux Lyon</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     CTA FINAL
+════════════════════════════════════════════════════════════ -->
+<section class="cta-final">
+    <div class="cta-final-inner">
+        <h2 class="cta-final-title">
+            Parlons de votre bien.<br>
+            Sans engagement, en <em>toute<br>confiance.</em>
+        </h2>
+        <p class="cta-final-desc">Un échange de 20 minutes pour comprendre votre projet, estimer vos revenus et voir si nous sommes faits pour travailler ensemble.</p>
+        <div class="cta-final-actions">
+            <a href="#" class="btn btn--primary">Prendre rendez-vous →</a>
+            <a href="#" class="btn btn--outline">Nos tarifs</a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
