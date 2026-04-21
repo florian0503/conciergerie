@@ -200,6 +200,12 @@
     </div>
 </footer>
 
+<button class="scroll-top" id="scroll-top" aria-label="Retour en haut">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="3 10 8 5 13 10"/>
+    </svg>
+</button>
+
 <script>
 (function () {
     /* ── HEADER SCROLL ─────────────────────────────────── */
@@ -265,6 +271,31 @@
     drawer.querySelectorAll('.drawer-link').forEach(function (el) {
         el.addEventListener('click', function () { setTimeout(closeDrawer, 120); });
     });
+
+    /* ── SCROLL TO TOP ─────────────────────────────────── */
+    var scrollTopBtn = document.getElementById('scroll-top');
+    var darkSections = document.querySelectorAll('.site-footer, .engagement, .sv-promesse');
+    var btnHeight = 44;
+    var btnBottom = 32;
+
+    function updateScrollTop() {
+        var scrollY = window.pageYOffset;
+        scrollTopBtn.classList.toggle('is-visible', scrollY > 300);
+
+        var btnTop = window.innerHeight - btnBottom - btnHeight;
+        var onDark = false;
+        darkSections.forEach(function (el) {
+            var r = el.getBoundingClientRect();
+            if (r.top <= btnTop && r.bottom >= btnTop) onDark = true;
+        });
+        scrollTopBtn.classList.toggle('on-dark', onDark);
+    }
+
+    window.addEventListener('scroll', updateScrollTop, { passive: true });
+    scrollTopBtn.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    updateScrollTop();
 
 }());
 </script>
