@@ -1,0 +1,211 @@
+/* ═══════════════════════════════════════════════════════════
+   SERVICES
+════════════════════════════════════════════════════════════ */
+.sv-wrap {
+    max-width: var(--page-max);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+}
+
+/* ── HERO ────────────────────────────────────────────────── */
+.sv-hero {
+    padding: 80px 0 72px;
+}
+
+.sv-title {
+    font-family: var(--serif);
+    font-size: clamp(52px, 7vw, 100px);
+    font-weight: 400;
+    line-height: 1.0;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin-top: 20px;
+    margin-bottom: 32px;
+}
+
+.sv-title em {
+    font-style: italic;
+    color: var(--red);
+    display: block;
+}
+
+.sv-subtitle {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 20px;
+    line-height: 1.65;
+    color: var(--ink-muted);
+    max-width: 760px;
+}
+
+/* ── LISTE ───────────────────────────────────────────────── */
+.sv-list {
+    padding-bottom: 0;
+}
+
+.sv-item {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 0;
+    padding: 56px 0;
+    border-top: 1px solid var(--line);
+}
+
+.sv-item:last-child {
+    border-bottom: 1px solid var(--line);
+}
+
+.sv-num {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--red);
+    letter-spacing: 0.1em;
+    padding-top: 6px;
+}
+
+.sv-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+}
+
+.sv-name {
+    font-family: var(--serif);
+    font-size: clamp(26px, 2.8vw, 40px);
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+}
+
+.sv-right {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.sv-desc {
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+}
+
+.sv-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 24px;
+    list-style: none;
+}
+
+.sv-feat {
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--ink-muted);
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+}
+
+.sv-feat::before {
+    content: '—';
+    color: var(--ink-faint);
+    flex-shrink: 0;
+    font-size: 11px;
+}
+
+.sv-feat--accent {
+    color: var(--ink-soft);
+}
+
+.sv-feat--accent::before {
+    color: var(--red);
+}
+
+/* ── PROMESSE ────────────────────────────────────────────── */
+.sv-promesse {
+    background: var(--ink);
+    padding: 100px 0;
+    margin-top: 80px;
+}
+
+.sv-promesse .eyebrow--light {
+    color: var(--red);
+}
+
+.sv-promesse-title {
+    font-family: var(--serif);
+    font-size: clamp(32px, 4vw, 60px);
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    max-width: 900px;
+    margin-bottom: 28px;
+}
+
+.sv-promesse-title em {
+    font-style: italic;
+    color: var(--red);
+}
+
+.sv-promesse-desc {
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(251,250,247,0.65);
+    max-width: 680px;
+    margin-bottom: 48px;
+}
+
+.sv-promesse-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.btn--outline-light {
+    display: inline-flex;
+    align-items: center;
+    padding: 14px 28px;
+    border-radius: 999px;
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 500;
+    border: 1.5px solid rgba(251,250,247,0.35);
+    color: #ffffff;
+    background: transparent;
+    transition: border-color 0.25s, background 0.25s;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn--outline-light:hover {
+    border-color: rgba(251,250,247,0.7);
+    background: rgba(251,250,247,0.06);
+}
+
+/* ── RESPONSIVE ──────────────────────────────────────────── */
+@media (max-width: 900px) {
+    .sv-item {
+        grid-template-columns: 60px 1fr;
+    }
+
+    .sv-content {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+}
+
+@media (max-width: 600px) {
+    .sv-features {
+        grid-template-columns: 1fr;
+    }
+
+    .sv-item {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+}

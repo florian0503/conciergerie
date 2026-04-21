@@ -1,0 +1,170 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Services — Maison Mathis{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('styles/services.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<!-- ══ HERO ════════════════════════════════════════════════ -->
+<section class="sv-hero">
+    <div class="sv-wrap">
+        <p class="eyebrow">Services</p>
+        <h1 class="sv-title">
+            Sept métiers<br>
+            <em>un seul interlocuteur.</em>
+        </h1>
+        <p class="sv-subtitle">De la première photo à l'optimisation des revenus, nous couvrons chaque étape du cycle de vie de votre location — avec le même soin, la même rigueur.</p>
+    </div>
+</section>
+
+<!-- ══ LISTE DES SERVICES ═════════════════════════════════ -->
+<section class="sv-list">
+    <div class="sv-wrap">
+
+        <div class="sv-item">
+            <span class="sv-num">01</span>
+            <div class="sv-content">
+                <h2 class="sv-name">Création &amp; optimisation<br>des annonces</h2>
+                <div class="sv-right">
+                    <p class="sv-desc">Photos professionnelles, rédaction optimisée SEO, tarifs dynamiques calibrés sur votre marché local. Chaque annonce est pensée comme une vitrine.</p>
+                    <ul class="sv-features">
+                        <li class="sv-feat">Shooting photo</li>
+                        <li class="sv-feat">Rédaction multilingue</li>
+                        <li class="sv-feat sv-feat--accent">Tarification dynamique</li>
+                        <li class="sv-feat sv-feat--accent">Référencement optimisé</li>
+                        <li class="sv-feat">Paramétrage multi-plateforme</li>
+                        <li class="sv-feat">Mise à jour trimestrielle</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="sv-item">
+            <span class="sv-num">02</span>
+            <div class="sv-content">
+                <h2 class="sv-name">Réponses aux voyageurs</h2>
+                <div class="sv-right">
+                    <p class="sv-desc">Un voyageur qui attend est un avis qui chute. Nous répondons en 15 minutes, 7 jours sur 7, dans la langue du voyageur.</p>
+                    <ul class="sv-features">
+                        <li class="sv-feat">Réponses sous 15 min</li>
+                        <li class="sv-feat">FR / EN / ES / IT</li>
+                        <li class="sv-feat sv-feat--accent">Pré-validation des profils</li>
+                        <li class="sv-feat sv-feat--accent">Gestion des litiges</li>
+                        <li class="sv-feat">Conseils séjour</li>
+                        <li class="sv-feat">Disponibilité 7/7</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="sv-item">
+            <span class="sv-num">03</span>
+            <div class="sv-content">
+                <h2 class="sv-name">Arrivées &amp; départs</h2>
+                <div class="sv-right">
+                    <p class="sv-desc">Accueil personnalisé ou check-in autonome sécurisé. Chaque voyageur repart avec le sentiment d'avoir été attendu.</p>
+                    <ul class="sv-features">
+                        <li class="sv-feat">Remise de clés</li>
+                        <li class="sv-feat">Briefing arrivée</li>
+                        <li class="sv-feat sv-feat--accent">Check-in autonome sécurisé</li>
+                        <li class="sv-feat sv-feat--accent">Check-out contrôlé</li>
+                        <li class="sv-feat">Livret d'accueil</li>
+                        <li class="sv-feat">Disponibilité 7/7</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="sv-item">
+            <span class="sv-num">04</span>
+            <div class="sv-content">
+                <h2 class="sv-name">Assistance pendant le séjour</h2>
+                <div class="sv-right">
+                    <p class="sv-desc">Un problème de wifi, une fuite, un conseil restaurant — nous sommes le point de contact unique pendant tout le séjour.</p>
+                    <ul class="sv-features">
+                        <li class="sv-feat sv-feat--accent">Hotline 24/7</li>
+                        <li class="sv-feat">Dépannage express</li>
+                        <li class="sv-feat">Réseau d'artisans</li>
+                        <li class="sv-feat">Conciergerie personnelle</li>
+                        <li class="sv-feat">Gestion des imprévus</li>
+                        <li class="sv-feat">Reporting incident</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="sv-item">
+            <span class="sv-num">05</span>
+            <div class="sv-content">
+                <h2 class="sv-name">Ménage &amp; linge hôtelier</h2>
+                <div class="sv-right">
+                    <p class="sv-desc">Qualité hôtelière à chaque rotation : linge plat livré, produits d'accueil premium, contrôle visuel après chaque ménage.</p>
+                    <ul class="sv-features">
+                        <li class="sv-feat sv-feat--accent">Linge plat hôtelier</li>
+                        <li class="sv-feat sv-feat--accent">Produits d'accueil premium</li>
+                        <li class="sv-feat sv-feat--accent">Contrôle qualité systématique</li>
+                        <li class="sv-feat">Photos avant/après</li>
+                        <li class="sv-feat">Lessive externalisée</li>
+                        <li class="sv-feat">Prestataires certifiés</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="sv-item">
+            <span class="sv-num">06</span>
+            <div class="sv-content">
+                <h2 class="sv-name">Suivi qualité</h2>
+                <div class="sv-right">
+                    <p class="sv-desc">Un œil expert passe derrière chaque ménage. Nous détectons les usures, anticipons les réparations, et vous rendons des comptes.</p>
+                    <ul class="sv-features">
+                        <li class="sv-feat sv-feat--accent">Inspection post-séjour</li>
+                        <li class="sv-feat">Alertes maintenance</li>
+                        <li class="sv-feat sv-feat--accent">Inventaire digital</li>
+                        <li class="sv-feat sv-feat--accent">Rapports d'état</li>
+                        <li class="sv-feat">Suivi photographique</li>
+                        <li class="sv-feat">Provision entretien</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="sv-item">
+            <span class="sv-num">07</span>
+            <div class="sv-content">
+                <h2 class="sv-name">Optimisation des revenus</h2>
+                <div class="sv-right">
+                    <p class="sv-desc">Ajustement quotidien des tarifs en fonction de la demande, des événements locaux et de la concurrence. Rendement maximisé, occupation optimisée.</p>
+                    <ul class="sv-features">
+                        <li class="sv-feat">Yield management</li>
+                        <li class="sv-feat">Veille concurrentielle</li>
+                        <li class="sv-feat sv-feat--accent">Analyse des événements</li>
+                        <li class="sv-feat sv-feat--accent">Prix par jour de semaine</li>
+                        <li class="sv-feat">Optimisation minimum nights</li>
+                        <li class="sv-feat">Reporting mensuel</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ══ PROMESSE ═══════════════════════════════════════════ -->
+<section class="sv-promesse">
+    <div class="sv-wrap">
+        <p class="eyebrow eyebrow--light">Notre promesse</p>
+        <h2 class="sv-promesse-title">Vous ne faites rien — nous faisons <em>tout.</em> Et vous voyez tout, en temps réel.</h2>
+        <p class="sv-promesse-desc">Chaque service est inclus dans notre commission unique. Pas d'options, pas de frais cachés. Un seul chiffre, une seule facture, une équipe qui répond.</p>
+        <div class="sv-promesse-actions">
+            <a href="#" class="btn btn--primary">Voir les tarifs →</a>
+            <a href="#" class="btn btn--outline-light">Nous contacter</a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
