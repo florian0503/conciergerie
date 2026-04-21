@@ -1,0 +1,130 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, "feature/**" ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+
+  # ─── 1. PHP Syntax ───────────────────────────────────────────
+  php-lint:
+    name: PHP — Syntax check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+      - name: Check syntax on all PHP files
+        run: find src -name "*.php" -print0 | xargs -0 -n1 php -l
+
+  # ─── 2. PHP Coding Standards (PSR-12) ───────────────────────
+  php-cs:
+    name: PHP — Coding standards (PSR-12)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          tools: cs2pr
+      - name: Install PHP CS Fixer
+        run: composer global require friendsofphp/php-cs-fixer --no-progress -q
+      - name: Run PHP CS Fixer (dry-run)
+        run: |
+          ~/.composer/vendor/bin/php-cs-fixer fix \
+            --config=.php-cs-fixer.php \
+            --dry-run \
+            --diff \
+            --format=checkstyle \
+            src | cs2pr
+
+  # ─── 3. Twig — No inline CSS ─────────────────────────────────
+  twig-no-inline-css:
+    name: Twig — No inline CSS
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Detect <style> blocks in Twig files
+        run: |
+          echo "Checking for <style> tags in Twig templates..."
+          if grep -rn --include="*.twig" '<style' templates/; then
+            echo ""
+            echo "❌  Found inline <style> blocks in Twig files."
+            echo "    Put all CSS in assets/styles/ and import via stylesheet block."
+            exit 1
+          fi
+          echo "✅  No inline CSS found."
+      - name: Detect style= attributes in Twig files
+        run: |
+          echo "Checking for style= attributes in Twig templates..."
+          if grep -rn --include="*.twig" ' style=' templates/; then
+            echo ""
+            echo "❌  Found inline style= attributes in Twig files."
+            echo "    Use CSS classes instead."
+            exit 1
+          fi
+          echo "✅  No style= attributes found."
+
+  # ─── 4. Twig — No inline JS ──────────────────────────────────
+  twig-no-inline-js:
+    name: Twig — No inline JS
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Detect inline <script> blocks outside allowed files
+        run: |
+          echo "Checking for inline <script> blocks in Twig templates..."
+          ALLOWED_FILES="templates/base.html.twig"
+          VIOLATIONS=0
+
+          while IFS= read -r -d '' file; do
+            # Skip allowed files
+            skip=0
+            for allowed in $ALLOWED_FILES; do
+              if [ "$file" = "$allowed" ]; then
+                skip=1
+                break
+              fi
+            done
+
+            if [ "$skip" -eq 1 ]; then
+              continue
+            fi
+
+            # A <script> tag with content is only allowed inside {% block javascripts %}
+            # We flag any <script> that is NOT inside a block javascripts
+            if grep -n '<script' "$file" | grep -v '{%.*block.*javascripts'; then
+              # Check if file uses block javascripts to wrap the script
+              if grep -q '<script' "$file" && ! grep -q '{% block javascripts %}' "$file"; then
+                echo ""
+                echo "❌  $file contains a <script> block outside of {% block javascripts %}."
+                echo "    Inline JS must be placed inside {% block javascripts %} or moved to assets/."
+                VIOLATIONS=$((VIOLATIONS + 1))
+              fi
+            fi
+          done < <(find templates -name "*.twig" -print0)
+
+          if [ "$VIOLATIONS" -gt 0 ]; then
+            exit 1
+          fi
+          echo "✅  No forbidden inline JS found."
+
+  # ─── 5. Twig Lint ────────────────────────────────────────────
+  twig-lint:
+    name: Twig — Syntax lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+      - name: Install dependencies
+        run: composer install --no-progress --prefer-dist --no-interaction
+      - name: Lint all Twig templates
+        run: php bin/console lint:twig templates/
