@@ -65,13 +65,10 @@
     min-height: 360px;
 }
 
-.eq-photo--sierra {
-    background-color: #c4a070;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Crect width='100%25' height='100%25' fill='%23c4a070'/%3E%3C/svg%3E");
-}
-.eq-photo--thomas { background-color: #7d9aaa; }
-.eq-photo--lea    { background-color: #b8968e; }
-.eq-photo--marc   { background-color: #8a9e8c; }
+.eq-photo--sierra { background-image: url('https://randomuser.me/api/portraits/women/44.jpg'); }
+.eq-photo--thomas { background-image: url('https://randomuser.me/api/portraits/men/32.jpg'); }
+.eq-photo--lea    { background-image: url('https://randomuser.me/api/portraits/women/28.jpg'); }
+.eq-photo--marc   { background-image: url('https://randomuser.me/api/portraits/men/45.jpg'); }
 
 /* ── INFO ────────────────────────────────────────────────── */
 .eq-info {
