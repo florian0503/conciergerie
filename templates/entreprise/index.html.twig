@@ -1,0 +1,156 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}L'Entreprise — Maison Mathis{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('styles/entreprise.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<!-- ══ HERO ════════════════════════════════════════════════ -->
+<section class="ep-hero">
+    <div class="ep-wrap">
+        <p class="eyebrow">L'entreprise</p>
+        <h1 class="ep-title">
+            Une conciergerie<br>
+            construite autour<br>
+            d'une idée simple&nbsp;: <em>la confiance.</em>
+        </h1>
+    </div>
+</section>
+
+<!-- ══ INTRO ══════════════════════════════════════════════ -->
+<section class="ep-intro">
+    <div class="ep-wrap ep-intro-grid">
+
+        <div class="ep-img-col">
+            <div class="ep-img-outer" id="ep-parallax">
+                <div class="ep-img-inner"></div>
+            </div>
+        </div>
+
+        <div class="ep-text-col">
+            <p class="ep-lead"><span class="ep-dropcap">M</span>aison Mathis est née d'un constat simple. La location courte durée peut être une formidable opportunité — à condition d'être accompagné par des professionnels qui prennent le métier au sérieux.</p>
+
+            <p class="ep-body">Nous sommes une équipe lyonnaise, implantée localement, qui gère les biens de nos propriétaires exigeants depuis 2021. Chaque bien est traité comme s'il était le nôtre : photos soignées, communication irréprochable, entretien hôtelier, rigueur financière.</p>
+
+            <blockquote class="ep-quote">
+                « Transparence, qualité, disponibilité — trois mots, jamais négociables. »
+            </blockquote>
+
+            <p class="ep-body">Vous ne payez que lorsque votre bien génère des revenus, vous voyez tout en temps réel, et vous avez un interlocuteur unique — jamais un numéro de dossier.</p>
+
+            <p class="ep-body">Nous refusons la croissance à tout prix. Chaque nouveau bien est choisi avec soin, pour garantir à nos voyageurs une expérience cohérente et à nos propriétaires l'attention qu'ils méritent.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- ══ VALEURS ════════════════════════════════════════════ -->
+<section class="ep-valeurs">
+    <div class="ep-wrap">
+        <p class="eyebrow">Nos valeurs</p>
+        <h2 class="ep-section-title">Trois principes,<br>jamais négociables.</h2>
+
+        <div class="ep-valeurs-grid">
+            <div class="ep-valeur">
+                <span class="ep-valeur-num">I.</span>
+                <h3 class="ep-valeur-name">Transparence</h3>
+                <p class="ep-valeur-desc">Aucun frais caché. Reportings mensuels détaillés, accès permanent à votre tableau de bord propriétaire, factures nominatives pour chaque prestation.</p>
+            </div>
+            <div class="ep-valeur">
+                <span class="ep-valeur-num">II.</span>
+                <h3 class="ep-valeur-name">Exigence</h3>
+                <p class="ep-valeur-desc">Prestataires sélectionnés et audités. Ménage contrôlé après chaque rotation. Standards hôteliers appliqués à chaque détail — du linge plat à la sélection de café.</p>
+            </div>
+            <div class="ep-valeur">
+                <span class="ep-valeur-num">III.</span>
+                <h3 class="ep-valeur-name">Proximité</h3>
+                <p class="ep-valeur-desc">Une équipe sur place, joignable 7/7. Vous avez toujours un interlocuteur humain, qui connaît votre bien et vos préférences par cœur.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ TIMELINE ═══════════════════════════════════════════ -->
+<section class="ep-timeline">
+    <div class="ep-wrap">
+        <p class="eyebrow">Quelques dates</p>
+        <h2 class="ep-section-title">Cinq années<br>de croissance mesurée.</h2>
+
+        <div class="ep-timeline-list">
+            <div class="ep-tl-item">
+                <span class="ep-tl-year">2021</span>
+                <span class="ep-tl-event">Création de Maison Mathis</span>
+                <span class="ep-tl-detail">Premier bien géré sur la Presqu'île</span>
+            </div>
+            <div class="ep-tl-item">
+                <span class="ep-tl-year">2022</span>
+                <span class="ep-tl-event">20 biens sous gestion</span>
+                <span class="ep-tl-detail">Recrutement de la première équipe terrain</span>
+            </div>
+            <div class="ep-tl-item">
+                <span class="ep-tl-year">2023</span>
+                <span class="ep-tl-event">Partenariat ménage hôtelier</span>
+                <span class="ep-tl-detail">Linge plat, produits premium, contrôle qualité systématique</span>
+            </div>
+            <div class="ep-tl-item">
+                <span class="ep-tl-year">2024</span>
+                <span class="ep-tl-event">Lancement du suivi revenus</span>
+                <span class="ep-tl-detail">Yield management avec ajustement quotidien</span>
+            </div>
+            <div class="ep-tl-item">
+                <span class="ep-tl-year">2025</span>
+                <span class="ep-tl-event">+120 biens gérés</span>
+                <span class="ep-tl-detail">Extension aux Monts d'Or et à la Confluence</span>
+            </div>
+            <div class="ep-tl-item">
+                <span class="ep-tl-year">2026</span>
+                <span class="ep-tl-event">Espace propriétaire v2</span>
+                <span class="ep-tl-detail">Suivi en temps réel, reportings automatiques</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ CTA FINAL ══════════════════════════════════════════ -->
+<section class="ep-cta">
+    <div class="ep-cta-inner">
+        <h2 class="ep-cta-title">Rencontrons-nous.</h2>
+        <p class="ep-cta-desc">Un café à Lyon, une visite de votre bien — et une vision claire de ce que nous pouvons faire ensemble.</p>
+        <a href="#" class="btn btn--primary">Prendre rendez-vous →</a>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+    (function () {
+        var outer = document.getElementById('ep-parallax');
+        if (!outer) return;
+        var inner = outer.querySelector('.ep-img-inner');
+        var ticking = false;
+
+        function onScroll() {
+            if (!ticking) {
+                requestAnimationFrame(function () {
+                    var rect = outer.getBoundingClientRect();
+                    var viewH = window.innerHeight;
+                    var progress = (viewH - rect.top) / (viewH + rect.height);
+                    var offset = (progress - 0.5) * 100;
+                    inner.style.transform = 'translateY(' + offset + 'px)';
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+    }());
+    </script>
+{% endblock %}

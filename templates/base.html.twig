@@ -35,7 +35,7 @@
 
             <nav class="nav-links" aria-label="Navigation principale">
                 <a class="nav-link{% if _route == 'app_home' %} active{% endif %}" href="{{ path('app_home') }}">Accueil</a>
-                <a class="nav-link" href="#">Entreprise</a>
+                <a class="nav-link" href="{{ path('app_entreprise') }}">Entreprise</a>
                 <a class="nav-link" href="#">Services</a>
                 <span class="nav-sep" aria-hidden="true">✦</span>
                 <a class="nav-link" href="#">Offres</a>
@@ -75,7 +75,7 @@
 
         <nav class="drawer-nav" aria-label="Navigation mobile">
             <a class="drawer-link" href="{{ path('app_home') }}"><span class="drawer-num">01</span>Accueil</a>
-            <a class="drawer-link" href="#"><span class="drawer-num">02</span>Entreprise</a>
+            <a class="drawer-link" href="{{ path('app_entreprise') }}"><span class="drawer-num">02</span>Entreprise</a>
             <a class="drawer-link" href="#"><span class="drawer-num">03</span>Services</a>
             <a class="drawer-link" href="#"><span class="drawer-num">04</span>Offres</a>
             <a class="drawer-link" href="#"><span class="drawer-num">05</span>Équipe</a>
