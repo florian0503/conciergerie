@@ -1,0 +1,210 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Avis — Maison Mathis{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('styles/avis.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<!-- ══ HERO ════════════════════════════════════════════════ -->
+<section class="av-hero">
+    <div class="av-wrap">
+        <p class="eyebrow">Avis</p>
+        <h1 class="av-title">
+            Ce qu'ils<br>
+            en <em>disent</em>.
+        </h1>
+        <p class="av-subtitle">Propriétaires et voyageurs — les retours de ceux qui nous ont fait confiance, ces cinq dernières années.</p>
+    </div>
+</section>
+
+<!-- ══ STATS ══════════════════════════════════════════════ -->
+<section class="av-stats">
+    <div class="av-wrap">
+        <div class="av-stats-grid">
+            <div class="av-stat">
+                <p class="av-stat-num">4.94<span class="av-stat-star">★</span></p>
+                <p class="av-stat-label">Note moyenne voyageurs</p>
+            </div>
+            <div class="av-stat">
+                <p class="av-stat-num">98<span class="av-stat-sup">%</span></p>
+                <p class="av-stat-label">Propriétaires satisfaits</p>
+            </div>
+            <div class="av-stat">
+                <p class="av-stat-num">+340</p>
+                <p class="av-stat-label">Avis cumulés</p>
+            </div>
+            <div class="av-stat">
+                <p class="av-stat-num">93<span class="av-stat-sup">%</span></p>
+                <p class="av-stat-label">Recommanderaient</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ CAROUSEL AVIS ══════════════════════════════════════ -->
+<section class="av-reviews">
+    <div class="av-wrap">
+        <h2 class="av-reviews-title">Des mots de<br>propriétaires et voyageurs.</h2>
+
+        <div class="av-carousel" id="av-carousel">
+
+            <div class="av-slide is-active">
+                <article class="av-card">
+                    <div class="av-stars">★ ★ ★ ★ ★</div>
+                    <blockquote class="av-quote">« Une prise en charge impeccable du premier jour. Sierra et son équipe sont d'une rigueur et d'une discrétion exemplaires — notre appartement n'a jamais été aussi bien tenu. »</blockquote>
+                    <div class="av-card-divider"></div>
+                    <div class="av-author">
+                        <span class="av-avatar">C</span>
+                        <div>
+                            <p class="av-author-name">Claire B.</p>
+                            <p class="av-author-role">Propriétaire, Presqu'île</p>
+                        </div>
+                    </div>
+                </article>
+                <article class="av-card">
+                    <div class="av-stars">★ ★ ★ ★ ★</div>
+                    <blockquote class="av-quote">« Le rendement a augmenté de 34% dès le premier trimestre. Communication fluide, reportings clairs, zéro stress de mon côté. »</blockquote>
+                    <div class="av-card-divider"></div>
+                    <div class="av-author">
+                        <span class="av-avatar">A</span>
+                        <div>
+                            <p class="av-author-name">Antoine L.</p>
+                            <p class="av-author-role">Propriétaire, Vieux Lyon</p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <div class="av-slide">
+                <article class="av-card">
+                    <div class="av-stars">★ ★ ★ ★ ★</div>
+                    <blockquote class="av-quote">« Logement parfaitement entretenu, accueil chaleureux à l'arrivée. On se sentait vraiment attendus. Le guide de l'appartement était une très belle attention. »</blockquote>
+                    <div class="av-card-divider"></div>
+                    <div class="av-author">
+                        <span class="av-avatar">M</span>
+                        <div>
+                            <p class="av-author-name">Marie &amp; Jules</p>
+                            <p class="av-author-role">Voyageurs, Paris</p>
+                        </div>
+                    </div>
+                </article>
+                <article class="av-card">
+                    <div class="av-stars">★ ★ ★ ★ ★</div>
+                    <blockquote class="av-quote">« J'avais des doutes sur la gestion à distance. Maison Mathis m'a prouvé qu'avec les bons interlocuteurs, c'est non seulement possible, mais serein. »</blockquote>
+                    <div class="av-card-divider"></div>
+                    <div class="av-author">
+                        <span class="av-avatar">P</span>
+                        <div>
+                            <p class="av-author-name">Philippe D.</p>
+                            <p class="av-author-role">Propriétaire, Confluence</p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <div class="av-slide">
+                <article class="av-card">
+                    <div class="av-stars">★ ★ ★ ★ ★</div>
+                    <blockquote class="av-quote">« Réponse en moins de 10 minutes à chaque message. Le check-in était fluide, le logement impeccable. Une expérience haut de gamme à un prix très juste. »</blockquote>
+                    <div class="av-card-divider"></div>
+                    <div class="av-author">
+                        <span class="av-avatar">S</span>
+                        <div>
+                            <p class="av-author-name">Sophie K.</p>
+                            <p class="av-author-role">Voyageuse, Berlin</p>
+                        </div>
+                    </div>
+                </article>
+                <article class="av-card">
+                    <div class="av-stars">★ ★ ★ ★ ★</div>
+                    <blockquote class="av-quote">« Deux ans de collaboration et jamais une surprise désagréable. Les comptes sont toujours justes, les locataires soigneusement sélectionnés. Je recommande sans hésiter. »</blockquote>
+                    <div class="av-card-divider"></div>
+                    <div class="av-author">
+                        <span class="av-avatar">N</span>
+                        <div>
+                            <p class="av-author-name">Nathalie R.</p>
+                            <p class="av-author-role">Propriétaire, Croix-Rousse</p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+        </div>
+
+        <div class="av-carousel-nav">
+            <div class="av-dots" id="av-dots">
+                <button class="av-dot is-active" data-index="0" aria-label="Slide 1"></button>
+                <button class="av-dot" data-index="1" aria-label="Slide 2"></button>
+                <button class="av-dot" data-index="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="av-arrows">
+                <button class="av-arrow" id="av-prev" aria-label="Précédent">←</button>
+                <button class="av-arrow" id="av-next" aria-label="Suivant">→</button>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ══ PLATEFORMES ════════════════════════════════════════ -->
+<section class="av-platforms">
+    <div class="av-wrap">
+        <p class="av-platforms-label">Nos avis sont publics sur</p>
+        <div class="av-platforms-list">
+            <div class="av-platform">
+                <span class="av-platform-name">Airbnb</span>
+                <span class="av-platform-score">4.94 ★</span>
+            </div>
+            <div class="av-platform">
+                <span class="av-platform-name av-platform-name--booking">Booking.com</span>
+                <span class="av-platform-score">9.3 / 10</span>
+            </div>
+            <div class="av-platform">
+                <span class="av-platform-name av-platform-name--google">Google</span>
+                <span class="av-platform-score">4.9 ★</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ CTA ════════════════════════════════════════════════ -->
+<section class="av-cta">
+    <div class="av-cta-inner">
+        <h2 class="av-cta-title">À votre tour&nbsp;?</h2>
+        <p class="av-cta-desc">Rejoignez nos propriétaires sereins.</p>
+        <a href="#" class="av-cta-btn">Nous contacter →</a>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var slides  = document.querySelectorAll('.av-slide');
+        var dots    = document.querySelectorAll('.av-dot');
+        var prev    = document.getElementById('av-prev');
+        var next    = document.getElementById('av-next');
+        var current = 0;
+
+        function goTo(index) {
+            slides[current].classList.remove('is-active');
+            dots[current].classList.remove('is-active');
+            current = (index + slides.length) % slides.length;
+            slides[current].classList.add('is-active');
+            dots[current].classList.add('is-active');
+        }
+
+        prev.addEventListener('click', function () { goTo(current - 1); });
+        next.addEventListener('click', function () { goTo(current + 1); });
+        dots.forEach(function (dot) {
+            dot.addEventListener('click', function () { goTo(+dot.getAttribute('data-index')); });
+        });
+    });
+    </script>
+{% endblock %}
