@@ -66,7 +66,7 @@
     width: 100%;
     height: calc(100% + 100px);
     margin-top: -50px;
-    background: linear-gradient(160deg, var(--paper-deep) 0%, var(--line-strong) 60%, #d4c9b8 100%);
+    background: url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&q=80') center/cover no-repeat;
     border-radius: 10px;
     will-change: transform;
 }

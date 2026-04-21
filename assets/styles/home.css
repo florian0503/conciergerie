@@ -134,7 +134,7 @@
     width: 100%;
     height: 520px;
     border-radius: 12px;
-    background: linear-gradient(135deg, var(--paper-deep) 0%, var(--line) 100%);
+    background: url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=900&q=80') center/cover no-repeat;
 }
 
 .hero-badge {
@@ -389,8 +389,13 @@
 .listing-img {
     width: 100%;
     border-radius: 10px;
-    background: linear-gradient(160deg, var(--line) 0%, var(--paper-deep) 100%);
+    background: center/cover no-repeat;
 }
+
+.listing-card:nth-child(1) .listing-img { background-image: url('https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&q=80'); }
+.listing-card:nth-child(2) .listing-img { background-image: url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&q=80'); }
+.listing-card:nth-child(3) .listing-img { background-image: url('https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=800&q=80'); }
+.listing-card:nth-child(4) .listing-img { background-image: url('https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=800&q=80'); }
 
 .listing-card--large .listing-img { height: 440px; }
 .listing-card:not(.listing-card--large) .listing-img { height: 200px; }
