@@ -35,12 +35,20 @@
 
             <nav class="nav-links" aria-label="Navigation principale">
                 <a class="nav-link{% if _route == 'app_home' %} active{% endif %}" href="{{ path('app_home') }}">Accueil</a>
-                <a class="nav-link{% if _route == 'app_entreprise' %} active{% endif %}" href="{{ path('app_entreprise') }}">Entreprise</a>
                 <a class="nav-link{% if _route == 'app_services' %} active{% endif %}" href="{{ path('app_services') }}">Services</a>
                 <a class="nav-link{% if _route == 'app_offres' %} active{% endif %}" href="{{ path('app_offres') }}">Offres</a>
-                <a class="nav-link{% if _route == 'app_equipe' %} active{% endif %}" href="{{ path('app_equipe') }}">Équipe</a>
                 <a class="nav-link{% if _route == 'app_logements' %} active{% endif %}" href="{{ path('app_logements') }}">Logements</a>
                 <a class="nav-link{% if _route == 'app_avis' %} active{% endif %}" href="{{ path('app_avis') }}">Avis</a>
+                <div class="nav-dropdown{% if _route in ['app_entreprise', 'app_equipe'] %} active{% endif %}">
+                    <button class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                        À propos
+                        <svg class="nav-dropdown-caret" width="9" height="5" viewBox="0 0 9 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 1 4.5 4 8 1"/></svg>
+                    </button>
+                    <div class="nav-dropdown-menu">
+                        <a class="nav-dropdown-item{% if _route == 'app_entreprise' %} active{% endif %}" href="{{ path('app_entreprise') }}">L'entreprise</a>
+                        <a class="nav-dropdown-item{% if _route == 'app_equipe' %} active{% endif %}" href="{{ path('app_equipe') }}">L'équipe</a>
+                    </div>
+                </div>
             </nav>
 
             <a class="nav-cta" href="#">
@@ -266,7 +274,32 @@
 
     toggle.addEventListener('click', openDrawer);
     drawerClose.addEventListener('click', closeDrawer);
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeDrawer(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { closeDrawer(); closeDropdowns(); } });
+
+    /* ── DROPDOWN À PROPOS ─────────────────────────────── */
+    var dropdowns = document.querySelectorAll('.nav-dropdown');
+
+    function closeDropdowns() {
+        dropdowns.forEach(function (d) {
+            d.classList.remove('is-open');
+            d.querySelector('.nav-dropdown-toggle').setAttribute('aria-expanded', 'false');
+        });
+    }
+
+    dropdowns.forEach(function (dropdown) {
+        var btn = dropdown.querySelector('.nav-dropdown-toggle');
+        btn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            var isOpen = dropdown.classList.contains('is-open');
+            closeDropdowns();
+            if (!isOpen) {
+                dropdown.classList.add('is-open');
+                btn.setAttribute('aria-expanded', 'true');
+            }
+        });
+    });
+
+    document.addEventListener('click', closeDropdowns);
     drawer.querySelectorAll('.drawer-link').forEach(function (el) {
         el.addEventListener('click', function () { setTimeout(closeDrawer, 120); });
     });
