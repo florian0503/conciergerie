@@ -1,57 +1,274 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        {% block stylesheets %}
-        {% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Maison Mathis — Conciergerie premium à Lyon{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('assets/styles/app.css') }}">
+    {% endblock %}
+    {% block javascripts %}
+        {% block importmap %}{{ importmap('app') }}{% endblock %}
+    {% endblock %}
+</head>
+<body>
+{% set _route = app.request.attributes.get('_route') %}
 
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
+<!-- ═══════════════════════════════════════════════════════════
+     HEADER
+════════════════════════════════════════════════════════════ -->
+<header class="site-header" id="site-header">
 
-        {% set frankenphpHotReload = app.request.server.get('FRANKENPHP_HOT_RELOAD') %}
-        {% if frankenphpHotReload %}
-        <meta name="frankenphp-hot-reload:url" content="{{ frankenphpHotReload }}">
-        <script src="https://cdn.jsdelivr.net/npm/idiomorph"></script>
-        <script src="https://cdn.jsdelivr.net/npm/frankenphp-hot-reload/+esm" type="module"></script>
-        {% endif %}
-    </head>
-    <body>
-        <header class="site-header">
-            <div class="container header-content">
-                <a class="brand" href="{{ path('app_home') }}">Ma Conciergerie</a>
-                <nav class="main-nav" aria-label="Navigation principale">
-                    <a class="nav-link active" href="#">Accueil</a>
-                    <a class="nav-link" href="#">Entreprise</a>
-                    <a class="nav-link" href="#">Services</a>
-                    <a class="nav-link" href="#">Offres</a>
-                    <a class="nav-link" href="#">Equipe</a>
-                    <a class="nav-link" href="#">Logements</a>
-                    <a class="nav-link" href="#">Avis</a>
-                    <a class="nav-link nav-link-contact" href="#">Contact</a>
-                </nav>
+
+    <!-- Nav principale -->
+    <div class="nav-main" id="nav-main">
+        <div class="nav-inner">
+
+            <a class="brand" href="{{ path('app_home') }}" aria-label="Maison Mathis — accueil">
+                <span class="brand-mark">✦</span>
+                <span class="brand-name">Maison Mathis</span>
+                <span class="brand-sub">Lyon</span>
+            </a>
+
+            <nav class="nav-links" aria-label="Navigation principale">
+                <a class="nav-link{% if _route == 'app_home' %} active{% endif %}" href="{{ path('app_home') }}">Accueil</a>
+                <a class="nav-link" href="#">Entreprise</a>
+                <a class="nav-link" href="#">Services</a>
+                <span class="nav-sep" aria-hidden="true">✦</span>
+                <a class="nav-link" href="#">Offres</a>
+                <a class="nav-link" href="#">Équipe</a>
+                <a class="nav-link" href="#">Logements</a>
+                <a class="nav-link" href="#">Avis</a>
+            </nav>
+
+            <a class="nav-cta" href="#">
+                Nous contacter
+                <span class="arrow">→</span>
+            </a>
+
+            <button class="nav-toggle" id="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-drawer">
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <div class="scroll-progress" id="scroll-progress"></div>
+    </div>
+
+    <!-- Drawer mobile -->
+    <div class="mobile-drawer" id="mobile-drawer" role="dialog" aria-modal="true" aria-label="Menu principal">
+        <div class="drawer-top">
+            <a class="brand brand--white" href="{{ path('app_home') }}" aria-label="Maison Mathis">
+                <span class="brand-mark">✦</span>
+                <span class="brand-name">Maison Mathis</span>
+                <span class="brand-sub">Lyon</span>
+            </a>
+            <button class="drawer-close" id="drawer-close" aria-label="Fermer le menu">
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
+        <nav class="drawer-nav" aria-label="Navigation mobile">
+            <a class="drawer-link" href="{{ path('app_home') }}"><span class="drawer-num">01</span>Accueil</a>
+            <a class="drawer-link" href="#"><span class="drawer-num">02</span>Entreprise</a>
+            <a class="drawer-link" href="#"><span class="drawer-num">03</span>Services</a>
+            <a class="drawer-link" href="#"><span class="drawer-num">04</span>Offres</a>
+            <a class="drawer-link" href="#"><span class="drawer-num">05</span>Équipe</a>
+            <a class="drawer-link" href="#"><span class="drawer-num">06</span>Logements</a>
+            <a class="drawer-link" href="#"><span class="drawer-num">07</span>Avis</a>
+        </nav>
+
+        <div class="drawer-divider"></div>
+
+        <div class="drawer-contact">
+            <p class="drawer-contact-label">Contact</p>
+            <a href="tel:+33478000000" class="drawer-contact-line">+33 4 78 00 00 00</a>
+            <a href="mailto:hello@maisonmathis.fr" class="drawer-contact-line">hello@maisonmathis.fr</a>
+            <span class="drawer-contact-line">14 rue Auguste Comte, 69002 Lyon</span>
+        </div>
+
+        <div class="drawer-ctas">
+            <a href="#" class="drawer-btn drawer-btn--primary">Prendre rendez-vous</a>
+            <a href="#" class="drawer-btn drawer-btn--ghost">WhatsApp</a>
+        </div>
+    </div>
+
+</header>
+
+<!-- ═══════════════════════════════════════════════════════════
+     MAIN
+════════════════════════════════════════════════════════════ -->
+<main class="site-main">
+    {% block body %}{% endblock %}
+</main>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════════════════ -->
+<footer class="site-footer">
+    <div class="footer-inner">
+
+        <!-- 3. Grille 4 colonnes -->
+        <div class="footer-grid">
+
+            <div class="footer-col footer-col--brand">
+                <h4 class="footer-col-title">Maison</h4>
+                <div class="footer-col-rule"></div>
+                <p class="footer-logo">Maison Mathis<span class="footer-dot">.</span></p>
+                <p class="footer-manifesto">Une équipe lyonnaise qui traite chaque bien comme s'il était le sien. Depuis 2021.</p>
+                <p class="footer-signature">— Sierra Mathis, fondatrice</p>
             </div>
-        </header>
 
-        <main class="site-main">
-            {% block body %}{% endblock %}
-        </main>
-
-        <footer class="site-footer">
-            <div class="container footer-content">
-                <h2 class="footer-title">Ma Conciergerie</h2>
-                <p class="footer-text">
-                    Votre partenaire de confiance pour la gestion locative courte duree
-                </p>
-                <nav class="footer-nav" aria-label="Navigation pied de page">
-                    <a class="footer-link" href="#">Entreprise</a>
-                    <a class="footer-link" href="#">Services</a>
-                    <a class="footer-link" href="#">Contact</a>
-                </nav>
-                <p class="footer-copyright">&copy; 2026 Ma Conciergerie. Tous droits reserves.</p>
+            <div class="footer-col">
+                <h4 class="footer-col-title">Navigation</h4>
+                <div class="footer-col-rule"></div>
+                <ul class="footer-nav-list">
+                    <li><a href="{{ path('app_home') }}" class="footer-nav-link">Accueil</a></li>
+                    <li><a href="#" class="footer-nav-link">Entreprise</a></li>
+                    <li><a href="#" class="footer-nav-link">Services</a></li>
+                    <li><a href="#" class="footer-nav-link">Offres</a></li>
+                    <li><a href="#" class="footer-nav-link">Équipe</a></li>
+                    <li><a href="#" class="footer-nav-link">Logements</a></li>
+                    <li><a href="#" class="footer-nav-link">Avis</a></li>
+                </ul>
             </div>
-        </footer>
-    </body>
+
+            <div class="footer-col">
+                <h4 class="footer-col-title">Contact</h4>
+                <div class="footer-col-rule"></div>
+                <ul class="footer-nav-list">
+                    <li><a href="tel:+33478000000" class="footer-nav-link">+33 4 78 00 00 00</a></li>
+                    <li><a href="mailto:hello@maisonmathis.fr" class="footer-nav-link">hello@maisonmathis.fr</a></li>
+                    <li><a href="#" class="footer-nav-link">WhatsApp</a></li>
+                    <li><a href="#" class="footer-nav-link">Prendre rendez-vous</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-col-title">Nous trouver</h4>
+                <div class="footer-col-rule"></div>
+                <p class="footer-address">14 rue Auguste Comte<br>69002 Lyon</p>
+                <p class="footer-hours">Lun — Sam · 9h — 19h</p>
+                <div class="footer-map" aria-hidden="true">
+                    <svg viewBox="0 0 280 120" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="280" height="120" fill="rgba(251,250,247,0.04)" rx="4"/>
+                        <path d="M 68 0 C 62 28, 72 50, 64 78 C 57 102, 66 112, 62 120" stroke="rgba(251,250,247,0.2)" stroke-width="1.5" fill="none"/>
+                        <path d="M 148 0 C 158 22, 152 46, 162 68 C 172 90, 168 106, 175 120" stroke="rgba(251,250,247,0.2)" stroke-width="1.5" fill="none"/>
+                        <circle cx="108" cy="64" r="12" fill="rgba(228,87,46,0.18)" class="map-halo"/>
+                        <circle cx="108" cy="64" r="5" fill="#E4572E"/>
+                    </svg>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- 5. Barre de bas -->
+        <div class="footer-bottom">
+            <p class="footer-copy">© 2026 Maison Mathis · Conciergerie Airbnb à Lyon</p>
+            <div class="footer-legal">
+                <a href="#" class="footer-legal-link">Mentions légales</a>
+                <span aria-hidden="true">·</span>
+                <a href="#" class="footer-legal-link">CGU</a>
+                <span aria-hidden="true">·</span>
+                <a href="#" class="footer-legal-link">Confidentialité</a>
+                <span aria-hidden="true">·</span>
+                <a href="#" class="footer-legal-link">Cookies</a>
+            </div>
+            <div class="footer-social">
+                <a href="#" class="footer-social-btn" aria-label="Instagram">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5"/>
+                        <circle cx="12" cy="12" r="4"/>
+                        <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+                    </svg>
+                </a>
+                <a href="#" class="footer-social-btn" aria-label="LinkedIn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                        <rect x="2" y="9" width="4" height="12"/>
+                        <circle cx="4" cy="4" r="2"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+
+    </div>
+</footer>
+
+<script>
+(function () {
+    /* ── HEADER SCROLL ─────────────────────────────────── */
+    var topBar = document.getElementById('top-bar');
+    var navMain = document.getElementById('nav-main');
+    var scrollProgress = document.getElementById('scroll-progress');
+    var ticking = false;
+
+    function updateHeader() {
+        var scrollY = window.pageYOffset;
+        var scrollMax = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        if (scrollY > 8) {
+            navMain.classList.add('is-scrolled');
+            topBar.classList.add('is-hidden');
+            scrollProgress.style.opacity = '1';
+        } else {
+            navMain.classList.remove('is-scrolled');
+            topBar.classList.remove('is-hidden');
+            scrollProgress.style.opacity = '0';
+        }
+        if (scrollMax > 0) {
+            scrollProgress.style.width = (scrollY / scrollMax * 100) + '%';
+        }
+    }
+
+    window.addEventListener('scroll', function () {
+        if (!ticking) {
+            requestAnimationFrame(function () { updateHeader(); ticking = false; });
+            ticking = true;
+        }
+    }, { passive: true });
+
+    /* ── MOBILE DRAWER ─────────────────────────────────── */
+    var toggle = document.getElementById('nav-toggle');
+    var drawer = document.getElementById('mobile-drawer');
+    var drawerClose = document.getElementById('drawer-close');
+
+    function openDrawer() {
+        drawer.classList.add('is-open');
+        toggle.classList.add('is-open');
+        toggle.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+        drawer.querySelectorAll('.drawer-link').forEach(function (el, i) {
+            el.style.transitionDelay = (0.1 + i * 0.05) + 's';
+            el.classList.add('is-visible');
+        });
+    }
+
+    function closeDrawer() {
+        drawer.classList.remove('is-open');
+        toggle.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+        drawer.querySelectorAll('.drawer-link').forEach(function (el) {
+            el.classList.remove('is-visible');
+            el.style.transitionDelay = '0s';
+        });
+    }
+
+    toggle.addEventListener('click', openDrawer);
+    drawerClose.addEventListener('click', closeDrawer);
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeDrawer(); });
+    drawer.querySelectorAll('.drawer-link').forEach(function (el) {
+        el.addEventListener('click', function () { setTimeout(closeDrawer, 120); });
+    });
+
+}());
+</script>
+</body>
 </html>
