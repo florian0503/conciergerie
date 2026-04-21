@@ -1,0 +1,216 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Offres &amp; Tarifs — Maison Mathis{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('styles/offres.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<!-- ══ HERO ════════════════════════════════════════════════ -->
+<section class="of-hero">
+    <div class="of-wrap">
+        <p class="eyebrow">Nos offres</p>
+        <h1 class="of-title">
+            Un tarif clair,<br>
+            une seule <em>commission</em>.
+        </h1>
+        <p class="of-subtitle">Pas d'abonnement, pas de frais cachés, pas d'engagement. Nous ne gagnons que lorsque vous gagnez.</p>
+    </div>
+</section>
+
+<!-- ══ COMMISSION ══════════════════════════════════════════ -->
+<section class="of-commission">
+    <div class="of-wrap">
+        <div class="of-commission-card">
+
+            <div class="of-commission-left">
+                <p class="of-commission-eyebrow">Commission unique</p>
+                <p class="of-pct">18<span class="of-pct-sym">%</span></p>
+                <p class="of-pct-label">sur le chiffre d'affaires</p>
+                <div class="of-rule"></div>
+                <p class="of-pct-desc">Prélevée uniquement sur les revenus effectivement perçus. Aucun abonnement mensuel, aucun engagement de durée, aucune pénalité à la sortie.</p>
+            </div>
+
+            <div class="of-commission-right">
+                <h2 class="of-included-title">Tout est compris</h2>
+                <ul class="of-included-list">
+                    <li class="of-included-item">Création des annonces</li>
+                    <li class="of-included-item">Photos professionnelles</li>
+                    <li class="of-included-item">Communication voyageurs</li>
+                    <li class="of-included-item">Check-in &amp; check-out</li>
+                    <li class="of-included-item">Assistance 24/7</li>
+                    <li class="of-included-item">Suivi qualité</li>
+                    <li class="of-included-item">Optimisation des prix</li>
+                    <li class="of-included-item">Reporting mensuel</li>
+                    <li class="of-included-item">Coordination artisans</li>
+                    <li class="of-included-item">Conseils stratégiques</li>
+                    <li class="of-included-item">Gestion des litiges</li>
+                    <li class="of-included-item">Espace propriétaire</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ══ FRAIS DE MÉNAGE ════════════════════════════════════ -->
+<section class="of-menage">
+    <div class="of-wrap">
+        <div class="of-menage-header">
+            <div class="of-menage-left">
+                <p class="eyebrow">Frais de ménage</p>
+                <h2 class="of-menage-title">Le ménage est<br>payé par le voyageur.</h2>
+            </div>
+            <div class="of-menage-right">
+                <p class="of-menage-desc">Un système simple et transparent : les frais de ménage apparaissent sur la réservation et sont reversés intégralement au prestataire. Vous n'avancez rien.</p>
+            </div>
+        </div>
+
+        <div class="of-steps">
+            <div class="of-step">
+                <span class="of-step-num">01</span>
+                <h3 class="of-step-title">Le voyageur réserve</h3>
+                <p class="of-step-desc">Il paie les frais de ménage en même temps que son séjour, via Airbnb ou Booking.</p>
+            </div>
+            <span class="of-step-arrow" aria-hidden="true">→</span>
+            <div class="of-step">
+                <span class="of-step-num">02</span>
+                <h3 class="of-step-title">La plateforme encaisse</h3>
+                <p class="of-step-desc">Les frais de ménage sont identifiés séparément dans le virement reçu.</p>
+            </div>
+            <span class="of-step-arrow" aria-hidden="true">→</span>
+            <div class="of-step">
+                <span class="of-step-num">03</span>
+                <h3 class="of-step-title">Vous recevez les fonds</h3>
+                <p class="of-step-desc">Les frais arrivent sur votre compte avec le reste du virement mensuel.</p>
+            </div>
+            <span class="of-step-arrow" aria-hidden="true">→</span>
+            <div class="of-step">
+                <span class="of-step-num">04</span>
+                <h3 class="of-step-title">Reversement prestataire</h3>
+                <p class="of-step-desc">Vous reversez ces frais au prestataire ménage que nous avons coordonné.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ SIMULATEUR ═════════════════════════════════════════ -->
+<section class="of-simu">
+    <div class="of-wrap">
+        <div class="of-simu-header">
+            <div class="of-simu-left">
+                <p class="eyebrow">Simulateur</p>
+                <h2 class="of-simu-title">Combien allez-vous<br>toucher <em>vraiment</em>&nbsp;?</h2>
+            </div>
+            <div class="of-simu-right">
+                <p class="of-simu-desc">Entrez un prix moyen par nuit et un taux d'occupation estimé. Nous calculons vos revenus nets.</p>
+            </div>
+        </div>
+
+        <div class="of-simu-card">
+            <div class="of-simu-inputs">
+
+                <div class="of-slider-group">
+                    <label class="of-slider-label">Prix moyen par nuit</label>
+                    <p class="of-slider-value"><span id="val-prix">180</span>&thinsp;€</p>
+                    <input class="of-slider" type="range" id="slider-prix" min="50" max="500" value="180">
+                    <div class="of-slider-range">
+                        <span>50</span>
+                        <span>500</span>
+                    </div>
+                </div>
+
+                <div class="of-slider-group">
+                    <label class="of-slider-label">Taux d'occupation</label>
+                    <p class="of-slider-value"><span id="val-occ">75</span>&thinsp;%</p>
+                    <input class="of-slider" type="range" id="slider-occ" min="30" max="95" value="75">
+                    <div class="of-slider-range">
+                        <span>30</span>
+                        <span>95</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="of-simu-result">
+                <p class="of-result-eyebrow">Estimation mensuelle</p>
+                <div class="of-result-row">
+                    <span class="of-result-label">Chiffre d'affaires brut</span>
+                    <span class="of-result-val" id="res-brut">4 050 €</span>
+                </div>
+                <div class="of-result-divider"></div>
+                <div class="of-result-row">
+                    <span class="of-result-label">Commission Maison Mathis (18%)</span>
+                    <span class="of-result-val of-result-val--minus" id="res-commission">– 729 €</span>
+                </div>
+                <div class="of-result-divider of-result-divider--strong"></div>
+                <div class="of-result-row of-result-row--net">
+                    <span class="of-result-label of-result-label--net">Vos revenus nets</span>
+                    <span class="of-result-val of-result-val--net" id="res-net">3 321 €</span>
+                </div>
+                <p class="of-result-disclaimer">Estimation indicative hors taxes de séjour, charges et impôts. Les revenus réels dépendent du bien, de la saisonnalité et du marché local.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ CTA FINAL ══════════════════════════════════════════ -->
+<section class="of-cta">
+    <div class="of-cta-inner">
+        <h2 class="of-cta-title">Prêt à <em>passer à l'action</em>&nbsp;?</h2>
+        <p class="of-cta-desc">Nous étudions votre bien gratuitement et vous remettons une proposition détaillée sous 48h.</p>
+        <a href="#" class="btn btn--primary">Demander mon estimation →</a>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+    (function () {
+        var sliderPrix = document.getElementById('slider-prix');
+        var sliderOcc  = document.getElementById('slider-occ');
+        var valPrix    = document.getElementById('val-prix');
+        var valOcc     = document.getElementById('val-occ');
+        var resBrut    = document.getElementById('res-brut');
+        var resComm    = document.getElementById('res-commission');
+        var resNet     = document.getElementById('res-net');
+
+        function fmt(n) {
+            return n.toLocaleString('fr-FR') + ' €';
+        }
+
+        function updateSliderTrack(slider) {
+            var min = +slider.min, max = +slider.max, val = +slider.value;
+            var pct = ((val - min) / (max - min) * 100).toFixed(1);
+            slider.style.setProperty('--track-fill', pct + '%');
+        }
+
+        function compute() {
+            var prix = +sliderPrix.value;
+            var occ  = +sliderOcc.value / 100;
+            var nuits = Math.round(30 * occ);
+            var brut  = Math.round(prix * nuits);
+            var comm  = Math.round(brut * 0.18);
+            var net   = brut - comm;
+
+            valPrix.textContent = prix;
+            valOcc.textContent  = sliderOcc.value;
+            resBrut.textContent = fmt(brut);
+            resComm.textContent = '– ' + fmt(comm);
+            resNet.textContent  = fmt(net);
+
+            updateSliderTrack(sliderPrix);
+            updateSliderTrack(sliderOcc);
+        }
+
+        sliderPrix.addEventListener('input', compute);
+        sliderOcc.addEventListener('input', compute);
+        compute();
+    }());
+    </script>
+{% endblock %}
