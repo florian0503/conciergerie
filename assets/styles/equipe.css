@@ -1,0 +1,205 @@
+/* ═══════════════════════════════════════════════════════════
+   ÉQUIPE
+════════════════════════════════════════════════════════════ */
+.eq-wrap {
+    max-width: var(--page-max);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+}
+
+/* ── HERO ────────────────────────────────────────────────── */
+.eq-hero {
+    padding: 80px 0 96px;
+}
+
+.eq-title {
+    font-family: var(--serif);
+    font-size: clamp(52px, 7vw, 100px);
+    font-weight: 400;
+    line-height: 1.0;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin-top: 20px;
+    margin-bottom: 32px;
+}
+
+.eq-title em {
+    font-style: italic;
+    color: var(--red);
+}
+
+.eq-subtitle {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 20px;
+    line-height: 1.65;
+    color: var(--ink-muted);
+    max-width: 700px;
+}
+
+/* ── GRILLE ──────────────────────────────────────────────── */
+.eq-grid-section {
+    padding-bottom: 96px;
+}
+
+.eq-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    border: 1px solid var(--line);
+}
+
+.eq-card {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    border: 1px solid var(--line);
+    background: var(--paper);
+    overflow: hidden;
+}
+
+/* Photos — placeholder coloré en attendant les vraies images */
+.eq-photo {
+    aspect-ratio: 3 / 4;
+    background-color: var(--paper-deep);
+    background-size: cover;
+    background-position: center top;
+}
+
+.eq-photo--sierra { background-color: #c4a882; }
+.eq-photo--thomas { background-color: #8fa8b2; }
+.eq-photo--lea    { background-color: #b89db4; }
+.eq-photo--marc   { background-color: #9ab0a0; }
+
+.eq-info {
+    padding: 40px 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+}
+
+.eq-role {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--red);
+}
+
+.eq-name {
+    font-family: var(--serif);
+    font-size: clamp(36px, 3.5vw, 52px);
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+}
+
+.eq-bio {
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--ink-soft);
+    max-width: 380px;
+}
+
+.eq-tags {
+    display: flex;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.eq-tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+}
+
+.eq-tag + .eq-tag::before {
+    content: '·';
+    margin-right: 8px;
+}
+
+/* ── CTA ─────────────────────────────────────────────────── */
+.eq-cta {
+    background: var(--paper-deep);
+    padding: 120px 0;
+    text-align: center;
+}
+
+.eq-cta-inner {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+}
+
+.eq-cta-title {
+    font-family: var(--serif);
+    font-size: clamp(32px, 4vw, 56px);
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-top: 16px;
+    margin-bottom: 20px;
+}
+
+.eq-cta-desc {
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--ink-muted);
+    margin-bottom: 40px;
+}
+
+.eq-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 20px 48px;
+    border-radius: 999px;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--sans);
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.25s, transform 0.2s;
+}
+
+.eq-cta-btn:hover {
+    background: #1a1714;
+    transform: translateY(-1px);
+}
+
+/* ── RESPONSIVE ──────────────────────────────────────────── */
+@media (max-width: 1100px) {
+    .eq-card {
+        grid-template-columns: 220px 1fr;
+    }
+}
+
+@media (max-width: 860px) {
+    .eq-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .eq-card {
+        grid-template-columns: 180px 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .eq-card {
+        grid-template-columns: 1fr;
+    }
+
+    .eq-photo {
+        aspect-ratio: 4 / 3;
+    }
+
+    .eq-info {
+        padding: 28px 24px;
+    }
+}
