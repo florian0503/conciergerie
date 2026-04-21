@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}L'Équipe — Maison Mathis{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('styles/equipe.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<!-- ══ HERO ════════════════════════════════════════════════ -->
+<section class="eq-hero">
+    <div class="eq-wrap">
+        <p class="eyebrow">L'équipe</p>
+        <h1 class="eq-title">
+            Des visages,<br>
+            pas des <em>numéros</em>.
+        </h1>
+        <p class="eq-subtitle">Quatre personnes, quatre métiers complémentaires, une seule promesse&nbsp;: vous connaître par votre prénom et votre bien par cœur.</p>
+    </div>
+</section>
+
+<!-- ══ GRILLE ÉQUIPE ══════════════════════════════════════ -->
+<section class="eq-grid-section">
+    <div class="eq-wrap">
+        <div class="eq-grid">
+
+            <article class="eq-card">
+                <div class="eq-photo eq-photo--sierra"></div>
+                <div class="eq-info">
+                    <p class="eq-role">Fondatrice</p>
+                    <h2 class="eq-name">Sierra</h2>
+                    <p class="eq-bio">Après dix ans dans l'hôtellerie de luxe (Sofitel, Intercontinental), Sierra a fondé Maison Mathis pour appliquer les standards hôteliers à la location courte durée. Elle supervise chaque nouveau bien personnellement.</p>
+                    <div class="eq-tags">
+                        <span class="eq-tag">Lyon 2e</span>
+                        <span class="eq-tag">5 ans</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="eq-card">
+                <div class="eq-photo eq-photo--thomas"></div>
+                <div class="eq-info">
+                    <p class="eq-role">Responsable opérations</p>
+                    <h2 class="eq-name">Thomas</h2>
+                    <p class="eq-bio">Ancien chef de réception, Thomas coordonne les équipes terrain, le ménage et les artisans du réseau. Il connaît chaque bien du portefeuille et ses spécificités.</p>
+                    <div class="eq-tags">
+                        <span class="eq-tag">Lyon 1er</span>
+                        <span class="eq-tag">3 ans</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="eq-card">
+                <div class="eq-photo eq-photo--lea"></div>
+                <div class="eq-info">
+                    <p class="eq-role">Relations voyageurs</p>
+                    <h2 class="eq-name">Léa</h2>
+                    <p class="eq-bio">Elle répond aux voyageurs du monde entier — en français, anglais, espagnol et italien. Son taux de réponse sous 15 minutes est légendaire, même le dimanche à 23h.</p>
+                    <div class="eq-tags">
+                        <span class="eq-tag">Trilingue</span>
+                        <span class="eq-tag">2 ans</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="eq-card">
+                <div class="eq-photo eq-photo--marc"></div>
+                <div class="eq-info">
+                    <p class="eq-role">Revenue manager</p>
+                    <h2 class="eq-name">Marc</h2>
+                    <p class="eq-bio">Marc analyse les données d'occupation, les tarifs et la concurrence pour optimiser les revenus. Il a fait gagner 34&nbsp;% de CA en moyenne à nos propriétaires en 2025.</p>
+                    <div class="eq-tags">
+                        <span class="eq-tag">Data</span>
+                        <span class="eq-tag">2 ans</span>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+<!-- ══ CTA REJOIGNEZ-NOUS ═════════════════════════════════ -->
+<section class="eq-cta">
+    <div class="eq-cta-inner">
+        <p class="eyebrow">Rejoignez-nous</p>
+        <h2 class="eq-cta-title">Nous recrutons des passionnés du service.</h2>
+        <p class="eq-cta-desc">Si vous aimez Lyon, l'hospitalité et le travail bien fait, écrivez-nous.</p>
+        <a href="mailto:hello@maisonmathis.fr" class="eq-cta-btn">hello@maisonmathis.fr</a>
+    </div>
+</section>
+
+{% endblock %}
