@@ -812,6 +812,45 @@ img, svg { display: block; }
 
 .footer-nav-list li { margin-bottom: 12px; }
 
+.footer-nav-dropdown-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--sans);
+    font-size: 14px;
+    color: rgba(251,250,247,0.7);
+    transition: color 0.2s;
+}
+
+.footer-nav-dropdown-toggle:hover { color: var(--red); }
+
+.footer-nav-dropdown-caret {
+    transition: transform 0.25s;
+    opacity: 0.6;
+    flex-shrink: 0;
+}
+
+.footer-nav-dropdown.is-open .footer-nav-dropdown-caret {
+    transform: rotate(180deg);
+}
+
+.footer-nav-sub {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    padding-left: 10px;
+    margin-top: 8px;
+    border-left: 1px solid rgba(251,250,247,0.15);
+}
+
+.footer-nav-dropdown.is-open .footer-nav-sub {
+    display: flex;
+}
+
 .footer-nav-link {
     font-family: var(--sans);
     font-size: 14px;
