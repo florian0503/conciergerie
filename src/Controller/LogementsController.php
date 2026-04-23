@@ -4,8 +4,8 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Routing\Attribute\Route;
 
 final class LogementsController extends AbstractController
 {
@@ -217,7 +217,7 @@ final class LogementsController extends AbstractController
         }
 
         $logement = $logements[$slug];
-        $autres = array_filter($logements, fn($l) => $l['slug'] !== $slug);
+        $autres = array_filter($logements, fn ($l) => $l['slug'] !== $slug);
         $autres = array_slice($autres, 0, 3);
 
         return $this->render('logements/show.html.twig', [
