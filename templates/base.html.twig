@@ -39,7 +39,7 @@
                 <a class="nav-link{% if _route == 'app_offres' %} active{% endif %}" href="{{ path('app_offres') }}">Offres</a>
                 <a class="nav-link{% if _route == 'app_logements' %} active{% endif %}" href="{{ path('app_logements') }}">Logements</a>
                 <a class="nav-link{% if _route == 'app_avis' %} active{% endif %}" href="{{ path('app_avis') }}">Avis</a>
-                <div class="nav-dropdown{% if _route in ['app_entreprise', 'app_equipe'] %} active{% endif %}">
+                <div class="nav-dropdown{% if _route in ['app_entreprise', 'app_equipe', 'app_faq', 'app_blog'] %} active{% endif %}">
                     <button class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
                         À propos
                         <svg class="nav-dropdown-caret" width="9" height="5" viewBox="0 0 9 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 1 4.5 4 8 1"/></svg>
@@ -47,6 +47,7 @@
                     <div class="nav-dropdown-menu">
                         <a class="nav-dropdown-item{% if _route == 'app_entreprise' %} active{% endif %}" href="{{ path('app_entreprise') }}">L'entreprise</a>
                         <a class="nav-dropdown-item{% if _route == 'app_equipe' %} active{% endif %}" href="{{ path('app_equipe') }}">L'équipe</a>
+                        <a class="nav-dropdown-item{% if _route == 'app_faq' %} active{% endif %}" href="{{ path('app_faq') }}">FAQ</a>
                     </div>
                 </div>
             </nav>
