@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\AvisRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -9,8 +10,10 @@ use Symfony\Component\Routing\Attribute\Route;
 final class AvisController extends AbstractController
 {
     #[Route('/avis', name: 'app_avis')]
-    public function index(): Response
+    public function index(AvisRepository $repo): Response
     {
-        return $this->render('avis/index.html.twig');
+        return $this->render('avis/index.html.twig', [
+            'avis' => $repo->findBy(['publie' => true], ['position' => 'ASC']),
+        ]);
     }
 }

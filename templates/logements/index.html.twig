@@ -41,106 +41,23 @@
                 <button class="lg-filter" data-filter="monts-dor">Monts d'Or</button>
                 <button class="lg-filter" data-filter="part-dieu">Part-Dieu</button>
             </div>
-            <span class="lg-count"><span id="lg-count-num">8</span> biens</span>
+            <span class="lg-count"><span id="lg-count-num">{{ logements|length }}</span> biens</span>
         </div>
 
         <div class="lg-grid" id="lg-grid">
 
-            <a href="{{ path('app_logement_show', {slug: 'le-presquile'}) }}" class="lg-card reveal ld-card-link" data-delay="1" data-quartier="presquile">
-                <div class="lg-img lg-img--1">
-                    <span class="lg-badge">Appartement</span>
-                    <span class="lg-rating">★ 4.97</span>
+            {% for logement in logements %}
+            <a href="{{ path('app_logement_show', {slug: logement.slug}) }}" class="lg-card reveal ld-card-link" data-delay="{{ loop.index }}" data-quartier="{{ logement.quartierSlug }}">
+                <div class="lg-img lg-img--{{ logement.imgIndex }}">
+                    <span class="lg-badge">{{ logement.type }}</span>
+                    <span class="lg-rating">★ {{ logement.note }}</span>
                 </div>
                 <div class="lg-info">
-                    <h2 class="lg-name">Le Presqu'île</h2>
-                    <p class="lg-meta">Presqu'île · 6 voyageurs · 3 ch.</p>
-                    <p class="lg-price">189 € <span>/ nuit</span></p>
+                    <h2 class="lg-name">{{ logement.nom }}</h2>
+                    <p class="lg-meta">{{ logement.quartier }} · {{ logement.voyageurs }} voyageurs · {{ logement.chambres }} ch.</p>
                 </div>
             </a>
-
-            <a href="{{ path('app_logement_show', {slug: 'haut-pave'}) }}" class="lg-card reveal ld-card-link" data-delay="2" data-quartier="vieux-lyon">
-                <div class="lg-img lg-img--2">
-                    <span class="lg-badge">Duplex</span>
-                    <span class="lg-rating">★ 4.93</span>
-                </div>
-                <div class="lg-info">
-                    <h2 class="lg-name">Haut-Pavé</h2>
-                    <p class="lg-meta">Vieux Lyon · 4 voyageurs · 3 ch.</p>
-                    <p class="lg-price">149 € <span>/ nuit</span></p>
-                </div>
-            </a>
-
-            <a href="{{ path('app_logement_show', {slug: 'atelier-croix-rousse'}) }}" class="lg-card reveal ld-card-link" data-delay="3" data-quartier="croix-rousse">
-                <div class="lg-img lg-img--3">
-                    <span class="lg-badge">Loft</span>
-                    <span class="lg-rating">★ 4.98</span>
-                </div>
-                <div class="lg-info">
-                    <h2 class="lg-name">Atelier Croix-Rousse</h2>
-                    <p class="lg-meta">Croix-Rousse · 2 voyageurs · 1 ch.</p>
-                    <p class="lg-price">169 € <span>/ nuit</span></p>
-                </div>
-            </a>
-
-            <a href="{{ path('app_logement_show', {slug: 'soierie-confluence'}) }}" class="lg-card reveal ld-card-link" data-delay="4" data-quartier="confluence">
-                <div class="lg-img lg-img--4">
-                    <span class="lg-badge">Maison</span>
-                    <span class="lg-rating">★ 4.89</span>
-                </div>
-                <div class="lg-info">
-                    <h2 class="lg-name">Soierie Confluence</h2>
-                    <p class="lg-meta">Confluence · 8 voyageurs · 3 ch.</p>
-                    <p class="lg-price">329 € <span>/ nuit</span></p>
-                </div>
-            </a>
-
-            <a href="{{ path('app_logement_show', {slug: 'rive-de-saone'}) }}" class="lg-card reveal ld-card-link" data-delay="5" data-quartier="vieux-lyon">
-                <div class="lg-img lg-img--5">
-                    <span class="lg-badge">Appartement</span>
-                    <span class="lg-rating">★ 4.85</span>
-                </div>
-                <div class="lg-info">
-                    <h2 class="lg-name">Rive de Saône</h2>
-                    <p class="lg-meta">Vieux Lyon · 8 voyageurs · 3 ch.</p>
-                    <p class="lg-price">199 € <span>/ nuit</span></p>
-                </div>
-            </a>
-
-            <a href="{{ path('app_logement_show', {slug: 'terreaux-haussmann'}) }}" class="lg-card reveal ld-card-link" data-delay="6" data-quartier="terreaux">
-                <div class="lg-img lg-img--6">
-                    <span class="lg-badge">Appartement</span>
-                    <span class="lg-rating">★ 4.93</span>
-                </div>
-                <div class="lg-info">
-                    <h2 class="lg-name">Terreaux Haussmann</h2>
-                    <p class="lg-meta">Terreaux · 5 voyageurs · 2 ch.</p>
-                    <p class="lg-price">175 € <span>/ nuit</span></p>
-                </div>
-            </a>
-
-            <a href="{{ path('app_logement_show', {slug: 'villa-monts-dor'}) }}" class="lg-card reveal ld-card-link" data-delay="1" data-quartier="monts-dor">
-                <div class="lg-img lg-img--7">
-                    <span class="lg-badge">Villa</span>
-                    <span class="lg-rating">★ 4.96</span>
-                </div>
-                <div class="lg-info">
-                    <h2 class="lg-name">Villa des Monts d'Or</h2>
-                    <p class="lg-meta">Monts d'Or · 10 voyageurs · 4 ch.</p>
-                    <p class="lg-price">489 € <span>/ nuit</span></p>
-                </div>
-            </a>
-
-            <a href="{{ path('app_logement_show', {slug: 'studio-part-dieu'}) }}" class="lg-card reveal ld-card-link" data-delay="2" data-quartier="part-dieu">
-                <div class="lg-img lg-img--8">
-                    <span class="lg-badge">Studio</span>
-                    <span class="lg-rating">★ 4.91</span>
-                </div>
-                <div class="lg-info">
-                    <h2 class="lg-name">Studio Part-Dieu</h2>
-                    <p class="lg-meta">Part-Dieu · 2 voyageurs · 1 ch.</p>
-                    <p class="lg-price">89 € <span>/ nuit</span></p>
-                </div>
-            </a>
+            {% endfor %}
 
         </div>
 

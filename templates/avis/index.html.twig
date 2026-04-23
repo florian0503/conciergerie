@@ -52,104 +52,47 @@
 <!-- ══ CAROUSEL AVIS ══════════════════════════════════════ -->
 <section class="av-reviews">
     <div class="av-wrap">
+
         <h2 class="av-reviews-title">Des mots de<br>propriétaires et voyageurs.</h2>
 
+        {% if avis is not empty %}
+        {% set slides = avis|batch(2) %}
+
         <div class="av-carousel" id="av-carousel">
-
-            <div class="av-slide is-active">
+            {% for slide in slides %}
+            <div class="av-slide{{ loop.first ? ' is-active' : '' }}">
+                {% for a in slide %}
                 <article class="av-card">
-                    <div class="av-stars">★ ★ ★ ★ ★</div>
-                    <blockquote class="av-quote">« Une prise en charge impeccable du premier jour. Sierra et son équipe sont d'une rigueur et d'une discrétion exemplaires — notre appartement n'a jamais été aussi bien tenu. »</blockquote>
+                    <div class="av-stars">{% for i in 1..a.note %}★ {% endfor %}</div>
+                    <blockquote class="av-quote">« {{ a.texte }} »</blockquote>
                     <div class="av-card-divider"></div>
                     <div class="av-author">
-                        <span class="av-avatar">C</span>
+                        <span class="av-avatar">{{ a.nom|first|upper }}</span>
                         <div>
-                            <p class="av-author-name">Claire B.</p>
-                            <p class="av-author-role">Propriétaire, Presqu'île</p>
+                            <p class="av-author-name">{{ a.nom }}</p>
+                            <p class="av-author-role">{{ a.role }}</p>
                         </div>
                     </div>
                 </article>
-                <article class="av-card">
-                    <div class="av-stars">★ ★ ★ ★ ★</div>
-                    <blockquote class="av-quote">« Le rendement a augmenté de 34% dès le premier trimestre. Communication fluide, reportings clairs, zéro stress de mon côté. »</blockquote>
-                    <div class="av-card-divider"></div>
-                    <div class="av-author">
-                        <span class="av-avatar">A</span>
-                        <div>
-                            <p class="av-author-name">Antoine L.</p>
-                            <p class="av-author-role">Propriétaire, Vieux Lyon</p>
-                        </div>
-                    </div>
-                </article>
+                {% endfor %}
             </div>
-
-            <div class="av-slide">
-                <article class="av-card">
-                    <div class="av-stars">★ ★ ★ ★ ★</div>
-                    <blockquote class="av-quote">« Logement parfaitement entretenu, accueil chaleureux à l'arrivée. On se sentait vraiment attendus. Le guide de l'appartement était une très belle attention. »</blockquote>
-                    <div class="av-card-divider"></div>
-                    <div class="av-author">
-                        <span class="av-avatar">M</span>
-                        <div>
-                            <p class="av-author-name">Marie &amp; Jules</p>
-                            <p class="av-author-role">Voyageurs, Paris</p>
-                        </div>
-                    </div>
-                </article>
-                <article class="av-card">
-                    <div class="av-stars">★ ★ ★ ★ ★</div>
-                    <blockquote class="av-quote">« J'avais des doutes sur la gestion à distance. Maison Mathis m'a prouvé qu'avec les bons interlocuteurs, c'est non seulement possible, mais serein. »</blockquote>
-                    <div class="av-card-divider"></div>
-                    <div class="av-author">
-                        <span class="av-avatar">P</span>
-                        <div>
-                            <p class="av-author-name">Philippe D.</p>
-                            <p class="av-author-role">Propriétaire, Confluence</p>
-                        </div>
-                    </div>
-                </article>
-            </div>
-
-            <div class="av-slide">
-                <article class="av-card">
-                    <div class="av-stars">★ ★ ★ ★ ★</div>
-                    <blockquote class="av-quote">« Réponse en moins de 10 minutes à chaque message. Le check-in était fluide, le logement impeccable. Une expérience haut de gamme à un prix très juste. »</blockquote>
-                    <div class="av-card-divider"></div>
-                    <div class="av-author">
-                        <span class="av-avatar">S</span>
-                        <div>
-                            <p class="av-author-name">Sophie K.</p>
-                            <p class="av-author-role">Voyageuse, Berlin</p>
-                        </div>
-                    </div>
-                </article>
-                <article class="av-card">
-                    <div class="av-stars">★ ★ ★ ★ ★</div>
-                    <blockquote class="av-quote">« Deux ans de collaboration et jamais une surprise désagréable. Les comptes sont toujours justes, les locataires soigneusement sélectionnés. Je recommande sans hésiter. »</blockquote>
-                    <div class="av-card-divider"></div>
-                    <div class="av-author">
-                        <span class="av-avatar">N</span>
-                        <div>
-                            <p class="av-author-name">Nathalie R.</p>
-                            <p class="av-author-role">Propriétaire, Croix-Rousse</p>
-                        </div>
-                    </div>
-                </article>
-            </div>
-
+            {% endfor %}
         </div>
 
         <div class="av-carousel-nav">
             <div class="av-dots" id="av-dots">
-                <button class="av-dot is-active" data-index="0" aria-label="Slide 1"></button>
-                <button class="av-dot" data-index="1" aria-label="Slide 2"></button>
-                <button class="av-dot" data-index="2" aria-label="Slide 3"></button>
+                {% for slide in slides %}
+                <button class="av-dot{{ loop.first ? ' is-active' : '' }}" data-index="{{ loop.index0 }}" aria-label="Slide {{ loop.index }}"></button>
+                {% endfor %}
             </div>
             <div class="av-arrows">
                 <button class="av-arrow" id="av-prev" aria-label="Précédent">←</button>
                 <button class="av-arrow" id="av-next" aria-label="Suivant">→</button>
             </div>
         </div>
+        {% else %}
+        <p class="av-empty">Aucun avis à afficher pour le moment.</p>
+        {% endif %}
 
     </div>
 </section>
@@ -195,6 +138,8 @@
         var prev    = document.getElementById('av-prev');
         var next    = document.getElementById('av-next');
         var current = 0;
+
+        if (!slides.length || !prev || !next) { return; }
 
         function goTo(index) {
             slides[current].classList.remove('is-active');

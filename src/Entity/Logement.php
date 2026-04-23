@@ -259,6 +259,17 @@ class Logement
         return $this;
     }
 
+    public function getQuartierSlug(): string
+    {
+        $slug = mb_strtolower($this->quartier ?? '');
+        $map = ['à' => 'a', 'â' => 'a', 'é' => 'e', 'è' => 'e', 'ê' => 'e', 'î' => 'i', 'ô' => 'o', 'û' => 'u', 'ù' => 'u', 'ç' => 'c', '\'' => '', "\u{2019}" => '', ' ' => '-'];
+        foreach ($map as $from => $to) {
+            $slug = str_replace($from, $to, $slug);
+        }
+
+        return $slug;
+    }
+
     public function __toString(): string
     {
         return $this->nom ?? '';

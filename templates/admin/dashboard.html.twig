@@ -4,22 +4,22 @@
 
 {% block main %}
 <div class="ea-dashboard-grid">
-    <a href="{{ ea_url().setController('App\\Controller\\Admin\\LogementCrudController') }}" class="ea-dashboard-card">
+    <a href="/admin/logement" class="ea-dashboard-card">
         <div class="ea-dashboard-icon">🏠</div>
         <div class="ea-dashboard-label">Logements</div>
         <div class="ea-dashboard-sub">Gérer les biens</div>
     </a>
-    <a href="{{ ea_url().setController('App\\Controller\\Admin\\ArticleCrudController') }}" class="ea-dashboard-card">
+    <a href="/admin/article" class="ea-dashboard-card">
         <div class="ea-dashboard-icon">📝</div>
-        <div class="ea-dashboard-label">Articles</div>
-        <div class="ea-dashboard-sub">Gérer le blog</div>
+        <div class="ea-dashboard-label">Blog</div>
+        <div class="ea-dashboard-sub">Gérer les articles</div>
     </a>
-    <a href="{{ ea_url().setController('App\\Controller\\Admin\\FaqItemCrudController') }}" class="ea-dashboard-card">
+    <a href="/admin/faq-item" class="ea-dashboard-card">
         <div class="ea-dashboard-icon">❓</div>
         <div class="ea-dashboard-label">FAQ</div>
         <div class="ea-dashboard-sub">Gérer les questions</div>
     </a>
-    <a href="{{ ea_url().setController('App\\Controller\\Admin\\AvisCrudController') }}" class="ea-dashboard-card">
+    <a href="/admin/avis" class="ea-dashboard-card">
         <div class="ea-dashboard-icon">⭐</div>
         <div class="ea-dashboard-label">Avis</div>
         <div class="ea-dashboard-sub">Gérer les témoignages</div>

@@ -15,4 +15,16 @@ class LogementRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Logement::class);
     }
+
+    /** @return Logement[] */
+    public function findOthers(string $slug, int $limit = 3): array
+    {
+        return $this->createQueryBuilder('l')
+            ->where('l.slug != :slug')
+            ->andWhere('l.publie = true')
+            ->setParameter('slug', $slug)
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
+    }
 }
