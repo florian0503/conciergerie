@@ -40,8 +40,10 @@ jobs:
             cd /home/u875897864/domains/slategray-goose-756276.hostingersite.com/public_html
             git fetch origin main
             git reset --hard origin/main
+            echo 'APP_ENV=prod' > .env.local
+            echo 'APP_DEBUG=0' >> .env.local
+            echo 'DATABASE_URL=${{ secrets.DATABASE_URL }}' >> .env.local
             composer install --no-dev --optimize-autoloader --ignore-platform-req=ext-redis
-            echo 'DATABASE_URL=${{ secrets.DATABASE_URL }}' > .env.local
             php bin/console doctrine:migrations:migrate --no-interaction --env=prod
             php bin/console cache:clear --env=prod
             php bin/console asset-map:compile
