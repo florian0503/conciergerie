@@ -10,6 +10,7 @@
 /* ── HERO ────────────────────────────────────────────────── */
 .sv-hero {
     padding: 80px 0 72px;
+    background: var(--paper-warm);
 }
 
 .sv-title {
@@ -125,9 +126,8 @@
 
 /* ── PROMESSE ────────────────────────────────────────────── */
 .sv-promesse {
-    background: var(--ink);
+    background: var(--paper-warm);
     padding: 100px 0;
-    margin-top: 80px;
 }
 
 .sv-promesse .eyebrow--light {
@@ -140,7 +140,7 @@
     font-weight: 400;
     line-height: 1.15;
     letter-spacing: -0.02em;
-    color: #ffffff;
+    color: var(--ink);
     max-width: 900px;
     margin-bottom: 28px;
 }
@@ -154,7 +154,7 @@
     font-family: var(--sans);
     font-size: 16px;
     line-height: 1.7;
-    color: rgba(251,250,247,0.65);
+    color: var(--ink-soft);
     max-width: 680px;
     margin-bottom: 48px;
 }
@@ -174,17 +174,17 @@
     font-family: var(--sans);
     font-size: 15px;
     font-weight: 500;
-    border: 1.5px solid rgba(251,250,247,0.35);
-    color: #ffffff;
+    border: 1.5px solid var(--ink);
+    color: var(--ink);
     background: transparent;
-    transition: border-color 0.25s, background 0.25s;
+    transition: border-color 0.25s, background 0.25s, color 0.25s;
     cursor: pointer;
     text-decoration: none;
 }
 
 .btn--outline-light:hover {
-    border-color: rgba(251,250,247,0.7);
-    background: rgba(251,250,247,0.06);
+    background: var(--ink);
+    color: var(--paper);
 }
 
 /* ── RESPONSIVE ──────────────────────────────────────────── */
