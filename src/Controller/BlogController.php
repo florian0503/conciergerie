@@ -4,8 +4,8 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Routing\Attribute\Route;
 
 final class BlogController extends AbstractController
 {
@@ -186,7 +186,9 @@ final class BlogController extends AbstractController
 
         $article = $articles[$slug];
         $allArticles = array_values($articles);
-        $related = array_filter($allArticles, fn($a) => $a['slug'] !== $slug);
+        $related = array_filter($allArticles, function ($a) use ($slug) {
+            return $a['slug'] !== $slug;
+        });
         $related = array_slice(array_values($related), 0, 3);
 
         return $this->render('blog/article.html.twig', [

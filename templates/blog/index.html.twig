@@ -58,7 +58,7 @@
                 {% if slug != 'comment-augmenter-revenus-airbnb' %}
                 <article class="bl-card">
                     <a href="{{ path('app_blog_article', {slug: article.slug}) }}" class="bl-card-img-link">
-                        <div class="bl-card-img" style="background-image: url('{{ article.img }}');" role="img" aria-label="{{ article.title }}"></div>
+                        <img class="bl-card-img" src="{{ article.img }}" alt="{{ article.title }}">
                     </a>
                     <span class="bl-card-tag">{{ article.tag }}</span>
                     <h3 class="bl-card-title">
