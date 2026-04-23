@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Blog — Maison Mathis{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('styles/blog.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<!-- ══ HERO ════════════════════════════════════════════════ -->
+<section class="bl-hero">
+    <div class="bl-wrap">
+        <nav class="breadcrumb" aria-label="Fil d'ariane">
+            <a class="breadcrumb-link" href="{{ path('app_home') }}">Accueil</a>
+            <span class="breadcrumb-sep">／</span>
+            <span class="breadcrumb-link">À propos</span>
+            <span class="breadcrumb-sep">／</span>
+            <span class="breadcrumb-current">Blog</span>
+        </nav>
+        <h1 class="bl-title">Conseils,<br><em>décryptages,</em><br>retours terrain.</h1>
+        <p class="bl-subtitle">Tout ce qu'on apprend en gérant 120 biens à Lyon — partagé sans filtre, pour vous aider à louer mieux.</p>
+    </div>
+</section>
+
+<!-- ══ ARTICLE À LA UNE ════════════════════════════════════ -->
+{% set featured = articles['comment-augmenter-revenus-airbnb'] %}
+<section class="bl-featured">
+    <div class="bl-wrap">
+        <a href="{{ path('app_blog_article', {slug: featured.slug}) }}" class="bl-featured-card">
+            <div class="bl-featured-img" role="img" aria-label="{{ featured.title }}"></div>
+            <div class="bl-featured-body">
+                <span class="bl-tag">À la une</span>
+                <h2 class="bl-featured-title">{{ featured.title|replace({'+34 %': '<em>+34 %</em>'})|raw }}</h2>
+                <p class="bl-featured-excerpt">{{ featured.excerpt }}</p>
+                <div class="bl-meta">
+                    <span>{{ featured.author }}</span>
+                    <span class="bl-meta-sep">·</span>
+                    <span>{{ featured.date }}</span>
+                    <span class="bl-meta-sep">·</span>
+                    <span>{{ featured.read }}</span>
+                </div>
+                <span class="bl-read-link">Lire l'article →</span>
+            </div>
+        </a>
+    </div>
+</section>
+
+<!-- ══ GRILLE ARTICLES ══════════════════════════════════════ -->
+<section class="bl-grid-section">
+    <div class="bl-wrap">
+        <div class="bl-grid-header">
+            <span class="bl-grid-label">Tous les articles</span>
+        </div>
+        <div class="bl-grid">
+            {% for slug, article in articles %}
+                {% if slug != 'comment-augmenter-revenus-airbnb' %}
+                <article class="bl-card">
+                    <a href="{{ path('app_blog_article', {slug: article.slug}) }}" class="bl-card-img-link">
+                        <img class="bl-card-img" src="{{ article.img }}" alt="{{ article.title }}">
+                    </a>
+                    <span class="bl-card-tag">{{ article.tag }}</span>
+                    <h3 class="bl-card-title">
+                        <a href="{{ path('app_blog_article', {slug: article.slug}) }}">{{ article.title }}</a>
+                    </h3>
+                    <p class="bl-card-excerpt">{{ article.excerpt }}</p>
+                    <div class="bl-card-meta">
+                        <span>{{ article.date }}</span>
+                        <span class="bl-card-meta-sep">·</span>
+                        <span>{{ article.read }}</span>
+                    </div>
+                </article>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ══ NEWSLETTER ═══════════════════════════════════════════ -->
+<section class="bl-newsletter">
+    <div class="bl-newsletter-inner">
+        <span class="bl-newsletter-eyebrow">Newsletter</span>
+        <h2 class="bl-newsletter-title">Un article par mois,<br><em>zéro bruit.</em></h2>
+        <p class="bl-newsletter-desc">Nos meilleurs conseils, les chiffres du marché lyonnais et nos retours terrain — directement dans votre boîte mail, une fois par mois.</p>
+        <form class="bl-newsletter-form" action="#" method="post">
+            <input class="bl-newsletter-input" type="email" name="email" placeholder="votre@email.fr" required aria-label="Votre adresse email">
+            <button class="bl-newsletter-btn" type="submit">S'abonner →</button>
+        </form>
+    </div>
+</section>
+
+{% endblock %}
