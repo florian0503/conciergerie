@@ -10,6 +10,7 @@
 /* ── HERO ────────────────────────────────────────────────── */
 .av-hero {
     padding: 80px 0 72px;
+    background: var(--paper-warm);
 }
 
 .av-title {

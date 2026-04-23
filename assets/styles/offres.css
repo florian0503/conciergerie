@@ -9,7 +9,8 @@
 
 /* ── HERO ────────────────────────────────────────────────── */
 .of-hero {
-    padding: 80px 0 72px;
+    padding: 80px 0 40px;
+    background: var(--paper-warm);
 }
 
 .of-title {
@@ -39,7 +40,8 @@
 
 /* ── COMMISSION ──────────────────────────────────────────── */
 .of-commission {
-    padding-bottom: 96px;
+    padding-top: 40px;
+    padding-bottom: 40px;
 }
 
 .of-commission-card {
@@ -143,6 +145,7 @@
 .of-menage {
     padding: 80px 0 96px;
     border-top: 1px solid var(--line);
+    background: var(--paper-warm);
 }
 
 .of-menage-header {
@@ -172,9 +175,9 @@
 
 .of-steps {
     display: grid;
-    grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
-    align-items: start;
-    gap: 0 8px;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: stretch;
+    gap: 8px;
 }
 
 .of-step {
@@ -182,6 +185,21 @@
     border: 1px solid var(--line);
     border-radius: 4px;
     padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    min-width: 0;
+}
+
+.of-step:not(:last-child)::after {
+    content: '→';
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: var(--red);
+    z-index: 1;
 }
 
 .of-step-num {
@@ -210,11 +228,7 @@
 }
 
 .of-step-arrow {
-    font-size: 18px;
-    color: var(--red);
-    align-self: center;
-    padding-top: 40px;
-    flex-shrink: 0;
+    display: none;
 }
 
 /* ── SIMULATEUR ──────────────────────────────────────────── */
@@ -480,13 +494,13 @@
 }
 
 /* ── RESPONSIVE ──────────────────────────────────────────── */
-@media (max-width: 1000px) {
+@media (max-width: 800px) {
     .of-steps {
         grid-template-columns: 1fr 1fr;
         gap: 16px;
     }
 
-    .of-step-arrow {
+    .of-step:not(:last-child)::after {
         display: none;
     }
 }

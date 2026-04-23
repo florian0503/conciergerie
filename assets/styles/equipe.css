@@ -10,6 +10,7 @@
 /* ── HERO ────────────────────────────────────────────────── */
 .eq-hero {
     padding: 80px 0 96px;
+    background: var(--paper-warm);
 }
 
 .eq-title {
