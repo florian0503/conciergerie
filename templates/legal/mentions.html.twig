@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mentions légales — Maison Mathis{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('styles/legal.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<section class="lg-legal-hero">
+    <div class="lg-legal-wrap">
+        <nav class="breadcrumb" aria-label="Fil d'ariane">
+            <a class="breadcrumb-link" href="{{ path('app_home') }}">Accueil</a>
+            <span class="breadcrumb-sep">／</span>
+            <span class="breadcrumb-current">Mentions légales</span>
+        </nav>
+        <h1 class="lg-legal-title">Mentions légales</h1>
+        <span class="lg-legal-update">Dernière mise à jour : avril 2026</span>
+    </div>
+</section>
+
+<section class="lg-legal-body">
+    <div class="lg-legal-wrap">
+
+        <nav class="lg-legal-nav" aria-label="Pages légales">
+            <a href="{{ path('app_mentions_legales') }}" class="lg-legal-nav-link is-active">Mentions légales</a>
+            <a href="{{ path('app_cgu') }}" class="lg-legal-nav-link">CGU</a>
+            <a href="{{ path('app_confidentialite') }}" class="lg-legal-nav-link">Confidentialité</a>
+        </nav>
+
+        <div class="lg-legal-inner">
+
+            <div class="lg-legal-section">
+                <h2 class="lg-legal-h2">Éditeur du site</h2>
+                <p class="lg-legal-p"><strong>Maison Mathis</strong><br>
+                Société par actions simplifiée (SAS)<br>
+                Capital social : 10 000 €<br>
+                RCS Lyon — SIRET : 000 000 000 00000<br>
+                Siège social : 14 rue Auguste Comte, 69002 Lyon<br>
+                Téléphone : +33 4 78 00 00 00<br>
+                Email : <a href="mailto:hello@maisonmathis.fr">hello@maisonmathis.fr</a></p>
+                <p class="lg-legal-p">Directrice de la publication : Sierra Mathis</p>
+            </div>
+
+            <div class="lg-legal-section">
+                <h2 class="lg-legal-h2">Hébergement</h2>
+                <p class="lg-legal-p">Ce site est hébergé par :<br>
+                <strong>OVH SAS</strong><br>
+                2 rue Kellermann, 59100 Roubaix<br>
+                Téléphone : 1007</p>
+            </div>
+
+            <div class="lg-legal-section">
+                <h2 class="lg-legal-h2">Propriété intellectuelle</h2>
+                <p class="lg-legal-p">L'ensemble du contenu de ce site (textes, images, graphismes, logo, icônes, sons, logiciels) est la propriété exclusive de Maison Mathis, sauf mentions contraires. Toute reproduction, représentation, modification, publication ou adaptation de tout ou partie des éléments du site, quel que soit le moyen ou le procédé utilisé, est interdite sans autorisation écrite préalable.</p>
+            </div>
+
+            <div class="lg-legal-section">
+                <h2 class="lg-legal-h2">Liens hypertextes</h2>
+                <p class="lg-legal-p">Le site peut contenir des liens hypertextes vers d'autres sites. Maison Mathis n'exerce aucun contrôle sur ces sites tiers et décline toute responsabilité quant à leur contenu.</p>
+            </div>
+
+            <div class="lg-legal-section">
+                <h2 class="lg-legal-h2">Limitation de responsabilité</h2>
+                <p class="lg-legal-p">Les informations contenues sur ce site sont aussi précises que possible et le site remis à jour à différentes périodes de l'année, mais peut toutefois contenir des inexactitudes ou des omissions. Maison Mathis ne pourra être tenu responsable de l'utilisation faite de ces informations et de tout préjudice direct ou indirect pouvant en découler.</p>
+            </div>
+
+            <div class="lg-legal-section">
+                <h2 class="lg-legal-h2">Droit applicable</h2>
+                <p class="lg-legal-p">Les présentes mentions légales sont soumises au droit français. En cas de litige, les tribunaux français seront seuls compétents.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}
