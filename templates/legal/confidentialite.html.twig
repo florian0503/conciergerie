@@ -1,0 +1,115 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Politique de confidentialité — Maison Mathis{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('styles/legal.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<section class="lg-legal-hero">
+    <div class="lg-legal-wrap">
+        <nav class="breadcrumb" aria-label="Fil d'ariane">
+            <a class="breadcrumb-link" href="{{ path('app_home') }}">Accueil</a>
+            <span class="breadcrumb-sep">／</span>
+            <span class="breadcrumb-current">Confidentialité</span>
+        </nav>
+        <h1 class="lg-legal-title">Politique de<br>confidentialité</h1>
+        <span class="lg-legal-update">Dernière mise à jour : avril 2026</span>
+    </div>
+</section>
+
+<section class="lg-legal-body">
+    <div class="lg-legal-wrap">
+
+        <nav class="lg-legal-nav" aria-label="Pages légales">
+            <a href="{{ path('app_mentions_legales') }}" class="lg-legal-nav-link">Mentions légales</a>
+            <a href="{{ path('app_cgu') }}" class="lg-legal-nav-link">CGU</a>
+            <a href="{{ path('app_confidentialite') }}" class="lg-legal-nav-link is-active">Confidentialité</a>
+        </nav>
+
+        <div class="lg-legal-inner">
+
+            <div class="lg-legal-section">
+                <h2 class="lg-legal-h2">Responsable du traitement</h2>
+                <p class="lg-legal-p"><strong>Maison Mathis SAS</strong><br>
+                14 rue Auguste Comte, 69002 Lyon<br>
+                Email : <a href="mailto:hello@maisonmathis.fr">hello@maisonmathis.fr</a></p>
+            </div>
+
+            <div class="lg-legal-section">
+                <h2 class="lg-legal-h2">Données collectées</h2>
+                <p class="lg-legal-p">Nous collectons uniquement les données que vous nous transmettez volontairement, notamment via nos formulaires de contact ou d'estimation :</p>
+                <ul class="lg-legal-list">
+                    <li>Nom et prénom</li>
+                    <li>Adresse email</li>
+                    <li>Numéro de téléphone</li>
+                    <li>Adresse du bien concerné</li>
+                    <li>Tout message ou information que vous choisissez de partager</li>
+                </ul>
+                <p class="lg-legal-p">Nous collectons également des données de navigation anonymisées (pages visitées, durée de session) via des outils d'analyse d'audience, afin d'améliorer l'expérience utilisateur.</p>
+            </div>
+
+            <div class="lg-legal-section">
+                <h2 class="lg-legal-h2">Finalités du traitement</h2>
+                <p class="lg-legal-p">Vos données personnelles sont utilisées pour :</p>
+                <ul class="lg-legal-list">
+                    <li>Répondre à vos demandes de contact ou d'estimation</li>
+                    <li>Vous envoyer notre newsletter si vous y avez souscrit</li>
+                    <li>Améliorer nos services et notre site web</li>
+                    <li>Respecter nos obligations légales et contractuelles</li>
+                </ul>
+            </div>
+
+            <div class="lg-legal-section">
+                <h2 class="lg-legal-h2">Base légale</h2>
+                <p class="lg-legal-p">Le traitement de vos données repose sur :</p>
+                <ul class="lg-legal-list">
+                    <li><strong>Votre consentement</strong> pour l'envoi de la newsletter</li>
+                    <li><strong>L'intérêt légitime</strong> de Maison Mathis pour le traitement des demandes de contact</li>
+                    <li><strong>L'exécution d'un contrat</strong> pour les données nécessaires à la gestion de votre bien</li>
+                </ul>
+            </div>
+
+            <div class="lg-legal-section">
+                <h2 class="lg-legal-h2">Durée de conservation</h2>
+                <p class="lg-legal-p">Vos données sont conservées :</p>
+                <ul class="lg-legal-list">
+                    <li>3 ans à compter du dernier contact pour les prospects</li>
+                    <li>Durée du contrat + 5 ans pour les clients</li>
+                    <li>Jusqu'à désinscription pour la newsletter</li>
+                </ul>
+            </div>
+
+            <div class="lg-legal-section">
+                <h2 class="lg-legal-h2">Partage des données</h2>
+                <p class="lg-legal-p">Vos données ne sont jamais vendues à des tiers. Elles peuvent être partagées uniquement avec nos prestataires techniques (hébergement, emailing) dans le strict cadre de l'exécution de leurs services, et sous contrat garantissant leur confidentialité.</p>
+            </div>
+
+            <div class="lg-legal-section">
+                <h2 class="lg-legal-h2">Vos droits</h2>
+                <p class="lg-legal-p">Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez des droits suivants :</p>
+                <ul class="lg-legal-list">
+                    <li><strong>Droit d'accès</strong> : connaître les données que nous détenons sur vous</li>
+                    <li><strong>Droit de rectification</strong> : corriger des données inexactes</li>
+                    <li><strong>Droit à l'effacement</strong> : demander la suppression de vos données</li>
+                    <li><strong>Droit à la portabilité</strong> : recevoir vos données dans un format structuré</li>
+                    <li><strong>Droit d'opposition</strong> : vous opposer à certains traitements</li>
+                    <li><strong>Droit à la limitation</strong> : restreindre le traitement de vos données</li>
+                </ul>
+                <p class="lg-legal-p">Pour exercer ces droits, contactez-nous à <a href="mailto:hello@maisonmathis.fr">hello@maisonmathis.fr</a>. Vous disposez également du droit d'introduire une réclamation auprès de la <a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer">CNIL</a>.</p>
+            </div>
+
+            <div class="lg-legal-section">
+                <h2 class="lg-legal-h2">Cookies</h2>
+                <p class="lg-legal-p">Le Site utilise des cookies techniques nécessaires à son bon fonctionnement. Aucun cookie publicitaire ou de suivi tiers n'est déposé sans votre consentement explicite.</p>
+                <p class="lg-legal-p">Vous pouvez configurer votre navigateur pour refuser les cookies. Cela peut limiter certaines fonctionnalités du Site.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}
