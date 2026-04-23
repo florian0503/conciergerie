@@ -53,7 +53,7 @@
                 </div>
             </nav>
 
-            <a class="nav-cta" href="#">
+            <a class="nav-cta" href="{{ path('app_contact') }}">
                 Nous contacter
                 <span class="arrow">→</span>
             </a>
@@ -138,12 +138,21 @@
                 <div class="footer-col-rule"></div>
                 <ul class="footer-nav-list">
                     <li><a href="{{ path('app_home') }}" class="footer-nav-link">Accueil</a></li>
-                    <li><a href="{{ path('app_entreprise') }}" class="footer-nav-link">Entreprise</a></li>
                     <li><a href="{{ path('app_services') }}" class="footer-nav-link">Services</a></li>
                     <li><a href="{{ path('app_offres') }}" class="footer-nav-link">Offres</a></li>
-                    <li><a href="{{ path('app_equipe') }}" class="footer-nav-link">Équipe</a></li>
                     <li><a href="{{ path('app_logements') }}" class="footer-nav-link">Logements</a></li>
                     <li><a href="{{ path('app_avis') }}" class="footer-nav-link">Avis</a></li>
+                    <li><a href="{{ path('app_contact') }}" class="footer-nav-link">Contact</a></li>
+                    <li class="footer-nav-dropdown">
+                        <button class="footer-nav-dropdown-toggle">
+                            À propos
+                            <svg class="footer-nav-dropdown-caret" width="9" height="5" viewBox="0 0 9 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 1 4.5 4 8 1"/></svg>
+                        </button>
+                        <ul class="footer-nav-sub">
+                            <li><a href="{{ path('app_entreprise') }}" class="footer-nav-link">L'entreprise</a></li>
+                            <li><a href="{{ path('app_equipe') }}" class="footer-nav-link">L'équipe</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
 
@@ -348,6 +357,14 @@
     document.querySelectorAll('[data-count]').forEach(function (el) {
         counterObserver.observe(el);
     });
+
+    /* ── FOOTER DROPDOWN À PROPOS ─────────────────────── */
+    var footerDropdown = document.querySelector('.footer-nav-dropdown');
+    if (footerDropdown) {
+        footerDropdown.querySelector('.footer-nav-dropdown-toggle').addEventListener('click', function () {
+            footerDropdown.classList.toggle('is-open');
+        });
+    }
 
     /* ── SCROLL TO TOP ─────────────────────────────────── */
     var scrollTopBtn = document.getElementById('scroll-top');
