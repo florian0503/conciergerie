@@ -2,12 +2,8 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Article;
-use App\Entity\Avis;
-use App\Entity\FaqItem;
-use App\Entity\Logement;
-use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Attribute\AdminDashboard;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -28,16 +24,21 @@ class DashboardController extends AbstractDashboardController
             ->setFaviconPath('favicon.ico');
     }
 
+    public function configureAssets(): Assets
+    {
+        return Assets::new()->addCssFile('styles/admin-dashboard.css');
+    }
+
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Tableau de bord', 'fa fa-home');
         yield MenuItem::section('Contenu');
-        yield MenuItem::linkToCrud('Logements', 'fa fa-building', Logement::class);
-        yield MenuItem::linkToCrud('Articles', 'fa fa-newspaper', Article::class);
-        yield MenuItem::linkToCrud('FAQ', 'fa fa-question-circle', FaqItem::class);
-        yield MenuItem::linkToCrud('Avis', 'fa fa-star', Avis::class);
+        yield MenuItem::linkTo(LogementCrudController::class, 'Logements', 'fa fa-building')->setAction('index');
+        yield MenuItem::linkTo(ArticleCrudController::class, 'Blog', 'fa fa-newspaper')->setAction('index');
+        yield MenuItem::linkTo(FaqItemCrudController::class, 'FAQ', 'fa fa-question-circle')->setAction('index');
+        yield MenuItem::linkTo(AvisCrudController::class, 'Avis', 'fa fa-star')->setAction('index');
         yield MenuItem::section('Administration');
-        yield MenuItem::linkToCrud('Utilisateurs', 'fa fa-user', User::class);
+        yield MenuItem::linkTo(UserCrudController::class, 'Utilisateurs', 'fa fa-user')->setAction('index');
         yield MenuItem::section();
         yield MenuItem::linkToUrl('Voir le site', 'fa fa-arrow-up-right-from-square', '/')->setLinkTarget('_blank');
     }
