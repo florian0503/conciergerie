@@ -21,7 +21,7 @@
             <span class="breadcrumb-sep">／</span>
             <span class="breadcrumb-current">{{ article.tag }}</span>
         </nav>
-        <span class="bl-tag" style="margin-top: 20px; display: inline-flex;">{{ article.tag }}</span>
+        <span class="bl-tag bl-tag--hero">{{ article.tag }}</span>
         <h1 class="bl-article-title">{{ article.title }}</h1>
         <div class="bl-article-meta">
             <span>{{ article.author }}</span>
@@ -36,7 +36,7 @@
 <!-- ══ IMAGE COVER ══════════════════════════════════════════ -->
 <div class="bl-article-cover">
     <div class="bl-wrap">
-        <div class="bl-article-cover-img" style="background-image: url('{{ article.img }}');" role="img" aria-label="{{ article.title }}"></div>
+        <img class="bl-article-cover-img" src="{{ article.img }}" alt="{{ article.title }}">
     </div>
 </div>
 
@@ -68,7 +68,7 @@
             {% for r in related %}
             <article class="bl-card">
                 <a href="{{ path('app_blog_article', {slug: r.slug}) }}" class="bl-card-img-link">
-                    <div class="bl-card-img" style="background-image: url('{{ r.img }}');" role="img" aria-label="{{ r.title }}"></div>
+                    <img class="bl-card-img" src="{{ r.img }}" alt="{{ r.title }}">
                 </a>
                 <span class="bl-card-tag">{{ r.tag }}</span>
                 <h3 class="bl-card-title">
