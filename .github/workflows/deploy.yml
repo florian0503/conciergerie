@@ -19,6 +19,14 @@ jobs:
           echo "${{ secrets.SSH_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
           chmod 644 ~/.ssh/known_hosts
 
+      - name: Debug key file
+        run: |
+          echo "Taille fichier: $(wc -c < ~/.ssh/id_rsa) bytes"
+          echo "Nb lignes: $(wc -l < ~/.ssh/id_rsa)"
+          echo "Première ligne: $(head -1 ~/.ssh/id_rsa)"
+          echo "Dernière ligne: $(tail -1 ~/.ssh/id_rsa)"
+          ssh-keygen -l -f ~/.ssh/id_rsa 2>&1 || echo "INVALID KEY"
+
       - name: Test SSH connection
         run: ssh -o StrictHostKeyChecking=no -p 65002 ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} "echo 'SSH OK'"
 
