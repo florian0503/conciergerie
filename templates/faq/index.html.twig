@@ -1,0 +1,323 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FAQ — Maison Mathis{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('styles/faq.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<!-- ══ HERO ════════════════════════════════════════════════ -->
+<section class="fq-hero">
+    <div class="fq-wrap">
+        <nav class="breadcrumb" aria-label="Fil d'ariane">
+            <a class="breadcrumb-link" href="{{ path('app_home') }}">Accueil</a>
+            <span class="breadcrumb-sep">／</span>
+            <span class="breadcrumb-current">FAQ</span>
+        </nav>
+        <h1 class="fq-title">Vos questions,<br><em>nos réponses.</em></h1>
+        <p class="fq-subtitle">Tout ce que vous voulez savoir avant de nous confier votre bien — sans filtre, sans jargon.</p>
+    </div>
+</section>
+
+<!-- ══ BODY ════════════════════════════════════════════════ -->
+<section class="fq-body">
+    <div class="fq-wrap">
+        <div class="fq-body-inner">
+
+            <!-- Sidebar nav -->
+            <nav class="fq-nav" aria-label="Sections FAQ">
+                <a href="#general" class="fq-nav-link is-active">Général</a>
+                <a href="#tarifs" class="fq-nav-link">Tarifs</a>
+                <a href="#menage" class="fq-nav-link">Ménage</a>
+                <a href="#contrat" class="fq-nav-link">Contrat</a>
+            </nav>
+
+            <!-- Sections -->
+            <div class="fq-sections">
+
+                <!-- GÉNÉRAL -->
+                <div id="general">
+                    <p class="fq-section-title">Général</p>
+                    <div class="fq-list">
+
+                        <div class="fq-item">
+                            <button class="fq-question" aria-expanded="false">
+                                <span class="fq-question-text">Comment fonctionne Maison Mathis concrètement ?</span>
+                                <span class="fq-icon" aria-hidden="true">
+                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg>
+                                </span>
+                            </button>
+                            <div class="fq-answer">
+                                <p>Maison Mathis prend en charge l'intégralité de la gestion de votre location courte durée : création et optimisation de vos annonces, communication avec les voyageurs, gestion des arrivées et départs, ménage et linge, suivi qualité et optimisation des revenus.</p>
+                                <p>Vous signez un mandat de gestion, nous faisons tout le reste. Vous recevez un reporting mensuel et votre virement — c'est tout.</p>
+                            </div>
+                        </div>
+
+                        <div class="fq-item">
+                            <button class="fq-question" aria-expanded="false">
+                                <span class="fq-question-text">Quels types de biens gérez-vous ?</span>
+                                <span class="fq-icon" aria-hidden="true">
+                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg>
+                                </span>
+                            </button>
+                            <div class="fq-answer">
+                                <p>Nous gérons tout type de bien situé à Lyon et dans ses proches environs : studios, appartements, maisons, duplex, lofts. Nous n'avons pas de surface minimum, mais nous sélectionnons les biens selon leur potentiel locatif et leur adéquation avec notre positionnement premium.</p>
+                            </div>
+                        </div>
+
+                        <div class="fq-item">
+                            <button class="fq-question" aria-expanded="false">
+                                <span class="fq-question-text">Sur quelles plateformes publiez-vous les annonces ?</span>
+                                <span class="fq-icon" aria-hidden="true">
+                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg>
+                                </span>
+                            </button>
+                            <div class="fq-answer">
+                                <p>Principalement Airbnb et Booking.com, qui représentent la grande majorité des réservations courte durée à Lyon. Selon votre bien, nous pouvons également publier sur Vrbo, Abritel ou d'autres plateformes spécialisées.</p>
+                                <p>Tous les calendriers sont synchronisés automatiquement pour éviter les doublons.</p>
+                            </div>
+                        </div>
+
+                        <div class="fq-item">
+                            <button class="fq-question" aria-expanded="false">
+                                <span class="fq-question-text">Combien de biens gérez-vous actuellement ?</span>
+                                <span class="fq-icon" aria-hidden="true">
+                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg>
+                                </span>
+                            </button>
+                            <div class="fq-answer">
+                                <p>Nous gérons plus de 120 biens à Lyon et dans les Monts d'Or. Nous faisons le choix de ne pas grossir trop vite : chaque nouveau bien est accepté uniquement si nous sommes certains de maintenir notre niveau de service.</p>
+                            </div>
+                        </div>
+
+                        <div class="fq-item">
+                            <button class="fq-question" aria-expanded="false">
+                                <span class="fq-question-text">Que se passe-t-il en cas de problème avec un voyageur ?</span>
+                                <span class="fq-icon" aria-hidden="true">
+                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg>
+                                </span>
+                            </button>
+                            <div class="fq-answer">
+                                <p>Nous gérons tous les litiges directement avec les voyageurs et les plateformes. En cas de dégât, nous activons les garanties Airbnb (AirCover) et/ou votre assurance propriétaire, dont nous coordonnons les démarches.</p>
+                                <p>Vous êtes informé à chaque étape mais n'avez rien à gérer de votre côté.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- TARIFS -->
+                <div id="tarifs">
+                    <p class="fq-section-title">Tarifs</p>
+                    <div class="fq-list">
+
+                        <div class="fq-item">
+                            <button class="fq-question" aria-expanded="false">
+                                <span class="fq-question-text">Quel est votre mode de rémunération ?</span>
+                                <span class="fq-icon" aria-hidden="true">
+                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg>
+                                </span>
+                            </button>
+                            <div class="fq-answer">
+                                <p>Nous prélevons une commission unique de <strong>18 % sur le chiffre d'affaires brut encaissé</strong>. Aucun abonnement mensuel, aucun frais fixe, aucune pénalité de sortie.</p>
+                                <p>Nous ne gagnons que lorsque vous gagnez : si votre bien est inoccupé, nous ne vous facturons rien.</p>
+                            </div>
+                        </div>
+
+                        <div class="fq-item">
+                            <button class="fq-question" aria-expanded="false">
+                                <span class="fq-question-text">Y a-t-il des frais cachés ?</span>
+                                <span class="fq-icon" aria-hidden="true">
+                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg>
+                                </span>
+                            </button>
+                            <div class="fq-answer">
+                                <p>Non. Les 18 % incluent l'intégralité de nos prestations : création des annonces, photos, communication voyageurs, check-in/out, suivi qualité, optimisation des prix et reporting mensuel.</p>
+                                <p>Les seuls frais annexes sont les <strong>frais de ménage</strong>, qui sont payés directement par le voyageur via la plateforme et reversés au prestataire — vous n'avancez rien.</p>
+                            </div>
+                        </div>
+
+                        <div class="fq-item">
+                            <button class="fq-question" aria-expanded="false">
+                                <span class="fq-question-text">Quand et comment reçois-je mes revenus ?</span>
+                                <span class="fq-icon" aria-hidden="true">
+                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg>
+                                </span>
+                            </button>
+                            <div class="fq-answer">
+                                <p>Les plateformes (Airbnb, Booking) virements directement les revenus sur votre compte bancaire, selon leurs propres délais (généralement 24h après l'arrivée du voyageur pour Airbnb). Nous prélevons notre commission en fin de mois via prélèvement automatique.</p>
+                                <p>Vous recevez un récapitulatif détaillé chaque mois : réservations, revenus bruts, commission, net perçu.</p>
+                            </div>
+                        </div>
+
+                        <div class="fq-item">
+                            <button class="fq-question" aria-expanded="false">
+                                <span class="fq-question-text">Proposez-vous un tarif dégressif pour plusieurs biens ?</span>
+                                <span class="fq-icon" aria-hidden="true">
+                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg>
+                                </span>
+                            </button>
+                            <div class="fq-answer">
+                                <p>Oui. Si vous possédez plusieurs biens, nous étudions une commission adaptée à votre situation lors de notre premier échange. Contactez-nous pour en discuter.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- MÉNAGE -->
+                <div id="menage">
+                    <p class="fq-section-title">Ménage</p>
+                    <div class="fq-list">
+
+                        <div class="fq-item">
+                            <button class="fq-question" aria-expanded="false">
+                                <span class="fq-question-text">Qui s'occupe du ménage entre les séjours ?</span>
+                                <span class="fq-icon" aria-hidden="true">
+                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg>
+                                </span>
+                            </button>
+                            <div class="fq-answer">
+                                <p>Nous coordonnons des prestataires ménage certifiés et formés aux standards hôteliers. Chaque rotation fait l'objet d'un contrôle qualité avec photos avant/après.</p>
+                                <p>Le linge plat (draps, serviettes) est fourni et lavé par un prestataire spécialisé — qualité hôtel, livré à chaque rotation.</p>
+                            </div>
+                        </div>
+
+                        <div class="fq-item">
+                            <button class="fq-question" aria-expanded="false">
+                                <span class="fq-question-text">Qui paie les frais de ménage ?</span>
+                                <span class="fq-icon" aria-hidden="true">
+                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg>
+                                </span>
+                            </button>
+                            <div class="fq-answer">
+                                <p>Les frais de ménage sont <strong>payés par le voyageur</strong> au moment de sa réservation. Ils apparaissent comme ligne séparée sur la plateforme et sont reversés intégralement au prestataire. Vous n'avancez rien et ne supportez aucun coût de ménage.</p>
+                            </div>
+                        </div>
+
+                        <div class="fq-item">
+                            <button class="fq-question" aria-expanded="false">
+                                <span class="fq-question-text">Que se passe-t-il si le ménage est mal fait ?</span>
+                                <span class="fq-icon" aria-hidden="true">
+                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg>
+                                </span>
+                            </button>
+                            <div class="fq-answer">
+                                <p>Un contrôle systématique est effectué après chaque ménage. Si un problème est constaté, une intervention corrective est organisée avant l'arrivée du voyageur suivant — sans frais supplémentaire pour vous.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- CONTRAT -->
+                <div id="contrat">
+                    <p class="fq-section-title">Contrat</p>
+                    <div class="fq-list">
+
+                        <div class="fq-item">
+                            <button class="fq-question" aria-expanded="false">
+                                <span class="fq-question-text">Quelle est la durée d'engagement ?</span>
+                                <span class="fq-icon" aria-hidden="true">
+                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg>
+                                </span>
+                            </button>
+                            <div class="fq-answer">
+                                <p>Le mandat de gestion est sans durée minimale. Vous pouvez mettre fin à la collaboration à tout moment, avec un préavis de <strong>30 jours</strong>. Aucune pénalité, aucun frais de sortie.</p>
+                            </div>
+                        </div>
+
+                        <div class="fq-item">
+                            <button class="fq-question" aria-expanded="false">
+                                <span class="fq-question-text">Puis-je récupérer mon bien quand je veux ?</span>
+                                <span class="fq-icon" aria-hidden="true">
+                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg>
+                                </span>
+                            </button>
+                            <div class="fq-answer">
+                                <p>Oui. Vous pouvez bloquer des dates dans le calendrier pour votre usage personnel à tout moment. Pour une reprise complète du bien, le préavis de 30 jours s'applique, le temps que nous gérions les réservations déjà confirmées.</p>
+                            </div>
+                        </div>
+
+                        <div class="fq-item">
+                            <button class="fq-question" aria-expanded="false">
+                                <span class="fq-question-text">Que contient le mandat de gestion ?</span>
+                                <span class="fq-icon" aria-hidden="true">
+                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg>
+                                </span>
+                            </button>
+                            <div class="fq-answer">
+                                <p>Le mandat détaille : la liste des services inclus, le taux de commission, les modalités de reporting, les conditions de résiliation et les responsabilités de chaque partie. Il est rédigé en français, sans jargon juridique inutile.</p>
+                                <p>Nous vous l'envoyons avant notre premier rendez-vous si vous souhaitez le lire en amont.</p>
+                            </div>
+                        </div>
+
+                        <div class="fq-item">
+                            <button class="fq-question" aria-expanded="false">
+                                <span class="fq-question-text">Dois-je déclarer mes revenus locatifs ?</span>
+                                <span class="fq-icon" aria-hidden="true">
+                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg>
+                                </span>
+                            </button>
+                            <div class="fq-answer">
+                                <p>Oui. Les revenus issus de la location meublée courte durée sont imposables (régime micro-BIC ou réel). Nous ne sommes pas comptables, mais notre reporting mensuel vous fournit tous les chiffres nécessaires pour votre déclaration. Nous vous recommandons de consulter un expert-comptable spécialisé en location meublée.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ CTA ══════════════════════════════════════════════════ -->
+<section class="fq-cta">
+    <div class="fq-cta-inner">
+        <h2 class="fq-cta-title">Vous n'avez pas trouvé<br><em>votre réponse ?</em></h2>
+        <p class="fq-cta-desc">Contactez-nous directement — nous répondons en moins de 24h, et souvent bien avant.</p>
+        <div class="fq-cta-actions">
+            <a href="mailto:hello@maisonmathis.fr" class="btn btn--primary">Nous écrire →</a>
+            <a href="{{ path('app_offres') }}" class="btn btn--outline">Voir les tarifs</a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    /* ── ACCORDION ─────────────────────────────────────────── */
+    document.querySelectorAll('.fq-question').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            var item = btn.closest('.fq-item');
+            var isOpen = item.classList.contains('is-open');
+            item.classList.toggle('is-open', !isOpen);
+            btn.setAttribute('aria-expanded', !isOpen);
+        });
+    });
+
+    /* ── SIDEBAR ACTIVE ────────────────────────────────────── */
+    var sections = document.querySelectorAll('.fq-sections > div[id]');
+    var navLinks = document.querySelectorAll('.fq-nav-link');
+
+    var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                navLinks.forEach(function (l) { l.classList.remove('is-active'); });
+                var active = document.querySelector('.fq-nav-link[href="#' + entry.target.id + '"]');
+                if (active) active.classList.add('is-active');
+            }
+        });
+    }, { rootMargin: '-30% 0px -60% 0px' });
+
+    sections.forEach(function (s) { observer.observe(s); });
+});
+</script>
+{% endblock %}
