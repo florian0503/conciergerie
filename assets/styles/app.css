@@ -11,10 +11,10 @@
     --paper-deep:   #ebe5db;
     --line:         #e4ddd2;
     --line-strong:  #c9c0b2;
-    --red:          #E4572E;
-    --red-dark:     #c44a27;
-    --red-soft:     #f6dfd3;
-    --red-tint:     rgba(228, 87, 46, 0.08);
+    --red:          #ff5a5f;
+    --red-dark:     #e0474c;
+    --red-soft:     #ffdcdd;
+    --red-tint:     rgba(255, 90, 95, 0.08);
     --serif:        'Cormorant Garamond', Georgia, serif;
     --sans:         'Inter', system-ui, sans-serif;
     --mono:         'JetBrains Mono', 'Courier New', monospace;
@@ -608,7 +608,6 @@ img, svg { display: block; }
 .site-footer {
     background: var(--ink);
     color: rgba(251,250,247,0.7);
-    margin-top: 80px;
 }
 
 .footer-inner {

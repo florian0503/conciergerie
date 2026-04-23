@@ -10,6 +10,7 @@
 /* ── HERO ────────────────────────────────────────────────── */
 .lg-hero {
     padding: 80px 0 72px;
+    background: var(--paper-warm);
 }
 
 .lg-title {

@@ -23,8 +23,8 @@
             </h1>
             <p class="hero-desc">Nous gérons votre location courte durée de A à Z — annonces, voyageurs, ménage, revenus — pendant que vous profitez de tout le reste.</p>
             <div class="hero-actions">
-                <a href="#" class="btn btn--primary">Estimer mes revenus →</a>
-                <a href="#" class="btn btn--ghost">Découvrir nos services</a>
+                <a href="{{ path('app_offres') }}" class="btn btn--primary">Estimer mes revenus →</a>
+                <a href="{{ path('app_services') }}" class="btn btn--ghost">Découvrir nos services</a>
             </div>
         </div>
         <div class="hero-right">
@@ -43,21 +43,24 @@
      TICKER QUARTIERS
 ════════════════════════════════════════════════════════════ -->
 <div class="quartiers-ticker" aria-hidden="true">
-    <div class="quartiers-track">
-        <span>Vieux Lyon</span><span class="q-sep">✦</span>
-        <span>Croix-Rousse</span><span class="q-sep">✦</span>
-        <span>Confluence</span><span class="q-sep">✦</span>
-        <span>Terreaux</span><span class="q-sep">✦</span>
-        <span>Part-Dieu</span><span class="q-sep">✦</span>
-        <span>Monts d'Or</span><span class="q-sep">✦</span>
-        <span>Presqu'île</span><span class="q-sep">✦</span>
-        <span>Vieux Lyon</span><span class="q-sep">✦</span>
-        <span>Croix-Rousse</span><span class="q-sep">✦</span>
-        <span>Confluence</span><span class="q-sep">✦</span>
-        <span>Terreaux</span><span class="q-sep">✦</span>
-        <span>Part-Dieu</span><span class="q-sep">✦</span>
-        <span>Monts d'Or</span><span class="q-sep">✦</span>
-        <span>Presqu'île</span><span class="q-sep">✦</span>
+    <p class="quartiers-label">Nous opérons</p>
+    <div class="quartiers-overflow">
+        <div class="quartiers-track">
+            <span>Presqu'île</span><span class="q-sep">✦</span>
+            <span>Vieux Lyon</span><span class="q-sep">✦</span>
+            <span>Croix-Rousse</span><span class="q-sep">✦</span>
+            <span>Confluence</span><span class="q-sep">✦</span>
+            <span>Terreaux</span><span class="q-sep">✦</span>
+            <span>Part-Dieu</span><span class="q-sep">✦</span>
+            <span>Monts d'Or</span><span class="q-sep">✦</span>
+            <span>Presqu'île</span><span class="q-sep">✦</span>
+            <span>Vieux Lyon</span><span class="q-sep">✦</span>
+            <span>Croix-Rousse</span><span class="q-sep">✦</span>
+            <span>Confluence</span><span class="q-sep">✦</span>
+            <span>Terreaux</span><span class="q-sep">✦</span>
+            <span>Part-Dieu</span><span class="q-sep">✦</span>
+            <span>Monts d'Or</span><span class="q-sep">✦</span>
+        </div>
     </div>
 </div>
 
@@ -67,19 +70,19 @@
 <section class="stats">
     <div class="stats-inner">
         <div class="stat-item">
-            <p class="stat-number">+34<span class="stat-sup">%</span></p>
+            <p class="stat-number" data-target="34" data-prefix="+">+34<span class="stat-sup">%</span></p>
             <p class="stat-label">de revenus en moyenne<br>pour nos propriétaires</p>
         </div>
         <div class="stat-item">
-            <p class="stat-number">4.94<span class="stat-sup">★</span></p>
+            <p class="stat-number" data-target="4.94" data-decimals="2">4.94<span class="stat-sup">★</span></p>
             <p class="stat-label">note moyenne<br>voyageurs</p>
         </div>
         <div class="stat-item">
-            <p class="stat-number">120<span class="stat-sup">+</span></p>
+            <p class="stat-number" data-target="120">120<span class="stat-sup">+</span></p>
             <p class="stat-label">biens gérés<br>à Lyon et alentour</p>
         </div>
         <div class="stat-item">
-            <p class="stat-number">15<span class="stat-sup">min</span></p>
+            <p class="stat-number" data-target="15">15<span class="stat-sup">min</span></p>
             <p class="stat-label">temps de réponse moyen<br>aux voyageurs</p>
         </div>
     </div>
@@ -95,7 +98,7 @@
                 <p class="eyebrow">Nos services</p>
                 <h2 class="section-title">Tout ce qu'il faut<br>pour louer <em>sereinement.</em></h2>
             </div>
-            <a href="#" class="link-arrow">Détail des services →</a>
+            <a href="{{ path('app_services') }}" class="link-arrow">Détail des services →</a>
         </div>
 
         <div class="services-grid">
@@ -162,42 +165,6 @@
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════
-     PROCESS
-════════════════════════════════════════════════════════════ -->
-<section class="process">
-    <div class="section-inner">
-        <p class="eyebrow">Comment ça marche</p>
-        <h2 class="section-title">De la première visite<br>au premier voyageur.</h2>
-
-        <div class="process-steps">
-            <div class="process-step">
-                <div class="step-circle">01</div>
-                <div class="step-line"></div>
-                <h3 class="step-title">Rencontre</h3>
-                <p class="step-desc">Visite du bien, échange sur vos attentes, estimation des revenus et proposition détaillée.</p>
-            </div>
-            <div class="process-step">
-                <div class="step-circle">02</div>
-                <div class="step-line"></div>
-                <h3 class="step-title">Mise en scène</h3>
-                <p class="step-desc">Home staging léger, shooting photo professionnel, rédaction des annonces.</p>
-            </div>
-            <div class="process-step">
-                <div class="step-circle">03</div>
-                <div class="step-line"></div>
-                <h3 class="step-title">Lancement</h3>
-                <p class="step-desc">Paramétrage Airbnb, Booking, Vrbo. Tarification dynamique et calendrier synchronisé.</p>
-            </div>
-            <div class="process-step">
-                <div class="step-circle">04</div>
-                <h3 class="step-title">Exploitation</h3>
-                <p class="step-desc">Nous gérons tout. Vous recevez vos reportings mensuels et vos virements — c'est tout.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════
      LOGEMENTS
 ════════════════════════════════════════════════════════════ -->
 <section class="listings">
@@ -206,7 +173,7 @@
             <div class="section-head-left">
                 <h2 class="section-title">Une sélection de<br><em>belles adresses.</em></h2>
             </div>
-            <a href="#" class="link-arrow">Voir toute la galerie →</a>
+            <a href="{{ path('app_logements') }}" class="link-arrow">Voir toute la galerie →</a>
         </div>
         <div class="listings-grid">
             <div class="listing-card listing-card--large">
@@ -249,6 +216,42 @@
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════
+     PROCESS
+════════════════════════════════════════════════════════════ -->
+<section class="process">
+    <div class="section-inner">
+        <p class="eyebrow">Comment ça marche</p>
+        <h2 class="section-title">De la première visite<br>au premier voyageur.</h2>
+
+        <div class="process-steps">
+            <div class="process-step">
+                <div class="step-circle">01</div>
+                <div class="step-line"></div>
+                <h3 class="step-title">Rencontre</h3>
+                <p class="step-desc">Visite du bien, échange sur vos attentes, estimation des revenus et proposition détaillée.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-circle">02</div>
+                <div class="step-line"></div>
+                <h3 class="step-title">Mise en scène</h3>
+                <p class="step-desc">Home staging léger, shooting photo professionnel, rédaction des annonces.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-circle">03</div>
+                <div class="step-line"></div>
+                <h3 class="step-title">Lancement</h3>
+                <p class="step-desc">Paramétrage Airbnb, Booking, Vrbo. Tarification dynamique et calendrier synchronisé.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-circle">04</div>
+                <h3 class="step-title">Exploitation</h3>
+                <p class="step-desc">Nous gérons tout. Vous recevez vos reportings mensuels et vos virements — c'est tout.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
      AVIS
 ════════════════════════════════════════════════════════════ -->
 <section class="reviews">
@@ -258,7 +261,7 @@
                 <p class="eyebrow">Ils nous confient leur bien</p>
                 <h2 class="section-title">Propriétaires <em>sereins.</em></h2>
             </div>
-            <a href="#" class="link-arrow">Lire tous les avis →</a>
+            <a href="{{ path('app_avis') }}" class="link-arrow">Lire tous les avis →</a>
         </div>
         <div class="reviews-grid">
             <div class="review-card">
@@ -295,9 +298,52 @@
         <p class="cta-final-desc">Un échange de 20 minutes pour comprendre votre projet, estimer vos revenus et voir si nous sommes faits pour travailler ensemble.</p>
         <div class="cta-final-actions">
             <a href="#" class="btn btn--primary">Prendre rendez-vous →</a>
-            <a href="#" class="btn btn--outline">Nos tarifs</a>
+            <a href="{{ path('app_offres') }}" class="btn btn--outline">Nos tarifs</a>
         </div>
     </div>
 </section>
 
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var stats = document.querySelectorAll('.stat-number[data-target]');
+
+    var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                animateStat(entry.target);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.6 });
+
+    stats.forEach(function (el) { observer.observe(el); });
+
+    function animateStat(el) {
+        var target   = parseFloat(el.dataset.target);
+        var decimals = parseInt(el.dataset.decimals || '0');
+        var prefix   = el.dataset.prefix || '';
+        var sup      = el.querySelector('.stat-sup');
+        var supHtml  = sup ? sup.outerHTML : '';
+        var duration = 1600;
+        var startTs  = null;
+
+        function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+
+        function tick(ts) {
+            if (!startTs) startTs = ts;
+            var progress = Math.min((ts - startTs) / duration, 1);
+            var value    = easeOut(progress) * target;
+            var display  = decimals > 0 ? value.toFixed(decimals) : Math.round(value);
+            el.innerHTML = prefix + display + supHtml;
+            if (progress < 1) requestAnimationFrame(tick);
+        }
+
+        requestAnimationFrame(tick);
+    }
+});
+</script>
 {% endblock %}
