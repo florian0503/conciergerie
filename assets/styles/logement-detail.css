@@ -1,0 +1,393 @@
+/* ═══════════════════════════════════════════════════════════
+   LOGEMENT DETAIL
+════════════════════════════════════════════════════════════ */
+
+/* ── HERO ────────────────────────────────────────────────── */
+.ld-hero {
+    position: relative;
+}
+
+.ld-hero-img {
+    position: relative;
+    height: clamp(420px, 55vw, 680px);
+    background-size: cover;
+    background-position: center;
+}
+
+.ld-hero-img--1 { background-image: url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600&q=80'); }
+.ld-hero-img--2 { background-image: url('https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600&q=80'); }
+.ld-hero-img--3 { background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&q=80'); }
+.ld-hero-img--4 { background-image: url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1600&q=80'); }
+.ld-hero-img--5 { background-image: url('https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=1600&q=80'); }
+.ld-hero-img--6 { background-image: url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1600&q=80'); }
+.ld-hero-img--7 { background-image: url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=1600&q=80'); }
+.ld-hero-img--8 { background-image: url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=1600&q=80'); }
+
+.ld-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(26,22,20,0.72) 0%, rgba(26,22,20,0.15) 60%, transparent 100%);
+}
+
+.ld-hero-content {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    padding-bottom: 48px;
+}
+
+.ld-hero-content .breadcrumb-link,
+.ld-hero-content .breadcrumb-sep,
+.ld-hero-content .breadcrumb-current {
+    color: rgba(251,250,247,0.75);
+}
+
+.ld-hero-content .breadcrumb-link:hover {
+    color: var(--paper);
+}
+
+.ld-hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+    margin-bottom: 12px;
+}
+
+.ld-badge {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: var(--red);
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 999px;
+}
+
+.ld-rating {
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--paper);
+    font-weight: 500;
+}
+
+.ld-title {
+    font-family: var(--serif);
+    font-size: clamp(36px, 6vw, 72px);
+    font-weight: 400;
+    color: var(--paper);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 8px;
+}
+
+.ld-location {
+    font-family: var(--sans);
+    font-size: 15px;
+    color: rgba(251,250,247,0.75);
+    letter-spacing: 0.03em;
+}
+
+/* ── LAYOUT DEUX COLONNES ────────────────────────────────── */
+.ld-layout {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 64px;
+    padding-top: 56px;
+    padding-bottom: 100px;
+    align-items: start;
+}
+
+/* ── COLONNE PRINCIPALE ──────────────────────────────────── */
+.ld-specs {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+}
+
+.ld-spec {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--sans);
+    font-size: 15px;
+    color: var(--ink-soft);
+}
+
+.ld-spec-icon {
+    display: flex;
+    align-items: center;
+    color: var(--ink-muted);
+}
+
+.ld-divider {
+    border: none;
+    border-top: 1px solid var(--line);
+    margin: 32px 0;
+}
+
+.ld-section {
+    margin-bottom: 8px;
+}
+
+.ld-section-title {
+    font-family: var(--serif);
+    font-size: 26px;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
+}
+
+.ld-description {
+    font-family: var(--serif);
+    font-size: 18px;
+    line-height: 1.75;
+    color: var(--ink-soft);
+    max-width: 680px;
+}
+
+/* Équipements */
+.ld-equipements {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px 32px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.ld-equip-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--ink-soft);
+}
+
+.ld-equip-item svg {
+    color: var(--red);
+    flex-shrink: 0;
+}
+
+/* Points d'intérêt */
+.ld-poi {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.ld-poi-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--ink-soft);
+}
+
+.ld-poi-item svg {
+    color: var(--ink-muted);
+    flex-shrink: 0;
+}
+
+/* ── ASIDE RÉSERVATION ───────────────────────────────────── */
+.ld-aside {
+    position: sticky;
+    top: 100px;
+}
+
+.ld-card {
+    background: var(--paper);
+    border: 1.5px solid var(--line);
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 4px 32px rgba(26,22,20,0.08);
+}
+
+.ld-card-price {
+    margin-bottom: 4px;
+}
+
+.ld-price-num {
+    font-family: var(--serif);
+    font-size: 32px;
+    font-weight: 500;
+    color: var(--ink);
+}
+
+.ld-price-unit {
+    font-family: var(--sans);
+    font-size: 15px;
+    color: var(--ink-muted);
+}
+
+.ld-card-rating {
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--ink-muted);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 24px;
+}
+
+.ld-sep { color: var(--line-strong); }
+
+.ld-card-cta {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn-resa {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 15px 24px;
+    border-radius: 10px;
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 0.2s, transform 0.15s;
+}
+
+.btn-resa:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.btn-whatsapp {
+    background: #25d366;
+    color: #fff;
+}
+
+.ld-card-note {
+    font-family: var(--sans);
+    font-size: 12px;
+    color: var(--ink-faint);
+    text-align: center;
+    margin: 0;
+}
+
+.ld-card-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.ld-card-row {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--ink-soft);
+}
+
+.ld-card-row--total {
+    font-weight: 600;
+    color: var(--ink);
+    font-size: 15px;
+    padding-top: 10px;
+    border-top: 1px solid var(--line);
+    margin-top: 4px;
+}
+
+/* ── AUTRES LOGEMENTS ────────────────────────────────────── */
+.ld-autres {
+    background: var(--paper-warm);
+    padding: 72px 0 80px;
+    border-top: 1px solid var(--line);
+}
+
+.ld-autres-title {
+    font-family: var(--serif);
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 40px;
+    letter-spacing: -0.02em;
+}
+
+.ld-autres-title em {
+    font-style: italic;
+    color: var(--red);
+}
+
+.ld-autres-grid {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.ld-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.ld-card-link:hover .lg-name {
+    color: var(--red);
+}
+
+.ld-autres-cta {
+    margin-top: 48px;
+    text-align: center;
+}
+
+.btn-outline {
+    display: inline-block;
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 13px 32px;
+    border: 1.5px solid var(--ink);
+    border-radius: 999px;
+    color: var(--ink);
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+}
+
+.btn-outline:hover {
+    background: var(--ink);
+    color: var(--paper);
+}
+
+/* ── RESPONSIVE ──────────────────────────────────────────── */
+@media (max-width: 1024px) {
+    .ld-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .ld-aside {
+        position: static;
+    }
+
+    .ld-autres-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .ld-equipements {
+        grid-template-columns: 1fr;
+    }
+
+    .ld-autres-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ld-specs {
+        gap: 20px;
+    }
+}
