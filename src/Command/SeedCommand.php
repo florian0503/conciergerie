@@ -43,6 +43,7 @@ class SeedCommand extends Command
 
         if (!$input->getOption('force')) {
             $io->error('Add --force to confirm purge and reseed.');
+
             return Command::FAILURE;
         }
 
@@ -60,6 +61,7 @@ class SeedCommand extends Command
         $this->em->flush();
 
         $io->success('Database seeded successfully.');
+
         return Command::SUCCESS;
     }
 
