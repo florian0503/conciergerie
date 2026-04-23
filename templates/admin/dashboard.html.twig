@@ -1,0 +1,29 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block page_title %}Tableau de bord{% endblock %}
+
+{% block main %}
+<div class="ea-dashboard-grid">
+    <a href="/admin/logement" class="ea-dashboard-card">
+        <div class="ea-dashboard-icon">🏠</div>
+        <div class="ea-dashboard-label">Logements</div>
+        <div class="ea-dashboard-sub">Gérer les biens</div>
+    </a>
+    <a href="/admin/article" class="ea-dashboard-card">
+        <div class="ea-dashboard-icon">📝</div>
+        <div class="ea-dashboard-label">Blog</div>
+        <div class="ea-dashboard-sub">Gérer les articles</div>
+    </a>
+    <a href="/admin/faq-item" class="ea-dashboard-card">
+        <div class="ea-dashboard-icon">❓</div>
+        <div class="ea-dashboard-label">FAQ</div>
+        <div class="ea-dashboard-sub">Gérer les questions</div>
+    </a>
+    <a href="/admin/avis" class="ea-dashboard-card">
+        <div class="ea-dashboard-icon">⭐</div>
+        <div class="ea-dashboard-label">Avis</div>
+        <div class="ea-dashboard-sub">Gérer les témoignages</div>
+    </a>
+</div>
+<p class="ea-dashboard-hint">Bienvenue dans l'administration de Maison Mathis. Utilisez le menu de gauche ou les raccourcis ci-dessus pour gérer le contenu du site.</p>
+{% endblock %}

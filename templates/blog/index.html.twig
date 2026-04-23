@@ -25,27 +25,30 @@
 </section>
 
 <!-- ══ ARTICLE À LA UNE ════════════════════════════════════ -->
-{% set featured = articles['comment-augmenter-revenus-airbnb'] %}
+{% if featured %}
 <section class="bl-featured">
     <div class="bl-wrap">
         <a href="{{ path('app_blog_article', {slug: featured.slug}) }}" class="bl-featured-card">
-            <div class="bl-featured-img" role="img" aria-label="{{ featured.title }}"></div>
+            <div class="bl-featured-img-wrap">
+                <img class="bl-featured-img" src="{{ featured.img }}" alt="{{ featured.title }}">
+            </div>
             <div class="bl-featured-body">
                 <span class="bl-tag">À la une</span>
-                <h2 class="bl-featured-title">{{ featured.title|replace({'+34 %': '<em>+34 %</em>'})|raw }}</h2>
+                <h2 class="bl-featured-title">{{ featured.title }}</h2>
                 <p class="bl-featured-excerpt">{{ featured.excerpt }}</p>
                 <div class="bl-meta">
                     <span>{{ featured.author }}</span>
                     <span class="bl-meta-sep">·</span>
                     <span>{{ featured.date }}</span>
                     <span class="bl-meta-sep">·</span>
-                    <span>{{ featured.read }}</span>
+                    <span>{{ featured.readTime }}</span>
                 </div>
                 <span class="bl-read-link">Lire l'article →</span>
             </div>
         </a>
     </div>
 </section>
+{% endif %}
 
 <!-- ══ GRILLE ARTICLES ══════════════════════════════════════ -->
 <section class="bl-grid-section">
@@ -54,8 +57,8 @@
             <span class="bl-grid-label">Tous les articles</span>
         </div>
         <div class="bl-grid">
-            {% for slug, article in articles %}
-                {% if slug != 'comment-augmenter-revenus-airbnb' %}
+            {% for article in articles %}
+                {% if featured is null or article.slug != featured.slug %}
                 <article class="bl-card">
                     <a href="{{ path('app_blog_article', {slug: article.slug}) }}" class="bl-card-img-link">
                         <img class="bl-card-img" src="{{ article.img }}" alt="{{ article.title }}">
@@ -68,7 +71,7 @@
                     <div class="bl-card-meta">
                         <span>{{ article.date }}</span>
                         <span class="bl-card-meta-sep">·</span>
-                        <span>{{ article.read }}</span>
+                        <span>{{ article.readTime }}</span>
                     </div>
                 </article>
                 {% endif %}
