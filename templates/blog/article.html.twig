@@ -1,0 +1,103 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ article.title }} — Maison Mathis{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('styles/blog.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<!-- ══ HERO ARTICLE ═════════════════════════════════════════ -->
+<section class="bl-hero">
+    <div class="bl-wrap">
+        <nav class="breadcrumb" aria-label="Fil d'ariane">
+            <a class="breadcrumb-link" href="{{ path('app_home') }}">Accueil</a>
+            <span class="breadcrumb-sep">／</span>
+            <span class="breadcrumb-link">À propos</span>
+            <span class="breadcrumb-sep">／</span>
+            <a class="breadcrumb-link" href="{{ path('app_blog') }}">Blog</a>
+            <span class="breadcrumb-sep">／</span>
+            <span class="breadcrumb-current">{{ article.tag }}</span>
+        </nav>
+        <span class="bl-tag" style="margin-top: 20px; display: inline-flex;">{{ article.tag }}</span>
+        <h1 class="bl-article-title">{{ article.title }}</h1>
+        <div class="bl-article-meta">
+            <span>{{ article.author }}</span>
+            <span class="bl-meta-sep">·</span>
+            <span>{{ article.date }}</span>
+            <span class="bl-meta-sep">·</span>
+            <span>{{ article.read }}</span>
+        </div>
+    </div>
+</section>
+
+<!-- ══ IMAGE COVER ══════════════════════════════════════════ -->
+<div class="bl-article-cover">
+    <div class="bl-wrap">
+        <div class="bl-article-cover-img" style="background-image: url('{{ article.img }}');" role="img" aria-label="{{ article.title }}"></div>
+    </div>
+</div>
+
+<!-- ══ CONTENU ══════════════════════════════════════════════ -->
+<article class="bl-article-body">
+    <div class="bl-wrap">
+        <div class="bl-article-inner">
+
+            {% for block in article.content %}
+                {% if block.type == 'lead' %}
+                    <p class="bl-article-lead">{{ block.text }}</p>
+                {% elseif block.type == 'h2' %}
+                    <h2 class="bl-article-h2">{{ block.text }}</h2>
+                {% elseif block.type == 'p' %}
+                    <p class="bl-article-p">{{ block.text }}</p>
+                {% endif %}
+            {% endfor %}
+
+        </div>
+    </div>
+</article>
+
+<!-- ══ ARTICLES CONNEXES ════════════════════════════════════ -->
+{% if related %}
+<section class="bl-related">
+    <div class="bl-wrap">
+        <p class="bl-related-label">À lire aussi</p>
+        <div class="bl-grid">
+            {% for r in related %}
+            <article class="bl-card">
+                <a href="{{ path('app_blog_article', {slug: r.slug}) }}" class="bl-card-img-link">
+                    <div class="bl-card-img" style="background-image: url('{{ r.img }}');" role="img" aria-label="{{ r.title }}"></div>
+                </a>
+                <span class="bl-card-tag">{{ r.tag }}</span>
+                <h3 class="bl-card-title">
+                    <a href="{{ path('app_blog_article', {slug: r.slug}) }}">{{ r.title }}</a>
+                </h3>
+                <p class="bl-card-excerpt">{{ r.excerpt }}</p>
+                <div class="bl-card-meta">
+                    <span>{{ r.date }}</span>
+                    <span class="bl-card-meta-sep">·</span>
+                    <span>{{ r.read }}</span>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- ══ CTA ══════════════════════════════════════════════════ -->
+<section class="bl-newsletter">
+    <div class="bl-newsletter-inner">
+        <span class="bl-newsletter-eyebrow">Newsletter</span>
+        <h2 class="bl-newsletter-title">Un article par mois,<br><em>zéro bruit.</em></h2>
+        <p class="bl-newsletter-desc">Nos meilleurs conseils, les chiffres du marché lyonnais et nos retours terrain — directement dans votre boîte mail.</p>
+        <form class="bl-newsletter-form" action="#" method="post">
+            <input class="bl-newsletter-input" type="email" name="email" placeholder="votre@email.fr" required aria-label="Votre adresse email">
+            <button class="bl-newsletter-btn" type="submit">S'abonner →</button>
+        </form>
+    </div>
+</section>
+
+{% endblock %}
