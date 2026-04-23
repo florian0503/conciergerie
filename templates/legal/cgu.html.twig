@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Conditions Générales d'Utilisation — Maison Mathis{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('styles/legal.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<section class="lg-legal-hero">
+    <div class="lg-legal-wrap">
+        <nav class="breadcrumb" aria-label="Fil d'ariane">
+            <a class="breadcrumb-link" href="{{ path('app_home') }}">Accueil</a>
+            <span class="breadcrumb-sep">／</span>
+            <span class="breadcrumb-current">CGU</span>
+        </nav>
+        <h1 class="lg-legal-title">Conditions générales<br>d'utilisation</h1>
+        <span class="lg-legal-update">Dernière mise à jour : avril 2026</span>
+    </div>
+</section>
+
+<section class="lg-legal-body">
+    <div class="lg-legal-wrap">
+
+        <nav class="lg-legal-nav" aria-label="Pages légales">
+            <a href="{{ path('app_mentions_legales') }}" class="lg-legal-nav-link">Mentions légales</a>
+            <a href="{{ path('app_cgu') }}" class="lg-legal-nav-link is-active">CGU</a>
+            <a href="{{ path('app_confidentialite') }}" class="lg-legal-nav-link">Confidentialité</a>
+        </nav>
+
+        <div class="lg-legal-inner">
+
+            <div class="lg-legal-section">
+                <h2 class="lg-legal-h2">Objet</h2>
+                <p class="lg-legal-p">Les présentes conditions générales d'utilisation (CGU) ont pour objet de définir les modalités et conditions d'utilisation du site <strong>maisonmathis.fr</strong> (ci-après "le Site"), ainsi que les droits et obligations des utilisateurs.</p>
+                <p class="lg-legal-p">L'accès et l'utilisation du Site impliquent l'acceptation pleine et entière des présentes CGU.</p>
+            </div>
+
+            <div class="lg-legal-section">
+                <h2 class="lg-legal-h2">Accès au site</h2>
+                <p class="lg-legal-p">Le Site est accessible gratuitement à tout utilisateur disposant d'un accès à Internet. Tous les coûts afférents à l'accès au Site (matériel informatique, logiciels, connexion Internet) sont à la charge exclusive de l'utilisateur.</p>
+                <p class="lg-legal-p">Maison Mathis se réserve le droit de modifier, suspendre ou interrompre l'accès au Site à tout moment, sans préavis et sans obligation d'en informer les utilisateurs.</p>
+            </div>
+
+            <div class="lg-legal-section">
+                <h2 class="lg-legal-h2">Utilisation du site</h2>
+                <p class="lg-legal-p">L'utilisateur s'engage à utiliser le Site conformément aux présentes CGU et à la législation en vigueur. Il est notamment interdit de :</p>
+                <ul class="lg-legal-list">
+                    <li>Utiliser le Site à des fins illicites ou contraires aux bonnes mœurs</li>
+                    <li>Tenter d'accéder sans autorisation aux systèmes informatiques du Site</li>
+                    <li>Reproduire ou distribuer le contenu du Site sans autorisation écrite</li>
+                    <li>Transmettre des contenus portant atteinte aux droits de tiers</li>
+                    <li>Perturber le bon fonctionnement du Site par tout moyen</li>
+                </ul>
+            </div>
+
+            <div class="lg-legal-section">
+                <h2 class="lg-legal-h2">Formulaires et collecte de données</h2>
+                <p class="lg-legal-p">Le Site peut proposer des formulaires de contact ou d'estimation. Les informations collectées via ces formulaires sont utilisées exclusivement dans le cadre de la relation commerciale entre l'utilisateur et Maison Mathis.</p>
+                <p class="lg-legal-p">Pour en savoir plus sur le traitement de vos données personnelles, consultez notre <a href="{{ path('app_confidentialite') }}">politique de confidentialité</a>.</p>
+            </div>
+
+            <div class="lg-legal-section">
+                <h2 class="lg-legal-h2">Propriété intellectuelle</h2>
+                <p class="lg-legal-p">Tout le contenu du Site (textes, images, graphismes, logo, structure) est protégé par le droit d'auteur et appartient à Maison Mathis ou à ses partenaires. Toute reproduction sans autorisation est strictement interdite.</p>
+            </div>
+
+            <div class="lg-legal-section">
+                <h2 class="lg-legal-h2">Limitation de responsabilité</h2>
+                <p class="lg-legal-p">Maison Mathis ne saurait être tenu responsable des dommages directs ou indirects résultant de l'utilisation du Site ou de l'impossibilité d'y accéder, ainsi que de l'utilisation des informations qui y sont publiées.</p>
+            </div>
+
+            <div class="lg-legal-section">
+                <h2 class="lg-legal-h2">Modification des CGU</h2>
+                <p class="lg-legal-p">Maison Mathis se réserve le droit de modifier les présentes CGU à tout moment. L'utilisateur est invité à les consulter régulièrement. La date de dernière mise à jour est indiquée en haut de cette page.</p>
+            </div>
+
+            <div class="lg-legal-section">
+                <h2 class="lg-legal-h2">Droit applicable et juridiction</h2>
+                <p class="lg-legal-p">Les présentes CGU sont soumises au droit français. Tout litige relatif à leur interprétation ou à leur exécution relève de la compétence exclusive des tribunaux de Lyon.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}
