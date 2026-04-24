@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Maison Mathis — Conciergerie premium à Lyon{% endblock %}</title>
+    <meta name="description" content="{% block meta_description %}Maison Mathis gère votre location courte durée à Lyon : annonces, voyageurs, ménage et revenus. Commission unique, zéro stress.{% endblock %}">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="{{ app.request.uri }}">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Maison Mathis">
+    <meta property="og:title" content="{% block og_title %}{% block og_title_inner %}{{ block('title') }}{% endblock %}{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}{{ block('meta_description') }}{% endblock %}">
+    <meta property="og:url" content="{{ app.request.uri }}">
+    <meta property="og:image" content="{% block og_image %}{{ absolute_url(asset('images/og-default.jpg')) }}{% endblock %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
