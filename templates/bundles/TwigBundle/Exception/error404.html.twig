@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page introuvable — Maison Mathis{% endblock %}
+
+{% block body %}
+<style>
+    .e404-page {
+        min-height: 80vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 80px var(--gutter);
+        background: var(--paper);
+    }
+
+    .e404-num {
+        font-family: var(--serif);
+        font-size: clamp(120px, 20vw, 220px);
+        font-weight: 300;
+        line-height: 1;
+        color: var(--line);
+        letter-spacing: -0.04em;
+        margin-bottom: 8px;
+    }
+
+    .e404-title {
+        font-family: var(--serif);
+        font-size: clamp(28px, 4vw, 48px);
+        font-weight: 400;
+        color: var(--ink);
+        line-height: 1.15;
+        margin-bottom: 20px;
+    }
+
+    .e404-title em {
+        font-style: italic;
+        color: var(--red);
+    }
+
+    .e404-desc {
+        font-family: var(--sans);
+        font-size: 15px;
+        color: var(--ink-muted);
+        line-height: 1.7;
+        max-width: 420px;
+        margin: 0 auto 40px;
+    }
+
+    .e404-actions {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+</style>
+
+<main class="e404-page">
+    <p class="e404-num">404</p>
+    <h1 class="e404-title">
+        Cette page n'existe <em>pas.</em>
+    </h1>
+    <p class="e404-desc">
+        Vous avez peut-être suivi un lien obsolète ou tapé une mauvaise adresse. Pas de panique, on vous ramène à la maison.
+    </p>
+    <div class="e404-actions">
+        <a href="/" class="btn btn--primary">Retour à l'accueil →</a>
+        <a href="/contact" class="btn btn--outline">Nous contacter</a>
+    </div>
+</main>
+
+{% endblock %}
