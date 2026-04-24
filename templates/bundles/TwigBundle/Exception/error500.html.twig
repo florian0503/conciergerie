@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Erreur serveur — Maison Mathis{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('styles/error500.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<main class="e500-page">
+    <p class="e500-num">500</p>
+    <h1 class="e500-title">
+        Une erreur <em>inattendue.</em>
+    </h1>
+    <p class="e500-desc">
+        Quelque chose s'est mal passé de notre côté. Notre équipe est déjà sur le coup. Revenez dans quelques instants.
+    </p>
+    <div class="e500-actions">
+        <a href="/" class="btn btn--primary">Retour à l'accueil →</a>
+        <a href="/contact" class="btn btn--outline">Nous contacter</a>
+    </div>
+</main>
+
+{% endblock %}
