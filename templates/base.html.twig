@@ -224,6 +224,25 @@
     </div>
 </footer>
 
+<!-- ═══════════════════════════════════════════════════════════
+     COOKIE BANNER
+════════════════════════════════════════════════════════════ -->
+<div class="cookie-banner" id="cookie-banner" role="dialog" aria-label="Gestion des cookies" aria-live="polite">
+    <div class="cookie-banner-inner">
+        <div class="cookie-banner-text">
+            <span class="cookie-banner-label">Cookies</span>
+            <p class="cookie-banner-msg">
+                Nous utilisons des cookies pour améliorer votre expérience et analyser notre audience.
+                <a href="{{ path('app_confidentialite') }}#cookies">En savoir plus</a>
+            </p>
+        </div>
+        <div class="cookie-banner-actions">
+            <button class="cookie-btn cookie-btn--refuse" id="cookie-refuse">Refuser</button>
+            <button class="cookie-btn cookie-btn--accept" id="cookie-accept">Accepter</button>
+        </div>
+    </div>
+</div>
+
 <button class="scroll-top" id="scroll-top" aria-label="Retour en haut">
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <polyline points="3 10 8 5 13 10"/>
@@ -396,6 +415,41 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
     updateScrollTop();
+
+    /* ── COOKIE BANNER ─────────────────────────────────── */
+    var cookieBanner = document.getElementById('cookie-banner');
+    var cookieAccept = document.getElementById('cookie-accept');
+    var cookieRefuse = document.getElementById('cookie-refuse');
+    var COOKIE_NAME = 'mm_cookie_consent';
+    var COOKIE_DAYS = 365;
+
+    function getCookie(name) {
+        var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+        return match ? decodeURIComponent(match[2]) : null;
+    }
+
+    function setCookie(name, value, days) {
+        var expires = new Date(Date.now() + days * 864e5).toUTCString();
+        document.cookie = name + '=' + encodeURIComponent(value) + '; expires=' + expires + '; path=/; SameSite=Lax';
+    }
+
+    function hideBanner() {
+        cookieBanner.classList.remove('is-visible');
+    }
+
+    if (!getCookie(COOKIE_NAME)) {
+        setTimeout(function () { cookieBanner.classList.add('is-visible'); }, 800);
+    }
+
+    cookieAccept.addEventListener('click', function () {
+        setCookie(COOKIE_NAME, 'accepted', COOKIE_DAYS);
+        hideBanner();
+    });
+
+    cookieRefuse.addEventListener('click', function () {
+        setCookie(COOKIE_NAME, 'refused', COOKIE_DAYS);
+        hideBanner();
+    });
 
 }());
 </script>
