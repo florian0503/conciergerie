@@ -35,6 +35,7 @@ class Quartier
     public function setNom(string $nom): static
     {
         $this->nom = $nom;
+
         return $this;
     }
 
@@ -46,6 +47,7 @@ class Quartier
     public function setPosition(int $position): static
     {
         $this->position = $position;
+
         return $this;
     }
 
@@ -57,6 +59,7 @@ class Quartier
     public function setPublie(bool $publie): static
     {
         $this->publie = $publie;
+
         return $this;
     }
 

@@ -48,6 +48,7 @@ class MembreEquipe
     public function setNom(string $nom): static
     {
         $this->nom = $nom;
+
         return $this;
     }
 
@@ -59,6 +60,7 @@ class MembreEquipe
     public function setRole(string $role): static
     {
         $this->role = $role;
+
         return $this;
     }
 
@@ -70,6 +72,7 @@ class MembreEquipe
     public function setBio(string $bio): static
     {
         $this->bio = $bio;
+
         return $this;
     }
 
@@ -81,6 +84,7 @@ class MembreEquipe
     public function setTags(array $tags): static
     {
         $this->tags = $tags;
+
         return $this;
     }
 
@@ -92,6 +96,7 @@ class MembreEquipe
     public function setPhotoSlug(string $photoSlug): static
     {
         $this->photoSlug = $photoSlug;
+
         return $this;
     }
 
@@ -103,6 +108,7 @@ class MembreEquipe
     public function setPosition(int $position): static
     {
         $this->position = $position;
+
         return $this;
     }
 
@@ -114,6 +120,7 @@ class MembreEquipe
     public function setPublie(bool $publie): static
     {
         $this->publie = $publie;
+
         return $this;
     }
 
