@@ -1256,6 +1256,12 @@ img, svg { display: block; }
 
 .cookie-banner.is-visible {
     display: block;
+    animation: cookieSlide 0.45s cubic-bezier(.2,.7,.2,1) forwards;
+}
+
+@keyframes cookieSlide {
+    from { transform: translateY(100%); }
+    to   { transform: translateY(0); }
 }
 
 .cookie-banner-inner {
