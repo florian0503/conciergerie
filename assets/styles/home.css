@@ -342,6 +342,19 @@
 .process {
     padding: 96px 0;
     background: var(--paper-warm);
+    position: relative;
+    z-index: 1;
+}
+
+.process::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    background: var(--paper-warm);
+    z-index: -1;
 }
 
 .process .section-title { margin-bottom: 64px; }
@@ -453,7 +466,7 @@
 /* ═══════════════════════════════════════════════════════════
    AVIS
 ════════════════════════════════════════════════════════════ */
-.reviews { padding: 96px 0; }
+.reviews { padding: 96px 0; position: relative; z-index: 2; background: var(--paper); }
 
 .reviews-grid {
     display: grid;
@@ -499,8 +512,10 @@
    CTA FINAL
 ════════════════════════════════════════════════════════════ */
 .cta-final {
-    padding: 120px 0;
+    padding: 100px 0;
     background: var(--paper-warm);
+    position: relative;
+    z-index: 3;
 }
 
 .cta-final-inner {

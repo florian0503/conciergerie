@@ -37,6 +37,8 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkTo(ArticleCrudController::class, 'Blog', 'fa fa-newspaper')->setAction('index');
         yield MenuItem::linkTo(FaqItemCrudController::class, 'FAQ', 'fa fa-question-circle')->setAction('index');
         yield MenuItem::linkTo(AvisCrudController::class, 'Avis', 'fa fa-star')->setAction('index');
+        yield MenuItem::linkTo(MembreEquipeCrudController::class, 'Équipe', 'fa fa-users')->setAction('index');
+        yield MenuItem::linkTo(QuartierCrudController::class, 'Quartiers', 'fa fa-map-marker-alt')->setAction('index');
         yield MenuItem::section('Administration');
         yield MenuItem::linkTo(UserCrudController::class, 'Utilisateurs', 'fa fa-user')->setAction('index');
         yield MenuItem::section();

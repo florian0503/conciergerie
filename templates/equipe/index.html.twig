@@ -32,57 +32,21 @@
     <div class="eq-wrap">
         <div class="eq-grid">
 
-            <article class="eq-card reveal" data-delay="1">
-                <div class="eq-photo eq-photo--sierra"></div>
+            {% for membre in membres %}
+            <article class="eq-card reveal" data-delay="{{ loop.index }}">
+                <div class="eq-photo eq-photo--{{ membre.photoSlug }}"></div>
                 <div class="eq-info">
-                    <p class="eq-role">Fondateur</p>
-                    <h2 class="eq-name">Sierra</h2>
-                    <p class="eq-bio">Après dix ans dans l'hôtellerie de luxe (Sofitel, Intercontinental), Sierra a fondé Maison Mathis pour appliquer les standards hôteliers à la location courte durée. Elle supervise chaque nouveau bien personnellement.</p>
+                    <p class="eq-role">{{ membre.role }}</p>
+                    <h2 class="eq-name">{{ membre.nom }}</h2>
+                    <p class="eq-bio">{{ membre.bio }}</p>
                     <div class="eq-tags">
-                        <span class="eq-tag">Lyon 2e</span>
-                        <span class="eq-tag">5 ans</span>
+                        {% for tag in membre.tags %}
+                        <span class="eq-tag">{{ tag }}</span>
+                        {% endfor %}
                     </div>
                 </div>
             </article>
-
-            <article class="eq-card reveal" data-delay="2">
-                <div class="eq-photo eq-photo--thomas"></div>
-                <div class="eq-info">
-                    <p class="eq-role">Responsable opérations</p>
-                    <h2 class="eq-name">Thomas</h2>
-                    <p class="eq-bio">Ancien chef de réception, Thomas coordonne les équipes terrain, le ménage et les artisans du réseau. Il connaît chaque bien du portefeuille et ses spécificités.</p>
-                    <div class="eq-tags">
-                        <span class="eq-tag">Lyon 1er</span>
-                        <span class="eq-tag">3 ans</span>
-                    </div>
-                </div>
-            </article>
-
-            <article class="eq-card reveal" data-delay="3">
-                <div class="eq-photo eq-photo--lea"></div>
-                <div class="eq-info">
-                    <p class="eq-role">Relations voyageurs</p>
-                    <h2 class="eq-name">Léa</h2>
-                    <p class="eq-bio">Elle répond aux voyageurs du monde entier — en français, anglais, espagnol et italien. Son taux de réponse sous 15 minutes est légendaire, même le dimanche à 23h.</p>
-                    <div class="eq-tags">
-                        <span class="eq-tag">Trilingue</span>
-                        <span class="eq-tag">2 ans</span>
-                    </div>
-                </div>
-            </article>
-
-            <article class="eq-card reveal" data-delay="4">
-                <div class="eq-photo eq-photo--marc"></div>
-                <div class="eq-info">
-                    <p class="eq-role">Revenue manager</p>
-                    <h2 class="eq-name">Marc</h2>
-                    <p class="eq-bio">Marc analyse les données d'occupation, les tarifs et la concurrence pour optimiser les revenus. Il a fait gagner 34&nbsp;% de CA en moyenne à nos propriétaires en 2025.</p>
-                    <div class="eq-tags">
-                        <span class="eq-tag">Data</span>
-                        <span class="eq-tag">2 ans</span>
-                    </div>
-                </div>
-            </article>
+            {% endfor %}
 
         </div>
     </div>

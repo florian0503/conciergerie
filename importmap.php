@@ -16,4 +16,10 @@ return [
         'path' => './assets/app.js',
         'entrypoint' => true,
     ],
+    'gsap' => [
+        'version' => '3.15.0',
+    ],
+    'gsap/ScrollTrigger' => [
+        'version' => '3.15.0',
+    ],
 ];

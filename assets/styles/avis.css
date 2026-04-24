@@ -274,8 +274,9 @@
     letter-spacing: -0.01em;
 }
 
-.av-platform-name--booking { color: #003580; }
-.av-platform-name--google  { color: #4285F4; }
+.av-platform-name--airbnb,
+.av-platform-name--booking,
+.av-platform-name--google  { color: var(--red); }
 
 .av-platform-score {
     font-family: var(--sans);
