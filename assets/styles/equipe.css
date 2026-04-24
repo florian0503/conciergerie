@@ -201,4 +201,7 @@
     .eq-info {
         padding: 28px 24px;
     }
+
+    .eq-hero { padding: 40px 0 48px; }
+    .eq-cta  { padding: 60px 0; }
 }

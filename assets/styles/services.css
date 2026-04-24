@@ -208,4 +208,8 @@
         grid-template-columns: 1fr;
         gap: 12px;
     }
+
+    .sv-hero     { padding: 40px 0 48px; }
+    .sv-list     { padding: 40px 0; }
+    .sv-promesse { padding: 52px 0; }
 }

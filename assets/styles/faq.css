@@ -263,4 +263,7 @@
     .fq-answer {
         padding-right: 0;
     }
+
+    .fq-hero { padding: 40px 0; }
+    .fq-cta  { padding: 48px 0; }
 }

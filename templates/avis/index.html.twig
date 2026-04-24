@@ -56,40 +56,32 @@
         <h2 class="av-reviews-title">Des mots de<br>propriétaires et voyageurs.</h2>
 
         {% if avis is not empty %}
-        {% set slides = avis|batch(2) %}
 
-        <div class="av-carousel" id="av-carousel">
-            {% for slide in slides %}
-            <div class="av-slide{{ loop.first ? ' is-active' : '' }}">
-                {% for a in slide %}
-                <article class="av-card">
-                    <div class="av-stars">{% for i in 1..a.note %}★ {% endfor %}</div>
-                    <blockquote class="av-quote">« {{ a.texte }} »</blockquote>
-                    <div class="av-card-divider"></div>
-                    <div class="av-author">
-                        <span class="av-avatar">{{ a.nom|first|upper }}</span>
-                        <div>
-                            <p class="av-author-name">{{ a.nom }}</p>
-                            <p class="av-author-role">{{ a.role }}</p>
-                        </div>
+        <div class="av-track" id="av-track">
+            {% for a in avis %}
+            <article class="av-card">
+                <div class="av-stars">{% for i in 1..a.note %}★ {% endfor %}</div>
+                <blockquote class="av-quote">« {{ a.texte }} »</blockquote>
+                <div class="av-card-divider"></div>
+                <div class="av-author">
+                    <span class="av-avatar">{{ a.nom|first|upper }}</span>
+                    <div>
+                        <p class="av-author-name">{{ a.nom }}</p>
+                        <p class="av-author-role">{{ a.role }}</p>
                     </div>
-                </article>
-                {% endfor %}
-            </div>
+                </div>
+            </article>
             {% endfor %}
         </div>
 
-        <div class="av-carousel-nav">
-            <div class="av-dots" id="av-dots">
-                {% for slide in slides %}
-                <button class="av-dot{{ loop.first ? ' is-active' : '' }}" data-index="{{ loop.index0 }}" aria-label="Slide {{ loop.index }}"></button>
-                {% endfor %}
-            </div>
+        <div class="av-carousel-nav" id="av-nav">
+            <div class="av-dots" id="av-dots"></div>
             <div class="av-arrows">
                 <button class="av-arrow" id="av-prev" aria-label="Précédent">←</button>
                 <button class="av-arrow" id="av-next" aria-label="Suivant">→</button>
             </div>
         </div>
+
         {% else %}
         <p class="av-empty">Aucun avis à afficher pour le moment.</p>
         {% endif %}
@@ -133,26 +125,129 @@
     {{ parent() }}
     <script>
     document.addEventListener('DOMContentLoaded', function () {
-        var slides  = document.querySelectorAll('.av-slide');
-        var dots    = document.querySelectorAll('.av-dot');
-        var prev    = document.getElementById('av-prev');
-        var next    = document.getElementById('av-next');
-        var current = 0;
+        var track  = document.getElementById('av-track');
+        var dotsEl = document.getElementById('av-dots');
+        var nav    = document.getElementById('av-nav');
+        var prev   = document.getElementById('av-prev');
+        var next   = document.getElementById('av-next');
+        if (!track) return;
 
-        if (!slides.length || !prev || !next) { return; }
+        var cards = Array.from(track.querySelectorAll('.av-card'));
+        if (!cards.length) return;
 
-        function goTo(index) {
-            slides[current].classList.remove('is-active');
-            dots[current].classList.remove('is-active');
-            current = (index + slides.length) % slides.length;
-            slides[current].classList.add('is-active');
-            dots[current].classList.add('is-active');
+        /* ── MOBILE : infinite auto-scroll ── */
+        if (window.innerWidth <= 600) {
+            nav.style.display = 'none';
+
+            track.style.cssText = 'display:flex;flex-wrap:nowrap;overflow-x:hidden;gap:16px;' +
+                'margin-left:calc(-1 * var(--gutter));margin-right:calc(-1 * var(--gutter));' +
+                'padding-inline:5%;padding-bottom:4px;';
+            cards.forEach(function (c) {
+                c.style.cssText = 'flex:0 0 88%;scroll-snap-align:center;';
+            });
+
+            var total = cards.length;
+            var clonePrev  = cards[total - 1].cloneNode(true);
+            var cloneNext  = cards[0].cloneNode(true);
+            track.insertBefore(clonePrev, cards[0]);
+            track.appendChild(cloneNext);
+            var all = Array.from(track.querySelectorAll('.av-card'));
+            var cur = 1;
+            var timer;
+
+            /* dots */
+            var dotsWrap = document.createElement('div');
+            dotsWrap.style.cssText = 'display:flex;justify-content:center;gap:8px;margin-top:20px;';
+            for (var d = 0; d < total; d++) {
+                var dot = document.createElement('button');
+                dot.style.cssText = 'width:6px;height:6px;border-radius:50%;border:none;cursor:pointer;padding:0;background:var(--line-strong);transition:background .2s,transform .2s;';
+                if (d === 0) { dot.style.background = 'var(--red)'; dot.style.transform = 'scale(1.4)'; }
+                (function(i) {
+                    dot.addEventListener('click', function () { slideTo(i + 1, true); resetTimer(); });
+                })(d);
+                dotsWrap.appendChild(dot);
+            }
+            track.parentNode.insertBefore(dotsWrap, track.nextSibling);
+            var dotBtns = dotsWrap.querySelectorAll('button');
+
+            function centerOf(idx) {
+                var c = all[idx];
+                return c.offsetLeft - (track.offsetWidth - c.offsetWidth) / 2;
+            }
+
+            function updateDots(idx) {
+                var real = ((idx - 1) % total + total) % total;
+                dotBtns.forEach(function (d, i) {
+                    d.style.background   = i === real ? 'var(--red)' : 'var(--line-strong)';
+                    d.style.transform    = i === real ? 'scale(1.4)' : 'scale(1)';
+                });
+            }
+
+            function slideTo(idx, animate) {
+                cur = idx;
+                var target = centerOf(idx);
+                if (animate === false) { track.scrollLeft = target; }
+                else { track.scrollTo({ left: target, behavior: 'smooth' }); }
+                updateDots(idx);
+            }
+
+            slideTo(1, false);
+
+            function doNext() {
+                var n = cur + 1;
+                slideTo(n, true);
+                if (n === all.length - 1) setTimeout(function () { slideTo(1, false); }, 420);
+            }
+
+            function resetTimer() {
+                clearInterval(timer);
+                timer = setInterval(doNext, 3500);
+            }
+            resetTimer();
+
+            var tx = 0;
+            track.addEventListener('touchstart', function (e) { clearInterval(timer); tx = e.touches[0].clientX; }, { passive: true });
+            track.addEventListener('touchend', function (e) {
+                var dx = tx - e.changedTouches[0].clientX;
+                if (Math.abs(dx) > 40) {
+                    var n2 = cur + (dx > 0 ? 1 : -1);
+                    slideTo(n2, true);
+                    if (n2 === all.length - 1) setTimeout(function () { slideTo(1, false); }, 420);
+                    if (n2 === 0)              setTimeout(function () { slideTo(total, false); }, 420);
+                }
+                resetTimer();
+            }, { passive: true });
+
+            return;
         }
 
-        prev.addEventListener('click', function () { goTo(current - 1); });
-        next.addEventListener('click', function () { goTo(current + 1); });
-        dots.forEach(function (dot) {
-            dot.addEventListener('click', function () { goTo(+dot.getAttribute('data-index')); });
+        /* ── DESKTOP : pagination par 2 ── */
+        var perPage = 2;
+        var pages   = Math.ceil(cards.length / perPage);
+        var cur2    = 0;
+
+        for (var p = 0; p < pages; p++) {
+            var dot2 = document.createElement('button');
+            dot2.className = 'av-dot' + (p === 0 ? ' is-active' : '');
+            dot2.setAttribute('data-index', p);
+            dotsEl.appendChild(dot2);
+        }
+        var dots2 = dotsEl.querySelectorAll('.av-dot');
+
+        function showPage(idx) {
+            cur2 = (idx + pages) % pages;
+            cards.forEach(function (c, i) {
+                var inPage = i >= cur2 * perPage && i < (cur2 + 1) * perPage;
+                c.classList.toggle('av-hidden', !inPage);
+            });
+            dots2.forEach(function (d, i) { d.classList.toggle('is-active', i === cur2); });
+        }
+
+        showPage(0);
+        prev.addEventListener('click', function () { showPage(cur2 - 1); });
+        next.addEventListener('click', function () { showPage(cur2 + 1); });
+        dots2.forEach(function (dot) {
+            dot.addEventListener('click', function () { showPage(+dot.getAttribute('data-index')); });
         });
     });
     </script>

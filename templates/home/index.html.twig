@@ -165,7 +165,7 @@
             <div class="section-head-left">
                 <h2 class="section-title">Une sélection de<br><em>belles adresses.</em></h2>
             </div>
-            <a href="{{ path('app_logements') }}" class="link-arrow">Voir toute la galerie →</a>
+            <a href="{{ path('app_logements') }}" class="link-arrow listings-link--desktop">Voir toute la galerie →</a>
         </div>
         <div class="listings-grid">
             <div class="listing-card listing-card--large">
@@ -204,6 +204,7 @@
                 </div>
             </div>
         </div>
+        <a href="{{ path('app_logements') }}" class="link-arrow listings-link--mobile">Voir toute la galerie →</a>
     </div>
 </section>
 
@@ -256,24 +257,17 @@
             <a href="{{ path('app_avis') }}" class="link-arrow">Lire tous les avis →</a>
         </div>
         <div class="reviews-grid">
+            {% for a in avis %}
             <div class="review-card">
-                <p class="review-stars">★ ★ ★ ★ ★</p>
-                <blockquote class="review-text">"Une prise en charge impeccable du premier jour. Sierra et son équipe sont d'une rigueur et d'une discrétion exemplaires — notre appartement n'a jamais été aussi bien tenu."</blockquote>
+                <p class="review-stars">{% for i in 1..a.note %}★{% endfor %}</p>
+                <blockquote class="review-text">"{{ a.texte }}"</blockquote>
                 <div class="review-author">
-                    <span class="review-name">Claire B.</span>
+                    <span class="review-name">{{ a.nom }}</span>
                     <span class="review-sep">·</span>
-                    <span class="review-role">Propriétaire, Presqu'île</span>
+                    <span class="review-role">{{ a.role }}</span>
                 </div>
             </div>
-            <div class="review-card">
-                <p class="review-stars">★ ★ ★ ★ ★</p>
-                <blockquote class="review-text">"Le rendement a augmenté de 34% dès le premier trimestre. Communication fluide, reportings clairs, zéro stress de mon côté."</blockquote>
-                <div class="review-author">
-                    <span class="review-name">Antoine L.</span>
-                    <span class="review-sep">·</span>
-                    <span class="review-role">Propriétaire, Vieux Lyon</span>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>
@@ -301,6 +295,98 @@
 {{ parent() }}
 <script>
 document.addEventListener('DOMContentLoaded', function () {
+    /* ── Reviews carousel infini (mobile) ── */
+    if (window.innerWidth <= 600) {
+        var grid = document.querySelector('.reviews-grid');
+        var orig = grid ? Array.from(grid.querySelectorAll('.review-card')) : [];
+        if (grid && orig.length > 1) {
+            var total = orig.length;
+
+            /* clones pour l'effet infini */
+            var clonePrev = orig[total - 1].cloneNode(true);
+            var cloneNext = orig[0].cloneNode(true);
+            grid.insertBefore(clonePrev, orig[0]);
+            grid.appendChild(cloneNext);
+            var all = Array.from(grid.querySelectorAll('.review-card'));
+
+            var cur = 1; /* on commence sur la vraie 1ère carte */
+            var jumping = false;
+            var timer;
+
+            /* dots */
+            var dotsWrap = document.createElement('div');
+            dotsWrap.className = 'reviews-dots';
+            for (var d = 0; d < total; d++) {
+                var dot = document.createElement('button');
+                dot.className = 'reviews-dot' + (d === 0 ? ' is-active' : '');
+                dot.setAttribute('aria-label', 'Avis ' + (d + 1));
+                (function(i) {
+                    dot.addEventListener('click', function () { slideTo(i + 1, true); resetTimer(); });
+                })(d);
+                dotsWrap.appendChild(dot);
+            }
+            grid.parentNode.insertBefore(dotsWrap, grid.nextSibling);
+            var dots = dotsWrap.querySelectorAll('.reviews-dot');
+
+            function centerOf(idx) {
+                var c = all[idx];
+                return c.offsetLeft - (grid.offsetWidth - c.offsetWidth) / 2;
+            }
+
+            function updateDots(idx) {
+                var real = ((idx - 1) % total + total) % total;
+                dots.forEach(function (d, i) { d.classList.toggle('is-active', i === real); });
+            }
+
+            function slideTo(idx, animate) {
+                cur = idx;
+                if (animate === false) {
+                    jumping = true;
+                    grid.scrollLeft = centerOf(idx);
+                    jumping = false;
+                } else {
+                    grid.scrollTo({ left: centerOf(idx), behavior: 'smooth' });
+                }
+                updateDots(idx);
+            }
+
+            /* position initiale sans animation */
+            slideTo(1, false);
+
+            function next() {
+                var nextIdx = cur + 1;
+                slideTo(nextIdx, true);
+                if (nextIdx === all.length - 1) {
+                    setTimeout(function () { slideTo(1, false); }, 420);
+                }
+            }
+
+            function resetTimer() {
+                clearInterval(timer);
+                timer = setInterval(next, 3500);
+            }
+
+            resetTimer();
+
+            /* swipe manuel */
+            var tx = 0;
+            grid.addEventListener('touchstart', function (e) {
+                clearInterval(timer);
+                tx = e.touches[0].clientX;
+            }, { passive: true });
+            grid.addEventListener('touchend', function (e) {
+                var dx = tx - e.changedTouches[0].clientX;
+                if (Math.abs(dx) > 40) {
+                    var nextI = cur + (dx > 0 ? 1 : -1);
+                    slideTo(nextI, true);
+                    if (nextI === all.length - 1) setTimeout(function () { slideTo(1, false); }, 420);
+                    if (nextI === 0)              setTimeout(function () { slideTo(total, false); }, 420);
+                }
+                resetTimer();
+            }, { passive: true });
+        }
+    }
+
     var stats = document.querySelectorAll('.stat-number[data-target]');
 
     var observer = new IntersectionObserver(function (entries) {

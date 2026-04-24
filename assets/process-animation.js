@@ -111,26 +111,32 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    const isMobile = window.innerWidth <= 768;
+
     /* ══════════════════════════════════════════════════════
        HOME : steps pinned
     ══════════════════════════════════════════════════════ */
     const processSteps = document.querySelectorAll('.process-step');
     if (processSteps.length) {
-        gsap.set(processSteps, { opacity: 0, y: 50 });
+        if (isMobile) {
+            gsap.set(processSteps, { opacity: 1, y: 0 });
+        } else {
+            gsap.set(processSteps, { opacity: 0, y: 50 });
 
-        const tl = gsap.timeline();
-        processSteps.forEach((step) => {
-            tl.to(step, { opacity: 1, y: 0, duration: 1, ease: 'power3.out' });
-        });
+            const tl = gsap.timeline();
+            processSteps.forEach((step) => {
+                tl.to(step, { opacity: 1, y: 0, duration: 1, ease: 'power3.out' });
+            });
 
-        ScrollTrigger.create({
-            trigger: '.process',
-            start: 'top 15%',
-            end: () => `+=${processSteps.length * 300}`,
-            pin: true,
-            scrub: 0.8,
-            animation: tl,
-        });
+            ScrollTrigger.create({
+                trigger: '.process',
+                start: 'top 15%',
+                end: () => `+=${processSteps.length * 300}`,
+                pin: true,
+                scrub: 0.8,
+                animation: tl,
+            });
+        }
     }
 
     /* ══════════════════════════════════════════════════════
@@ -138,21 +144,25 @@ document.addEventListener('DOMContentLoaded', () => {
     ══════════════════════════════════════════════════════ */
     const ofSteps = document.querySelectorAll('.of-step');
     if (ofSteps.length) {
-        gsap.set(ofSteps, { opacity: 0, y: 50 });
+        if (isMobile) {
+            gsap.set(ofSteps, { opacity: 1, y: 0 });
+        } else {
+            gsap.set(ofSteps, { opacity: 0, y: 50 });
 
-        const tlOf = gsap.timeline();
-        ofSteps.forEach((step) => {
-            tlOf.to(step, { opacity: 1, y: 0, duration: 1, ease: 'power3.out' });
-        });
+            const tlOf = gsap.timeline();
+            ofSteps.forEach((step) => {
+                tlOf.to(step, { opacity: 1, y: 0, duration: 1, ease: 'power3.out' });
+            });
 
-        ScrollTrigger.create({
-            trigger: '.of-menage',
-            start: 'top 15%',
-            end: () => `+=${ofSteps.length * 300}`,
-            pin: true,
-            scrub: 0.8,
-            animation: tlOf,
-        });
+            ScrollTrigger.create({
+                trigger: '.of-menage',
+                start: 'top 15%',
+                end: () => `+=${ofSteps.length * 300}`,
+                pin: true,
+                scrub: 0.8,
+                animation: tlOf,
+            });
+        }
     }
 
 });

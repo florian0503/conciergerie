@@ -270,4 +270,9 @@
 
 @media (max-width: 600px) {
     .ep-tl-item { grid-template-columns: 60px 1fr; }
+
+    .ep-hero     { padding: 40px 0; }
+    .ep-valeurs  { padding: 48px 0; }
+    .ep-timeline { padding: 48px 0; }
+    .ep-cta      { padding: 60px 0; }
 }

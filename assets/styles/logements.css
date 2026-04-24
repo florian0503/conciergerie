@@ -215,4 +215,7 @@
         flex-direction: column;
         align-items: flex-start;
     }
+
+    .lg-hero    { padding: 40px 0 48px; }
+    .lg-catalog { padding: 40px 0; }
 }

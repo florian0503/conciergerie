@@ -446,4 +446,7 @@
         border-radius: 0 0 12px 12px;
         text-align: center;
     }
+
+    .bl-hero       { padding: 40px 0; }
+    .bl-newsletter { padding: 48px 0; }
 }
