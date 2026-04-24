@@ -46,20 +46,12 @@
     <p class="quartiers-label">Nous opérons</p>
     <div class="quartiers-overflow">
         <div class="quartiers-track">
-            <span>Presqu'île</span><span class="q-sep">✦</span>
-            <span>Vieux Lyon</span><span class="q-sep">✦</span>
-            <span>Croix-Rousse</span><span class="q-sep">✦</span>
-            <span>Confluence</span><span class="q-sep">✦</span>
-            <span>Terreaux</span><span class="q-sep">✦</span>
-            <span>Part-Dieu</span><span class="q-sep">✦</span>
-            <span>Monts d'Or</span><span class="q-sep">✦</span>
-            <span>Presqu'île</span><span class="q-sep">✦</span>
-            <span>Vieux Lyon</span><span class="q-sep">✦</span>
-            <span>Croix-Rousse</span><span class="q-sep">✦</span>
-            <span>Confluence</span><span class="q-sep">✦</span>
-            <span>Terreaux</span><span class="q-sep">✦</span>
-            <span>Part-Dieu</span><span class="q-sep">✦</span>
-            <span>Monts d'Or</span><span class="q-sep">✦</span>
+            {% for quartier in quartiers %}
+            <span>{{ quartier.nom }}</span><span class="q-sep">✦</span>
+            {% endfor %}
+            {% for quartier in quartiers %}
+            <span>{{ quartier.nom }}</span><span class="q-sep">✦</span>
+            {% endfor %}
         </div>
     </div>
 </div>
