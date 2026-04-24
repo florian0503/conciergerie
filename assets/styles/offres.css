@@ -547,4 +547,9 @@
     .of-commission-right {
         padding: 36px 28px;
     }
+
+    .of-hero     { padding: 40px 0; }
+    .of-menage   { padding: 40px 0 48px; }
+    .of-simu     { padding: 40px 0 48px; }
+    .of-cta      { padding: 60px 0; }
 }

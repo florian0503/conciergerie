@@ -102,21 +102,16 @@
     margin-bottom: 56px;
 }
 
-/* Carousel */
-.av-carousel {
-    position: relative;
+/* Track */
+.av-track {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
     margin-bottom: 40px;
 }
 
-.av-slide {
-    display: none;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-}
-
-.av-slide.is-active {
-    display: grid;
-}
+/* Desktop : pagination JS → hide cards not in current page */
+.av-card.av-hidden { display: none; }
 
 /* Card */
 .av-card {
@@ -351,11 +346,18 @@
     }
 }
 
-@media (max-width: 500px) {
-    .av-stats-grid {
-        grid-template-columns: 1fr;
-    }
+@media (max-width: 600px) {
+    .av-hero     { padding: 40px 0 48px; }
+    .av-reviews  { padding: 48px 0 40px; }
+    .av-platforms { padding: 40px 0; }
+    .av-cta      { padding: 60px 0; }
 
-    .av-stat { border-right: none; border-top: 1px solid var(--line); }
-    .av-stat:first-child { border-top: none; }
+    .av-stat { padding: 28px 20px; }
+}
+
+@media (max-width: 500px) {
+    .av-stats-grid { grid-template-columns: 1fr 1fr; }
+    .av-stat:nth-child(2) { border-right: none; }
+    .av-stat:nth-child(3) { border-top: 1px solid var(--line); }
+    .av-stat:nth-child(4) { border-top: 1px solid var(--line); border-right: none; }
 }

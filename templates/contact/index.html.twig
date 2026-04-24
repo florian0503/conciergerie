@@ -44,6 +44,8 @@
         <!-- ── Formulaire ─────────────────────────────────── -->
         <div class="contact-form-col reveal">
 
+            <div class="contact-form-card">
+
             <div class="contact-form-head">
                 <span class="contact-form-label-top">Formulaire de contact</span>
                 <h2 class="contact-form-title">Envoyez-nous<br>votre demande</h2>
@@ -80,7 +82,7 @@
                 <div class="contact-consent">
                     <input type="checkbox" id="contact-rgpd" name="rgpd" required>
                     <label class="contact-consent-text" for="contact-rgpd">
-                        J'accepte la <a href="#">politique de confidentialité</a> et consens au traitement de mes données personnelles dans le cadre de ma demande.
+                        J'accepte la <a href="{{ path('app_confidentialite') }}">politique de confidentialité</a> et consens au traitement de mes données personnelles dans le cadre de ma demande.
                     </label>
                 </div>
 
@@ -92,10 +94,12 @@
                             <polyline points="9 4 13 8 9 12"/>
                         </svg>
                     </button>
-                    <p class="contact-submit-note">* Champs obligatoires · Réponse garantie sous 24 h</p>
+                    <p class="contact-submit-note">* Champs obligatoires</p>
                 </div>
 
             </form>
+
+            </div>{# /.contact-form-card #}
         </div>
 
         <!-- ── Infos + Garanties ──────────────────────────── -->
@@ -176,37 +180,6 @@
                         </svg>
                     </a>
                 </div>
-            </div>
-
-            <!-- Garanties -->
-            <div class="contact-garanties-card reveal" data-delay="4">
-                <p class="contact-garanties-title">Nos engagements</p>
-                <ul class="contact-garanties-list">
-                    <li class="contact-garantie-item">
-                        <span class="contact-garantie-check">
-                            <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="2 6 5 9 10 3"/>
-                            </svg>
-                        </span>
-                        Estimation gratuite et sans engagement
-                    </li>
-                    <li class="contact-garantie-item">
-                        <span class="contact-garantie-check">
-                            <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="2 6 5 9 10 3"/>
-                            </svg>
-                        </span>
-                        Réponse personnalisée sous 24 h
-                    </li>
-                    <li class="contact-garantie-item">
-                        <span class="contact-garantie-check">
-                            <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="2 6 5 9 10 3"/>
-                            </svg>
-                        </span>
-                        Premier échange téléphonique offert
-                    </li>
-                </ul>
             </div>
 
         </aside>
