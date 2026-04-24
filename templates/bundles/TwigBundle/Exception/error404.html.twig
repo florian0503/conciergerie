@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page introuvable — Maison Mathis{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('styles/error404.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<main class="e404-page">
+    <p class="e404-num">404</p>
+    <h1 class="e404-title">
+        Cette page n'existe <em>pas.</em>
+    </h1>
+    <p class="e404-desc">
+        Vous avez peut-être suivi un lien obsolète ou tapé une mauvaise adresse. Pas de panique, on vous ramène à la maison.
+    </p>
+    <div class="e404-actions">
+        <a href="/" class="btn btn--primary">Retour à l'accueil →</a>
+        <a href="/contact" class="btn btn--outline">Nous contacter</a>
+    </div>
+</main>
+
+{% endblock %}
