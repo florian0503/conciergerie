@@ -3,6 +3,23 @@
 {% block title %}Les Clés Lyonnaises — Conciergerie Airbnb premium à Lyon{% endblock %}
 {% block meta_description %}Les Clés Lyonnaises gèrent votre location courte durée à Lyon de A à Z : annonces, voyageurs, ménage. Maximisez vos revenus en toute sérénité.{% endblock %}
 
+{% block jsonld %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Les Clés Lyonnaises",
+    "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.95",
+        "bestRating": "5",
+        "worstRating": "1",
+        "ratingCount": {{ avis|length }}
+    }
+}
+</script>
+{% endblock %}
+
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('styles/home.css') }}">
