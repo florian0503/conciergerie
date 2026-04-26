@@ -3,16 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Maison Mathis — Conciergerie premium à Lyon{% endblock %}</title>
-    <meta name="description" content="{% block meta_description %}Maison Mathis gère votre location courte durée à Lyon : annonces, voyageurs, ménage et revenus. Commission unique, zéro stress.{% endblock %}">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="{{ app.request.uri }}">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Maison Mathis">
-    <meta property="og:title" content="{% block og_title %}{% block og_title_inner %}{{ block('title') }}{% endblock %}{% endblock %}">
-    <meta property="og:description" content="{% block og_description %}{{ block('meta_description') }}{% endblock %}">
-    <meta property="og:url" content="{{ app.request.uri }}">
-    <meta property="og:image" content="{% block og_image %}{{ absolute_url(asset('images/og-default.jpg')) }}{% endblock %}">
+    <title>{% block title %}Les Clés Lyonnaises — Conciergerie premium à Lyon{% endblock %}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -36,10 +27,8 @@
     <div class="nav-main" id="nav-main">
         <div class="nav-inner">
 
-            <a class="brand" href="{{ path('app_home') }}" aria-label="Maison Mathis — accueil">
-                <span class="brand-mark">✦</span>
-                <span class="brand-name">Maison Mathis</span>
-                <span class="brand-sub">Lyon</span>
+            <a class="brand" href="{{ path('app_home') }}" aria-label="Les Clés Lyonnaises — accueil">
+                <img src="/images/logo.png" alt="Les Clés Lyonnaises" class="brand-logo">
             </a>
 
             <nav class="nav-links" aria-label="Navigation principale">
@@ -80,10 +69,8 @@
     <!-- Drawer mobile -->
     <div class="mobile-drawer" id="mobile-drawer" role="dialog" aria-modal="true" aria-label="Menu principal">
         <div class="drawer-top">
-            <a class="brand brand--white" href="{{ path('app_home') }}" aria-label="Maison Mathis">
-                <span class="brand-mark">✦</span>
-                <span class="brand-name">Maison Mathis</span>
-                <span class="brand-sub">Lyon</span>
+            <a class="brand brand--white" href="{{ path('app_home') }}" aria-label="Les Clés Lyonnaises">
+                <img src="/images/logo.png" alt="Les Clés Lyonnaises" class="brand-logo">
             </a>
             <button class="drawer-close" id="drawer-close" aria-label="Fermer le menu">
                 <span class="drawer-close-icon"><span></span><span></span></span>
@@ -132,11 +119,9 @@
         <div class="footer-grid">
 
             <div class="footer-col footer-col--brand">
-                <h4 class="footer-col-title">Maison</h4>
-                <div class="footer-col-rule"></div>
-                <p class="footer-logo">Maison Mathis<span class="footer-dot">.</span></p>
+                <img src="/images/logo-footer.png" alt="Les Clés Lyonnaises" class="footer-brand-logo">
                 <p class="footer-manifesto">Une équipe lyonnaise qui traite chaque bien comme s'il était le sien. Depuis 2021.</p>
-                <p class="footer-signature">— Sierra Mathis, fondateur</p>
+                <p class="footer-signature">— Les Clés Lyonnaises</p>
             </div>
 
             <div class="footer-col">
@@ -166,8 +151,8 @@
                 <h4 class="footer-col-title">Contact</h4>
                 <div class="footer-col-rule"></div>
                 <ul class="footer-nav-list">
-                    <li><a href="tel:+33478000000" class="footer-nav-link">+33 4 78 00 00 00</a></li>
-                    <li><a href="mailto:hello@maisonmathis.fr" class="footer-nav-link">hello@maisonmathis.fr</a></li>
+                    <li><a href="tel:+33769314803" class="footer-nav-link">+33 7 69 31 48 03</a></li>
+                    <li><a href="mailto:contact@cleslyonnaises.fr" class="footer-nav-link">contact@cleslyonnaises.fr</a></li>
                     <li><a href="#" class="footer-nav-link">WhatsApp</a></li>
                     <li><a href="#" class="footer-nav-link">Prendre rendez-vous</a></li>
                 </ul>
@@ -176,7 +161,7 @@
             <div class="footer-col">
                 <h4 class="footer-col-title">Nous trouver</h4>
                 <div class="footer-col-rule"></div>
-                <p class="footer-address">14 rue Auguste Comte<br>69002 Lyon</p>
+                <p class="footer-address">9 Avenue Benoît Launay<br>69290 Grézieu-la-Varenne</p>
                 <p class="footer-hours">Lun — Sam · 9h — 19h</p>
                 <div class="footer-map" aria-hidden="true">
                     <svg viewBox="0 0 280 120" xmlns="http://www.w3.org/2000/svg">
@@ -194,7 +179,7 @@
 
         <!-- 5. Barre de bas -->
         <div class="footer-bottom">
-            <p class="footer-copy">© 2026 Maison Mathis · Conciergerie Airbnb à Lyon</p>
+            <p class="footer-copy">© 2026 Les Clés Lyonnaises · Conciergerie Airbnb à Lyon</p>
             <div class="footer-legal">
                 <a href="{{ path('app_mentions_legales') }}" class="footer-legal-link">Mentions légales</a>
                 <span aria-hidden="true">·</span>

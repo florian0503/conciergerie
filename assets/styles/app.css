@@ -170,12 +170,13 @@ img, svg { display: block; }
     max-width: var(--page-max);
     margin: 0 auto;
     padding: 0 var(--gutter);
-    height: 88px;
+    height: 100px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 48px;
     transition: height 0.3s ease-out;
+    overflow: hidden;
 }
 
 .nav-main.is-scrolled .nav-inner {
@@ -185,10 +186,25 @@ img, svg { display: block; }
 /* ── Brand ───────────────────────────────────────────────── */
 .brand {
     display: inline-flex;
-    align-items: baseline;
+    align-items: center;
     gap: 10px;
     flex-shrink: 0;
     color: var(--ink);
+}
+
+.brand-logo {
+    height: 130px;
+    width: auto;
+    display: block;
+    margin-top: -25px;
+    margin-bottom: -25px;
+    transition: height 0.3s ease-out, margin 0.3s ease-out;
+}
+
+.is-scrolled .brand-logo {
+    height: 120px;
+    margin-top: -28px;
+    margin-bottom: -28px;
 }
 
 .brand-mark {
@@ -863,11 +879,24 @@ img, svg { display: block; }
     margin-bottom: 8px;
 }
 
+.footer-col--brand {
+    overflow: hidden;
+}
+
 .footer-col-rule {
     width: 24px;
     height: 1px;
     background: var(--red);
     margin-bottom: 24px;
+}
+
+.footer-brand-logo {
+    height: 160px;
+    width: auto;
+    display: block;
+    margin-top: -32px;
+    margin-bottom: -20px;
+    filter: brightness(0) saturate(100%) invert(52%) sepia(60%) saturate(800%) hue-rotate(314deg) brightness(115%);
 }
 
 .footer-logo {
