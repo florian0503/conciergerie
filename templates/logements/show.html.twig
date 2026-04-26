@@ -11,7 +11,7 @@
 
 {% block body %}
 
-<div class="ld-wrap" style="max-width:1200px;margin:0 auto;padding:0 var(--gutter);">
+<div class="ld-wrap">
 
     <!-- ══ BREADCRUMB ══════════════════════════════════════════ -->
     <div class="ld-breadcrumb-wrap">
@@ -27,12 +27,12 @@
 </div>
 
 <!-- ══ GALERIE ════════════════════════════════════════════════ -->
-<div style="max-width:1200px;margin:0 auto;padding:0 var(--gutter);">
+<div class="ld-wrap">
     {% if logement.photos is not empty %}
     <div class="ld-galerie">
         <div class="ld-galerie-grid">
 
-            <div class="ld-bg ld-galerie-main" data-lb="0" style="cursor:zoom-in;">
+            <div class="ld-bg ld-galerie-main ld-zoomable" data-lb="0">
                 <img class="ld-bg-img" src="{{ logement.photos[0] }}" alt="{{ logement.nom }}">
             </div>
 
@@ -40,11 +40,11 @@
             <div class="ld-galerie-side">
                 {% for i in 1..4 %}
                 {% if logement.photos[i] is defined %}
-                <div class="ld-bg" data-lb="{{ i }}" style="cursor:zoom-in;">
+                <div class="ld-bg ld-zoomable" data-lb="{{ i }}">
                     <img class="ld-bg-img" src="{{ logement.photos[i] }}" alt="{{ logement.nom }} — photo {{ i + 1 }}">
                 </div>
                 {% else %}
-                <div class="ld-bg" style="background:var(--paper-warm);"></div>
+                <div class="ld-bg ld-bg--empty"></div>
                 {% endif %}
                 {% endfor %}
             </div>
@@ -53,8 +53,8 @@
         </div>
     </div>
     {% else %}
-    <div class="ld-galerie" style="background:var(--paper-warm);border-radius:12px;display:flex;align-items:center;justify-content:center;">
-        <p style="color:var(--ink-muted);font-family:var(--sans);font-size:14px;">Aucune photo disponible</p>
+    <div class="ld-galerie ld-galerie--empty">
+        <p class="ld-galerie-empty-text">Aucune photo disponible</p>
     </div>
     {% endif %}
 </div>
@@ -73,7 +73,7 @@
 {% endif %}
 
 <!-- ══ EN-TÊTE + LAYOUT ═══════════════════════════════════════ -->
-<div style="max-width:1200px;margin:0 auto;padding:0 var(--gutter);">
+<div class="ld-wrap">
 
     <div class="ld-header">
         <div class="ld-header-meta">
@@ -245,7 +245,7 @@
 <!-- ══ AUTRES LOGEMENTS ═══════════════════════════════════════ -->
 {% if autres is not empty %}
 <section class="ld-autres">
-    <div style="max-width:1200px;margin:0 auto;padding:0 var(--gutter);">
+    <div class="ld-wrap">
         <h2 class="ld-autres-title">D'autres biens<br>à <em>découvrir</em>.</h2>
         <div class="lg-grid ld-autres-grid">
             {% for a in autres %}

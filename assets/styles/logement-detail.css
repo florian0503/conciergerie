@@ -2,6 +2,13 @@
    LOGEMENT DETAIL
 ════════════════════════════════════════════════════════════ */
 
+/* ── WRAP ────────────────────────────────────────────────── */
+.ld-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+}
+
 /* ── BREADCRUMB ──────────────────────────────────────────── */
 .ld-breadcrumb-wrap {
     padding: 24px 0 16px;
@@ -33,10 +40,32 @@
     height: 100%;
 }
 
+.ld-galerie--empty {
+    background: var(--paper-warm);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ld-galerie-empty-text {
+    color: var(--ink-muted);
+    font-family: var(--sans);
+    font-size: 14px;
+}
+
 .ld-bg {
     position: relative;
     overflow: hidden;
     transition: transform 0.5s ease;
+}
+
+.ld-bg--empty {
+    background: var(--paper-warm);
+}
+
+.ld-zoomable {
+    cursor: zoom-in;
 }
 
 .ld-bg:hover {
