@@ -20,7 +20,7 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Maison Mathis — Admin')
+            ->setTitle('Les Clés Lyonnaises — Admin')
             ->setFaviconPath('favicon.ico');
     }
 
