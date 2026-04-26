@@ -31,7 +31,7 @@ class AppFixtures extends Fixture
     private function loadUser(ObjectManager $manager): void
     {
         $user = new User();
-        $user->setEmail('admin@maisonmathis.fr');
+        $user->setEmail('admin@cleslyonnaises.fr');
         $user->setRoles(['ROLE_ADMIN']);
         $user->setPassword($this->hasher->hashPassword($user, 'admin1234'));
         $manager->persist($user);
@@ -390,7 +390,7 @@ class AppFixtures extends Fixture
     {
         $items = [
             // Général
-            ['categorie' => 'general', 'position' => 1, 'question' => 'Comment fonctionne Maison Mathis concrètement ?', 'reponse' => "Maison Mathis prend en charge l'intégralité de la gestion de votre location courte durée : création et optimisation de vos annonces, communication avec les voyageurs, gestion des arrivées et départs, ménage et linge, suivi qualité et optimisation des revenus.\n\nVous signez un mandat de gestion, nous faisons tout le reste. Vous recevez un reporting mensuel et votre virement — c'est tout."],
+            ['categorie' => 'general', 'position' => 1, 'question' => 'Comment fonctionnent Les Clés Lyonnaises concrètement ?', 'reponse' => "Les Clés Lyonnaises prennent en charge l'intégralité de la gestion de votre location courte durée : création et optimisation de vos annonces, communication avec les voyageurs, gestion des arrivées et départs, ménage et linge, suivi qualité et optimisation des revenus.\n\nVous signez un mandat de gestion, nous faisons tout le reste. Vous recevez un reporting mensuel et votre virement — c'est tout."],
             ['categorie' => 'general', 'position' => 2, 'question' => 'Quels types de biens gérez-vous ?', 'reponse' => "Nous gérons tout type de bien situé à Lyon et dans ses proches environs : studios, appartements, maisons, duplex, lofts. Nous n'avons pas de surface minimum, mais nous sélectionnons les biens selon leur potentiel locatif et leur adéquation avec notre positionnement premium."],
             ['categorie' => 'general', 'position' => 3, 'question' => 'Sur quelles plateformes publiez-vous les annonces ?', 'reponse' => "Principalement Airbnb et Booking.com, qui représentent la grande majorité des réservations courte durée à Lyon. Selon votre bien, nous pouvons également publier sur Vrbo, Abritel ou d'autres plateformes spécialisées.\n\nTous les calendriers sont synchronisés automatiquement pour éviter les doublons."],
             ['categorie' => 'general', 'position' => 4, 'question' => 'Combien de biens gérez-vous actuellement ?', 'reponse' => "Nous gérons plus de 120 biens à Lyon et dans les Monts d'Or. Nous faisons le choix de ne pas grossir trop vite : chaque nouveau bien est accepté uniquement si nous sommes certains de maintenir notre niveau de service."],
@@ -451,7 +451,7 @@ class AppFixtures extends Fixture
             [
                 'nom'          => 'Philippe D.',
                 'role'         => 'Propriétaire, Croix-Rousse',
-                'texte'        => 'J\'avais des doutes sur la gestion à distance. Maison Mathis m\'a prouvé qu\'avec les bons interlocuteurs, c\'est non seulement possible, mais serein.',
+                'texte'        => 'J\'avais des doutes sur la gestion à distance. Les Clés Lyonnaises m\'ont prouvé qu\'avec les bons interlocuteurs, c\'est non seulement possible, mais serein.',
                 'note'         => 5,
                 'proprietaire' => true,
                 'position'     => 4,
