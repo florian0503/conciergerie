@@ -25,6 +25,50 @@
     <meta name="twitter:description" content="{% block twitter_description %}Gestion complète de votre location courte durée à Lyon.{% endblock %}">
     <meta name="twitter:image" content="{{ app.request.schemeAndHttpHost }}/images/logo.png">
 
+    <!-- Schema JSON-LD LocalBusiness -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Les Clés Lyonnaises",
+        "description": "Conciergerie immobilière à Lyon. Gestion complète de votre location courte durée : annonces, voyageurs, ménage.",
+        "url": "{{ app.request.schemeAndHttpHost }}",
+        "logo": "{{ app.request.schemeAndHttpHost }}/images/logo.png",
+        "image": "{{ app.request.schemeAndHttpHost }}/images/logo.png",
+        "telephone": "+33769314803",
+        "email": "contact@cleslyonnaises.fr",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "9 Avenue Benoît Launay",
+            "addressLocality": "Grézieu-la-Varenne",
+            "postalCode": "69290",
+            "addressCountry": "FR"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 45.7640,
+            "longitude": 4.7910
+        },
+        "openingHoursSpecification": [
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+                "opens": "09:00",
+                "closes": "19:00"
+            }
+        ],
+        "sameAs": [
+            "https://www.instagram.com/les_cles_lyonnaises"
+        ],
+        "areaServed": {
+            "@type": "City",
+            "name": "Lyon"
+        }
+    }
+    </script>
+
+    {% block jsonld %}{% endblock %}
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">

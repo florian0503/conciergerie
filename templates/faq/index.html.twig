@@ -3,6 +3,27 @@
 {% block title %}FAQ — Les Clés Lyonnaises{% endblock %}
 {% block meta_description %}Toutes vos questions sur la conciergerie Airbnb à Lyon. Les Clés Lyonnaises répondent à vos interrogations.{% endblock %}
 
+{% block jsonld %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {% for item in faqItems %}
+        {
+            "@type": "Question",
+            "name": {{ item.question|json_encode|raw }},
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": {{ item.reponse|json_encode|raw }}
+            }
+        }{% if not loop.last %},{% endif %}
+        {% endfor %}
+    ]
+}
+</script>
+{% endblock %}
+
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('styles/faq.css') }}">

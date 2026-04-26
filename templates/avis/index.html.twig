@@ -3,6 +3,37 @@
 {% block title %}Avis — Les Clés Lyonnaises{% endblock %}
 {% block meta_description %}Consultez les avis de nos propriétaires et voyageurs. Les Clés Lyonnaises, conciergerie de confiance à Lyon.{% endblock %}
 
+{% block jsonld %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Les Clés Lyonnaises",
+    "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.95",
+        "bestRating": "5",
+        "worstRating": "1",
+        "ratingCount": {{ avis|length }}
+    },
+    "review": [
+        {% for a in avis %}
+        {
+            "@type": "Review",
+            "author": { "@type": "Person", "name": {{ a.nom|json_encode|raw }} },
+            "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": {{ a.note }},
+                "bestRating": "5"
+            },
+            "reviewBody": {{ a.texte|json_encode|raw }}
+        }{% if not loop.last %},{% endif %}
+        {% endfor %}
+    ]
+}
+</script>
+{% endblock %}
+
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('styles/avis.css') }}">
