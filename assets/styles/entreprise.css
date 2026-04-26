@@ -208,7 +208,7 @@
 /* ── CTA FINAL ───────────────────────────────────────────── */
 .ep-cta {
     padding: 120px 0;
-    background: var(--paper-warm);
+    background: #fff;
 }
 
 .ep-cta-inner {
