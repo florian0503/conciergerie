@@ -1388,3 +1388,41 @@ img, svg { display: block; }
         text-align: center;
     }
 }
+
+/* ── Sticky CTA mobile ───────────────────────────────────── */
+.sticky-cta {
+    display: none;
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 40;
+}
+
+.sticky-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--red);
+    color: #fff;
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 14px 28px;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(255, 90, 95, 0.4);
+    transition: background 0.2s, transform 0.2s;
+}
+
+.sticky-cta-btn:hover {
+    background: var(--red-dark);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .sticky-cta {
+        display: flex;
+    }
+}
