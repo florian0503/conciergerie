@@ -33,8 +33,11 @@ final class FaqController extends AbstractController
         }
         $categories = $sorted;
 
+        $faqItems = array_merge(...array_values($categories) ?: [[]]);
+
         return $this->render('faq/index.html.twig', [
             'categories' => $categories,
+            'faqItems'   => $faqItems,
         ]);
     }
 }

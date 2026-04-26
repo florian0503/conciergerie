@@ -176,7 +176,6 @@ img, svg { display: block; }
     justify-content: space-between;
     gap: 48px;
     transition: height 0.3s ease-out;
-    overflow: hidden;
 }
 
 .nav-main.is-scrolled .nav-inner {
@@ -190,6 +189,7 @@ img, svg { display: block; }
     gap: 10px;
     flex-shrink: 0;
     color: var(--ink);
+    overflow: hidden;
 }
 
 .brand-logo {
