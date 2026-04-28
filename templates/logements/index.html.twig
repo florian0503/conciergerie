@@ -62,6 +62,8 @@
 
         </div>
 
+        <p class="lg-empty" id="lg-empty">Aucun bien disponible dans cette zone pour le moment.</p>
+
     </div>
 </section>
 
@@ -74,6 +76,7 @@
         var filters  = document.querySelectorAll('.lg-filter');
         var cards    = document.querySelectorAll('.lg-card');
         var countEl  = document.getElementById('lg-count-num');
+        var emptyEl  = document.getElementById('lg-empty');
 
         filters.forEach(function (btn) {
             btn.addEventListener('click', function () {
@@ -90,6 +93,7 @@
                 });
 
                 countEl.textContent = visible;
+                emptyEl.classList.toggle('is-visible', visible === 0);
             });
         });
     });
