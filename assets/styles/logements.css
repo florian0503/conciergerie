@@ -101,6 +101,17 @@
     gap: 32px 24px;
 }
 
+/* ── EMPTY STATE ─────────────────────────────────────────── */
+.lg-empty {
+    display: none;
+    text-align: center;
+    padding: 64px 0;
+    font-family: var(--sans);
+    font-size: 15px;
+    color: var(--ink-muted);
+}
+.lg-empty.is-visible { display: block; }
+
 /* ── CARTE ───────────────────────────────────────────────── */
 .lg-card {
     display: flex;
