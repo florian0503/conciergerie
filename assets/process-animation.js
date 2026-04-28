@@ -143,15 +143,21 @@ document.addEventListener('DOMContentLoaded', () => {
        OFFRES : steps pinned
     ══════════════════════════════════════════════════════ */
     const ofSteps = document.querySelectorAll('.of-step');
+    const ofArrows = document.querySelectorAll('.of-step-arrow');
     if (ofSteps.length) {
         if (isMobile) {
             gsap.set(ofSteps, { opacity: 1, y: 0 });
+            gsap.set(ofArrows, { opacity: 1 });
         } else {
             gsap.set(ofSteps, { opacity: 0, y: 50 });
+            gsap.set(ofArrows, { opacity: 0 });
 
             const tlOf = gsap.timeline();
-            ofSteps.forEach((step) => {
+            ofSteps.forEach((step, i) => {
                 tlOf.to(step, { opacity: 1, y: 0, duration: 1, ease: 'power3.out' });
+                if (ofArrows[i]) {
+                    tlOf.to(ofArrows[i], { opacity: 1, duration: 0.4, ease: 'power2.out' }, '-=0.3');
+                }
             });
 
             ScrollTrigger.create({
