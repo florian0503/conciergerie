@@ -1,7 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Services — Les Clés Lyonnaises{% endblock %}
-{% block meta_description %}Services de conciergerie Airbnb à Lyon : création d'annonces, gestion voyageurs, ménage hôtelier. Découvrez nos prestations.{% endblock %}
+{% block title %}Services de Conciergerie Airbnb à Lyon — Les Clés Lyonnaises{% endblock %}
+{% block meta_description %}Nos services de conciergerie Airbnb à Lyon : création d'annonces, accueil voyageurs, ménage hôtelier, optimisation revenus. Gestion complète location courte durée.{% endblock %}
+
+{% block jsonld %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Accueil", "item": "{{ url('app_home') }}"},
+        {"@type": "ListItem", "position": 2, "name": "Services de conciergerie à Lyon", "item": "{{ url('app_services') }}"}
+    ]
+}
+</script>
+{% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}

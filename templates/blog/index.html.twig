@@ -31,7 +31,7 @@
     <div class="bl-wrap">
         <a href="{{ path('app_blog_article', {slug: featured.slug}) }}" class="bl-featured-card">
             <div class="bl-featured-img-wrap">
-                <img class="bl-featured-img" src="{{ featured.img }}" alt="{{ featured.title }}">
+                <img class="bl-featured-img" src="{{ featured.img }}" alt="{{ featured.title }}" loading="lazy">
             </div>
             <div class="bl-featured-body">
                 <span class="bl-tag">À la une</span>
@@ -62,7 +62,7 @@
                 {% if featured is null or article.slug != featured.slug %}
                 <article class="bl-card">
                     <a href="{{ path('app_blog_article', {slug: article.slug}) }}" class="bl-card-img-link">
-                        <img class="bl-card-img" src="{{ article.img }}" alt="{{ article.title }}">
+                        <img class="bl-card-img" src="{{ article.img }}" alt="{{ article.title }}" loading="lazy">
                     </a>
                     <span class="bl-card-tag">{{ article.tag }}</span>
                     <h3 class="bl-card-title">

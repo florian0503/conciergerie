@@ -1,0 +1,193 @@
+{% block photos_widget %}
+    {% set jsonValue = value ?? '[]' %}
+    {% set fieldId = id %}
+
+    <div class="photos-uploader" id="photos-uploader-{{ fieldId }}">
+
+        <input type="hidden"
+               id="{{ fieldId }}"
+               name="{{ full_name }}"
+               value="{{ jsonValue|e('html_attr') }}">
+
+        <div class="photos-preview-grid" id="preview-grid-{{ fieldId }}"></div>
+
+        <label class="btn btn-secondary mt-2" style="cursor:pointer;">
+            ＋ Ajouter des photos
+            <input type="file" multiple accept="image/*" style="display:none;" class="file-input-{{ fieldId }}">
+        </label>
+
+        <div class="upload-progress-{{ fieldId }}" style="display:none; margin-top:8px;">
+            <div class="progress" style="height:6px;">
+                <div class="progress-bar bg-success bar-{{ fieldId }}" style="width:0%; transition:width .2s;"></div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .photos-preview-grid { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:10px; min-height:20px; }
+        .photo-thumb { position:relative; width:100px; height:100px; }
+        .photo-thumb img { width:100%; height:100%; object-fit:cover; border-radius:6px; border:1px solid #ddd; }
+        .remove-photo {
+            position:absolute; top:-6px; right:-6px;
+            background:#e74c3c; color:white; border:none;
+            border-radius:50%; width:22px; height:22px;
+            font-size:12px; cursor:pointer; line-height:1; padding:0;
+        }
+        .photo-thumb.uploading img { opacity:.3; }
+    </style>
+
+    <script>
+    (function() {
+        const fieldId = {{ fieldId|json_encode|raw }};
+        const wrapper = document.getElementById('photos-uploader-' + fieldId);
+        const grid    = document.getElementById('preview-grid-' + fieldId);
+        const dataIn  = document.getElementById(fieldId);
+        const fileInp = wrapper.querySelector('.file-input-' + fieldId);
+        const prog    = wrapper.querySelector('.upload-progress-' + fieldId);
+        const bar     = wrapper.querySelector('.bar-' + fieldId);
+
+        function getPhotos() { try { return JSON.parse(dataIn.value) || []; } catch { return []; } }
+        function setPhotos(arr) { dataIn.value = JSON.stringify(arr); }
+
+        function makeThumb(path, src) {
+            const div = document.createElement('div');
+            div.className = 'photo-thumb';
+            div.dataset.path = path;
+            div.innerHTML = '<img src="' + (src || path) + '" alt=""><button type="button" class="remove-photo" title="Supprimer">✕</button>';
+            div.querySelector('.remove-photo').addEventListener('click', function() {
+                div.remove();
+                setPhotos(getPhotos().filter(p => p !== path));
+            });
+            return div;
+        }
+
+        // Afficher les photos existantes
+        getPhotos().forEach(path => grid.appendChild(makeThumb(path)));
+
+        fileInp.addEventListener('change', async function() {
+            const files = Array.from(fileInp.files);
+            if (!files.length) return;
+            prog.style.display = 'block';
+            let done = 0;
+
+            for (const file of files) {
+                const div = makeThumb('__pending__', URL.createObjectURL(file));
+                div.classList.add('uploading');
+                grid.appendChild(div);
+
+                try {
+                    const fd = new FormData();
+                    fd.append('file', file);
+                    const res  = await fetch('/admin/upload-photo', { method: 'POST', body: fd });
+                    const data = await res.json();
+
+                    if (data.path) {
+                        div.dataset.path = data.path;
+                        div.querySelector('img').src = data.path;
+                        div.classList.remove('uploading');
+                        // Remplacer le listener remove avec le bon path
+                        div.querySelector('.remove-photo').replaceWith(div.querySelector('.remove-photo').cloneNode(true));
+                        div.querySelector('.remove-photo').addEventListener('click', function() {
+                            div.remove();
+                            setPhotos(getPhotos().filter(p => p !== data.path));
+                        });
+                        const arr = getPhotos(); arr.push(data.path); setPhotos(arr);
+                    } else {
+                        div.remove();
+                    }
+                } catch(e) { div.remove(); }
+
+                done++;
+                bar.style.width = Math.round((done / files.length) * 100) + '%';
+            }
+
+            setTimeout(() => { prog.style.display = 'none'; bar.style.width = '0%'; }, 1000);
+            fileInp.value = '';
+        });
+    })();
+    </script>
+{% endblock %}
+
+{% block single_photo_widget %}
+    {% set currentPath = value ?? '' %}
+    {% set fieldId = id %}
+
+    <div class="single-photo-uploader" id="single-uploader-{{ fieldId }}">
+        <input type="hidden"
+               id="{{ fieldId }}"
+               name="{{ full_name }}"
+               value="{{ currentPath|e('html_attr') }}">
+
+        <div class="single-photo-preview" id="single-preview-{{ fieldId }}">
+            {% if currentPath starts with '/' %}
+                <img src="{{ currentPath }}" alt="photo actuelle" style="width:120px;height:120px;object-fit:cover;border-radius:8px;border:1px solid #ddd;">
+                <button type="button" class="remove-single-photo btn btn-sm btn-danger mt-1">Supprimer</button>
+            {% endif %}
+        </div>
+
+        <label class="btn btn-secondary mt-2" style="cursor:pointer;">
+            <span class="sp-label-text">{% if currentPath starts with '/' %}Changer la photo{% else %}＋ Ajouter une photo{% endif %}</span>
+            <input type="file" accept="image/*" style="display:none;" class="single-file-input-{{ fieldId }}">
+        </label>
+    </div>
+
+    <style>
+        .single-photo-preview { margin-bottom: 8px; }
+        .single-photo-preview img { display: block; }
+    </style>
+
+    <script>
+    (function() {
+        const fieldId = {{ fieldId|json_encode|raw }};
+        const wrapper  = document.getElementById('single-uploader-' + fieldId);
+        const preview  = document.getElementById('single-preview-' + fieldId);
+        const dataIn   = document.getElementById(fieldId);
+        const fileInp  = wrapper.querySelector('.single-file-input-' + fieldId);
+        const labelTxt = wrapper.querySelector('.sp-label-text');
+
+        function clearPreview() {
+            preview.innerHTML = '';
+            dataIn.value = '';
+            labelTxt.textContent = '＋ Ajouter une photo';
+        }
+
+        function setPreview(path) {
+            preview.innerHTML = '<img src="' + path + '" alt="photo" style="width:120px;height:120px;object-fit:cover;border-radius:8px;border:1px solid #ddd;display:block;">'
+                + '<button type="button" class="remove-single-photo btn btn-sm btn-danger mt-1">Supprimer</button>';
+            dataIn.value = path;
+            labelTxt.textContent = 'Changer la photo';
+            preview.querySelector('.remove-single-photo').addEventListener('click', clearPreview);
+        }
+
+        const removeBtn = preview.querySelector('.remove-single-photo');
+        if (removeBtn) removeBtn.addEventListener('click', clearPreview);
+
+        fileInp.addEventListener('change', async function() {
+            const file = fileInp.files[0];
+            if (!file) return;
+
+            const tmpImg = document.createElement('img');
+            tmpImg.src = URL.createObjectURL(file);
+            tmpImg.style.cssText = 'width:120px;height:120px;object-fit:cover;border-radius:8px;opacity:.4;display:block;';
+            preview.innerHTML = '';
+            preview.appendChild(tmpImg);
+
+            try {
+                const fd = new FormData();
+                fd.append('file', file);
+                const res  = await fetch('/admin/upload-photo', { method: 'POST', body: fd });
+                const data = await res.json();
+                if (data.path) {
+                    setPreview(data.path);
+                } else {
+                    clearPreview();
+                    alert('Erreur upload : ' + (data.error || 'inconnue'));
+                }
+            } catch(e) {
+                clearPreview();
+            }
+            fileInp.value = '';
+        });
+    })();
+    </script>
+{% endblock %}

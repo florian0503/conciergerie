@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Les Clés Lyonnaises — Conciergerie Airbnb premium à Lyon{% endblock %}
-{% block meta_description %}Les Clés Lyonnaises gèrent votre location courte durée à Lyon de A à Z : annonces, voyageurs, ménage. Maximisez vos revenus en toute sérénité.{% endblock %}
+{% block title %}Conciergerie Lyon — Les Clés Lyonnaises · Gestion Location Courte Durée{% endblock %}
+{% block meta_description %}Les Clés Lyonnaises, conciergerie Airbnb à Lyon. Gestion complète location courte durée : annonces, accueil voyageurs, ménage. Maximisez vos revenus. Devis gratuit.{% endblock %}
 
 {% block jsonld %}
 <script type="application/ld+json">
@@ -185,41 +185,16 @@
             <a href="{{ path('app_logements') }}" class="link-arrow listings-link--desktop">Voir toute la galerie →</a>
         </div>
         <div class="listings-grid">
-            <div class="listing-card listing-card--large">
-                <div class="listing-img listing-img--1"></div>
+            {% for logement in logements_home %}
+            <a href="{{ path('app_logement_show', {slug: logement.slug}) }}"
+               class="listing-card{% if loop.first %} listing-card--large{% endif %}{% if loop.index == 3 %} listing-card--bottom-left{% endif %}">
+                <div class="listing-img"{% if logement.photos is not empty %} style="background-image:url('{{ logement.photos[0] }}')"{% endif %}></div>
                 <div class="listing-info">
-                    <p class="listing-name">Éliane Park</p>
-                    <p class="listing-meta">Vieux Lyon · Maison · 8 voyageurs</p>
+                    <p class="listing-name">{{ logement.nom }}</p>
+                    <p class="listing-meta">{{ logement.quartier }} · {{ logement.type }} · {{ logement.voyageurs }} voyageurs</p>
                 </div>
-            </div>
-            <div class="listing-card">
-                <div class="listing-img listing-img--2"></div>
-                <div class="listing-info">
-                    <p class="listing-name">Atelier Croix-Rousse</p>
-                    <p class="listing-meta">Croix-Rousse · Loft · 4 voyageurs</p>
-                </div>
-            </div>
-            <div class="listing-card listing-card--bottom-left">
-                <div class="listing-img listing-img--3"></div>
-                <div class="listing-info">
-                    <p class="listing-name">La Presqu'île</p>
-                    <p class="listing-meta">Presqu'île · Appartement · 2 voyageurs</p>
-                </div>
-            </div>
-            <div class="listing-card">
-                <div class="listing-img listing-img--4"></div>
-                <div class="listing-info">
-                    <p class="listing-name">Source Confluence</p>
-                    <p class="listing-meta">Confluence · Studio · 2 voyageurs</p>
-                </div>
-            </div>
-            <div class="listing-card">
-                <div class="listing-img listing-img--5"></div>
-                <div class="listing-info">
-                    <p class="listing-name">Rive de Saône</p>
-                    <p class="listing-meta">Vieux Lyon · Duplex · 5 voyageurs</p>
-                </div>
-            </div>
+            </a>
+            {% endfor %}
         </div>
         <a href="{{ path('app_logements') }}" class="link-arrow listings-link--mobile">Voir toute la galerie →</a>
     </div>

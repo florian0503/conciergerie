@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Controller\Admin\AvisStatsCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Attribute\AdminDashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -37,6 +38,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkTo(ArticleCrudController::class, 'Blog', 'fa fa-newspaper')->setAction('index');
         yield MenuItem::linkTo(FaqItemCrudController::class, 'FAQ', 'fa fa-question-circle')->setAction('index');
         yield MenuItem::linkTo(AvisCrudController::class, 'Avis', 'fa fa-star')->setAction('index');
+        yield MenuItem::linkTo(AvisStatsCrudController::class, 'Stats avis', 'fa fa-chart-bar')->setAction('index');
         yield MenuItem::linkTo(MembreEquipeCrudController::class, 'Équipe', 'fa fa-users')->setAction('index');
         yield MenuItem::linkTo(QuartierCrudController::class, 'Quartiers', 'fa fa-map-marker-alt')->setAction('index');
         yield MenuItem::section('Administration');

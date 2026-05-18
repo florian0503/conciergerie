@@ -32,10 +32,10 @@ class Article
     #[ORM\Column(length: 50)]
     private ?string $date = null;
 
-    #[ORM\Column(length: 30)]
+    #[ORM\Column(length: 30, nullable: true)]
     private ?string $readTime = null;
 
-    #[ORM\Column(length: 500)]
+    #[ORM\Column(length: 500, nullable: true)]
     private ?string $img = null;
 
     #[ORM\Column(type: Types::JSON)]
@@ -138,7 +138,7 @@ class Article
         return $this->img;
     }
 
-    public function setImg(string $img): static
+    public function setImg(?string $img): static
     {
         $this->img = $img;
 

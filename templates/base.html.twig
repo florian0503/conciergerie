@@ -8,6 +8,7 @@
     <!-- SEO -->
     <meta name="description" content="{% block meta_description %}Les Clés Lyonnaises, conciergerie immobilière à Lyon. Gestion complète de votre location courte durée : annonces, voyageurs, ménage. Contactez-nous.{% endblock %}">
     <meta name="robots" content="{% block meta_robots %}index, follow{% endblock %}">
+    {% block meta_keywords %}<meta name="keywords" content="conciergerie lyon, conciergerie airbnb lyon, gestion location courte durée lyon, conciergerie immobilière lyon, location saisonnière lyon">{% endblock %}
     <link rel="canonical" href="{% block canonical %}{{ app.request.uri }}{% endblock %}">
 
     <!-- Favicon -->
@@ -33,14 +34,17 @@
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "LocalBusiness",
+        "@type": "ProfessionalService",
         "name": "Les Clés Lyonnaises",
-        "description": "Conciergerie immobilière à Lyon. Gestion complète de votre location courte durée : annonces, voyageurs, ménage.",
+        "alternateName": "Conciergerie Les Clés Lyonnaises",
+        "description": "Conciergerie Airbnb à Lyon. Gestion complète de votre location courte durée : annonces Airbnb, accueil voyageurs, ménage, optimisation des revenus.",
+        "serviceType": "Conciergerie Airbnb",
         "url": "{{ app.request.schemeAndHttpHost }}",
         "logo": "{{ app.request.schemeAndHttpHost }}/images/logo.png",
         "image": "{{ app.request.schemeAndHttpHost }}/images/logo.png",
         "telephone": "+33769314803",
         "email": "contact@cleslyonnaises.fr",
+        "priceRange": "€€",
         "address": {
             "@type": "PostalAddress",
             "streetAddress": "9 Avenue Benoît Launay",
@@ -64,9 +68,21 @@
         "sameAs": [
             "https://www.instagram.com/les_cles_lyonnaises"
         ],
-        "areaServed": {
-            "@type": "City",
-            "name": "Lyon"
+        "areaServed": [
+            {"@type": "City", "name": "Lyon", "sameAs": "https://www.wikidata.org/wiki/Q456"},
+            {"@type": "City", "name": "Villeurbanne"},
+            {"@type": "City", "name": "Grézieu-la-Varenne"}
+        ],
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Services de conciergerie Airbnb à Lyon",
+            "itemListElement": [
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Gestion complète location courte durée"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Création et optimisation annonce Airbnb"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Accueil voyageurs et remise des clés"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Ménage professionnel entre séjours"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Tarification dynamique et optimisation revenus"}}
+            ]
         }
     }
     </script>
@@ -188,8 +204,8 @@
         <div class="footer-grid">
 
             <div class="footer-col footer-col--brand">
-                <img src="/images/logo-footer.png" alt="Les Clés Lyonnaises" class="footer-brand-logo">
-                <p class="footer-manifesto">Une équipe lyonnaise qui traite chaque bien comme s'il était le sien. Depuis 2021.</p>
+                <img src="/images/logo-footer.png" alt="Les Clés Lyonnaises" class="footer-brand-logo" loading="lazy">
+                <p class="footer-manifesto">Une équipe lyonnaise qui traite chaque bien comme s'il était le sien. Depuis 2026.</p>
                 <p class="footer-signature">— Les Clés Lyonnaises</p>
             </div>
 

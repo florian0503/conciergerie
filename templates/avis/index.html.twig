@@ -62,19 +62,19 @@
     <div class="av-wrap">
         <div class="av-stats-grid">
             <div class="av-stat reveal" data-delay="1">
-                <p class="av-stat-num"><span data-count="4.94" data-decimals="2">4.94</span><span class="av-stat-star">★</span></p>
+                <p class="av-stat-num"><span data-count="{{ stats.note }}" data-decimals="2">{{ stats.note }}</span><span class="av-stat-star">★</span></p>
                 <p class="av-stat-label">Note moyenne voyageurs</p>
             </div>
             <div class="av-stat reveal" data-delay="2">
-                <p class="av-stat-num"><span data-count="98">98</span><span class="av-stat-sup">%</span></p>
+                <p class="av-stat-num"><span data-count="{{ stats.proprietairesSatisfaits }}">{{ stats.proprietairesSatisfaits }}</span><span class="av-stat-sup">%</span></p>
                 <p class="av-stat-label">Propriétaires satisfaits</p>
             </div>
             <div class="av-stat reveal" data-delay="3">
-                <p class="av-stat-num">+<span data-count="340">340</span></p>
+                <p class="av-stat-num">+<span data-count="{{ stats.avisTotal }}">{{ stats.avisTotal }}</span></p>
                 <p class="av-stat-label">Avis cumulés</p>
             </div>
             <div class="av-stat reveal" data-delay="4">
-                <p class="av-stat-num"><span data-count="93">93</span><span class="av-stat-sup">%</span></p>
+                <p class="av-stat-num"><span data-count="{{ stats.recommandent }}">{{ stats.recommandent }}</span><span class="av-stat-sup">%</span></p>
                 <p class="av-stat-label">Recommanderaient</p>
             </div>
         </div>

@@ -26,7 +26,7 @@ class MembreEquipe
     #[ORM\Column(type: Types::JSON)]
     private array $tags = [];
 
-    #[ORM\Column(length: 100)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $photoSlug = null;
 
     #[ORM\Column]
@@ -93,7 +93,7 @@ class MembreEquipe
         return $this->photoSlug;
     }
 
-    public function setPhotoSlug(string $photoSlug): static
+    public function setPhotoSlug(?string $photoSlug): static
     {
         $this->photoSlug = $photoSlug;
 

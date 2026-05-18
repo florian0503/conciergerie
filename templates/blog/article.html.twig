@@ -1,6 +1,45 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}{{ article.title }} — Les Clés Lyonnaises{% endblock %}
+{% block meta_description %}{{ article.excerpt|slice(0, 155) }}{% endblock %}
+
+{% block jsonld %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": {{ article.title|json_encode|raw }},
+    "description": {{ article.excerpt|json_encode|raw }},
+    "author": {
+        "@type": "Person",
+        "name": {{ article.author|json_encode|raw }}
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Les Clés Lyonnaises",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "{{ app.request.schemeAndHttpHost }}/images/logo.png"
+        }
+    },
+    "url": "{{ url('app_blog_article', {slug: article.slug}) }}",
+    {% if article.img %}"image": "{{ app.request.schemeAndHttpHost }}{{ article.img }}",{% endif %}
+    "inLanguage": "fr-FR",
+    "keywords": "conciergerie lyon, location courte durée lyon, {{ article.tag }}"
+}
+</script>
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Accueil", "item": "{{ url('app_home') }}"},
+        {"@type": "ListItem", "position": 2, "name": "Blog", "item": "{{ url('app_blog') }}"},
+        {"@type": "ListItem", "position": 3, "name": {{ article.title|json_encode|raw }}, "item": "{{ url('app_blog_article', {slug: article.slug}) }}"}
+    ]
+}
+</script>
+{% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}
@@ -36,7 +75,7 @@
 <!-- ══ IMAGE COVER ══════════════════════════════════════════ -->
 <div class="bl-article-cover">
     <div class="bl-wrap">
-        <img class="bl-article-cover-img" src="{{ article.img }}" alt="{{ article.title }}">
+        <img class="bl-article-cover-img" src="{{ article.img }}" alt="{{ article.title }}" loading="lazy">
     </div>
 </div>
 
@@ -46,12 +85,16 @@
         <div class="bl-article-inner">
 
             {% for block in article.content %}
-                {% if block.type == 'lead' %}
-                    <p class="bl-article-lead">{{ block.text }}</p>
-                {% elseif block.type == 'h2' %}
-                    <h2 class="bl-article-h2">{{ block.text }}</h2>
-                {% elseif block.type == 'p' %}
-                    <p class="bl-article-p">{{ block.text }}</p>
+                {% if block is iterable %}
+                    {% if block.type == 'lead' %}
+                        <p class="bl-article-lead">{{ block.text }}</p>
+                    {% elseif block.type == 'h2' %}
+                        <h2 class="bl-article-h2">{{ block.text }}</h2>
+                    {% elseif block.type == 'p' %}
+                        <p class="bl-article-p">{{ block.text }}</p>
+                    {% endif %}
+                {% else %}
+                    <p class="bl-article-p">{{ block }}</p>
                 {% endif %}
             {% endfor %}
 
@@ -68,7 +111,7 @@
             {% for r in related %}
             <article class="bl-card">
                 <a href="{{ path('app_blog_article', {slug: r.slug}) }}" class="bl-card-img-link">
-                    <img class="bl-card-img" src="{{ r.img }}" alt="{{ r.title }}">
+                    <img class="bl-card-img" src="{{ r.img }}" alt="{{ r.title }}" loading="lazy">
                 </a>
                 <span class="bl-card-tag">{{ r.tag }}</span>
                 <h3 class="bl-card-title">

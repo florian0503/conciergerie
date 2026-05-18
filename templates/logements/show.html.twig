@@ -1,7 +1,45 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ logement.nom }} — Les Clés Lyonnaises{% endblock %}
-{% block meta_description %}{{ logement.description|slice(0, 155)|striptags }}{% endblock %}
+{% block title %}{{ logement.nom }} à Lyon — Conciergerie Les Clés Lyonnaises{% endblock %}
+{% block meta_description %}{{ logement.type }} {{ logement.quartier }} — {{ logement.voyageurs }} voyageurs, note {{ logement.note }}★. Géré par Les Clés Lyonnaises, conciergerie Airbnb à Lyon.{% endblock %}
+
+{% block jsonld %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Accommodation",
+    "name": {{ logement.nom|json_encode|raw }},
+    "description": {{ logement.description|json_encode|raw }},
+    "accommodationCategory": {{ logement.type|json_encode|raw }},
+    "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Lyon",
+        "addressRegion": "Auvergne-Rhône-Alpes",
+        "addressCountry": "FR"
+    },
+    "numberOfRooms": {{ logement.chambres }},
+    "occupancy": { "@type": "QuantitativeValue", "maxValue": {{ logement.voyageurs }} },
+    {% if logement.photos is not empty %}"image": "{{ app.request.schemeAndHttpHost }}{{ logement.photos[0] }}",{% endif %}
+    "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "{{ logement.note }}",
+        "reviewCount": "{{ logement.avis }}"
+    },
+    "url": "{{ url('app_logement_show', {slug: logement.slug}) }}"
+}
+</script>
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Accueil", "item": "{{ url('app_home') }}"},
+        {"@type": "ListItem", "position": 2, "name": "Logements", "item": "{{ url('app_logements') }}"},
+        {"@type": "ListItem", "position": 3, "name": {{ logement.nom|json_encode|raw }}, "item": "{{ url('app_logement_show', {slug: logement.slug}) }}"}
+    ]
+}
+</script>
+{% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}
@@ -33,7 +71,7 @@
         <div class="ld-galerie-grid">
 
             <div class="ld-bg ld-galerie-main ld-zoomable" data-lb="0">
-                <img class="ld-bg-img" src="{{ logement.photos[0] }}" alt="{{ logement.nom }}">
+                <img class="ld-bg-img" src="{{ logement.photos[0] }}" alt="{{ logement.nom }}" loading="lazy">
             </div>
 
             {% if logement.photos|length > 1 %}
@@ -41,7 +79,7 @@
                 {% for i in 1..4 %}
                 {% if logement.photos[i] is defined %}
                 <div class="ld-bg ld-zoomable" data-lb="{{ i }}">
-                    <img class="ld-bg-img" src="{{ logement.photos[i] }}" alt="{{ logement.nom }} — photo {{ i + 1 }}">
+                    <img class="ld-bg-img" src="{{ logement.photos[i] }}" alt="{{ logement.nom }} — photo {{ i + 1 }}" loading="lazy">
                 </div>
                 {% else %}
                 <div class="ld-bg ld-bg--empty"></div>
