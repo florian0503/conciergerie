@@ -74,6 +74,7 @@ class Quartier
     public function setSlug(?string $slug): static
     {
         $this->slug = $slug;
+
         return $this;
     }
 

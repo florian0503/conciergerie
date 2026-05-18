@@ -12,7 +12,9 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 #[IsGranted('ROLE_ADMIN')]
 class PhotoUploadController extends AbstractController
 {
-    public function __construct(private SluggerInterface $slugger) {}
+    public function __construct(private SluggerInterface $slugger)
+    {
+    }
 
     #[Route('/admin/upload-photo', name: 'admin_upload_photo', methods: ['POST'])]
     public function upload(Request $request): JsonResponse

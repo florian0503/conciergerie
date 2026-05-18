@@ -25,19 +25,57 @@ class AvisStats
     #[ORM\Column]
     private int $recommandent = 93;
 
-    public function getId(): ?int { return $this->id; }
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
 
-    public function getNote(): float { return $this->note; }
-    public function setNote(float $note): static { $this->note = $note; return $this; }
+    public function getNote(): float
+    {
+        return $this->note;
+    }
+    public function setNote(float $note): static
+    {
+        $this->note = $note;
 
-    public function getProprietairesSatisfaits(): int { return $this->proprietairesSatisfaits; }
-    public function setProprietairesSatisfaits(int $v): static { $this->proprietairesSatisfaits = $v; return $this; }
+        return $this;
+    }
 
-    public function getAvisTotal(): int { return $this->avisTotal; }
-    public function setAvisTotal(int $v): static { $this->avisTotal = $v; return $this; }
+    public function getProprietairesSatisfaits(): int
+    {
+        return $this->proprietairesSatisfaits;
+    }
+    public function setProprietairesSatisfaits(int $v): static
+    {
+        $this->proprietairesSatisfaits = $v;
 
-    public function getRecommandent(): int { return $this->recommandent; }
-    public function setRecommandent(int $v): static { $this->recommandent = $v; return $this; }
+        return $this;
+    }
 
-    public function __toString(): string { return 'Statistiques avis'; }
+    public function getAvisTotal(): int
+    {
+        return $this->avisTotal;
+    }
+    public function setAvisTotal(int $v): static
+    {
+        $this->avisTotal = $v;
+
+        return $this;
+    }
+
+    public function getRecommandent(): int
+    {
+        return $this->recommandent;
+    }
+    public function setRecommandent(int $v): static
+    {
+        $this->recommandent = $v;
+
+        return $this;
+    }
+
+    public function __toString(): string
+    {
+        return 'Statistiques avis';
+    }
 }

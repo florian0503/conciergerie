@@ -16,7 +16,9 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
 class ArticleCrudController extends AbstractCrudController
 {
-    public function __construct(private SluggerInterface $slugger) {}
+    public function __construct(private SluggerInterface $slugger)
+    {
+    }
 
     public static function getEntityFqcn(): string
     {
@@ -36,6 +38,7 @@ class ArticleCrudController extends AbstractCrudController
             yield TextField::new('author', 'Auteur');
             yield TextField::new('date', 'Date');
             yield BooleanField::new('publie', 'Publié');
+
             return;
         }
 

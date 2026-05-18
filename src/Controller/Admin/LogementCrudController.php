@@ -8,7 +8,6 @@ use App\Repository\QuartierRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use Symfony\Component\String\Slugger\SluggerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
@@ -18,13 +17,15 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 class LogementCrudController extends AbstractCrudController
 {
     public function __construct(
         private QuartierRepository $quartierRepo,
         private SluggerInterface $slugger,
-    ) {}
+    ) {
+    }
 
     public static function getEntityFqcn(): string
     {
@@ -63,6 +64,7 @@ class LogementCrudController extends AbstractCrudController
             yield IntegerField::new('voyageurs', 'Voyageurs');
             yield NumberField::new('note', 'Note')->setNumDecimals(2);
             yield BooleanField::new('publie', 'Publié');
+
             return;
         }
 

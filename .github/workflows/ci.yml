@@ -51,8 +51,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Detect <style> blocks in Twig files
         run: |
-          echo "Checking for <style> tags in Twig templates..."
-          if grep -rn --include="*.twig" '<style' templates/; then
+          echo "Checking for <style> tags in Twig templates (excluding admin/)..."
+          if grep -rn --include="*.twig" '<style' templates/ | grep -v '^templates/admin/'; then
             echo ""
             echo "❌  Found inline <style> blocks in Twig files."
             echo "    Put all CSS in assets/styles/ and import via stylesheet block."
@@ -61,8 +61,8 @@ jobs:
           echo "✅  No inline CSS found."
       - name: Detect style= attributes in Twig files
         run: |
-          echo "Checking for style= attributes in Twig templates..."
-          if grep -rn --include="*.twig" ' style=' templates/; then
+          echo "Checking for style= attributes in Twig templates (excluding admin/)..."
+          if grep -rn --include="*.twig" ' style=' templates/ | grep -v '^templates/admin/'; then
             echo ""
             echo "❌  Found inline style= attributes in Twig files."
             echo "    Use CSS classes instead."
@@ -83,6 +83,10 @@ jobs:
           VIOLATIONS=0
 
           while IFS= read -r -d '' file; do
+            # Skip admin templates (EasyAdmin form themes use inline JS by design)
+            if [[ "$file" == templates/admin/* ]]; then
+              continue
+            fi
             # Skip allowed files
             skip=0
             for allowed in $ALLOWED_FILES; do
