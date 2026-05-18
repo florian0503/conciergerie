@@ -1,0 +1,146 @@
+{# @var ea \EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext #}
+{# @var field \EasyCorp\Bundle\EasyAdminBundle\Dto\FieldDto #}
+
+{% set currentPage = ea.crud.currentPage %}
+
+{% if currentPage in ['edit', 'new'] %}
+    {% set photos = field.value ?? [] %}
+    {% set fieldId = field.uniqueId %}
+
+    <div class="photos-uploader" id="photos-uploader-{{ fieldId }}">
+        <input type="hidden"
+               name="{{ field.property }}"
+               id="photos-data-{{ fieldId }}"
+               value="{{ photos|json_encode }}">
+
+        <div class="photos-preview-grid" id="preview-grid-{{ fieldId }}">
+            {% for photo in photos %}
+                <div class="photo-thumb" data-path="{{ photo }}">
+                    <img src="{{ photo }}" alt="photo">
+                    <button type="button" class="remove-photo" title="Supprimer">✕</button>
+                </div>
+            {% endfor %}
+        </div>
+
+        <label class="btn btn-secondary mt-2" style="cursor:pointer;">
+            ＋ Ajouter des photos
+            <input type="file" multiple accept="image/*" style="display:none;" class="file-input-{{ fieldId }}">
+        </label>
+
+        <div class="upload-progress-{{ fieldId }}" style="display:none; margin-top:8px;">
+            <div class="progress" style="height:6px;">
+                <div class="progress-bar bg-success bar-{{ fieldId }}" style="width:0%; transition:width .2s;"></div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .photos-preview-grid { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:10px; min-height:20px; }
+        .photo-thumb { position:relative; width:100px; height:100px; }
+        .photo-thumb img { width:100%; height:100%; object-fit:cover; border-radius:6px; border:1px solid #ddd; }
+        .remove-photo {
+            position:absolute; top:-6px; right:-6px;
+            background:#e74c3c; color:white; border:none;
+            border-radius:50%; width:22px; height:22px;
+            font-size:12px; cursor:pointer; line-height:1; padding:0;
+        }
+        .photo-thumb.uploading img { opacity:.3; }
+    </style>
+
+    <script>
+    (function() {
+        const fieldId  = {{ fieldId|json_encode }};
+        const wrapper  = document.getElementById('photos-uploader-' + fieldId);
+        const grid     = document.getElementById('preview-grid-' + fieldId);
+        const dataIn   = document.getElementById('photos-data-' + fieldId);
+        const fileInp  = wrapper.querySelector('.file-input-' + fieldId);
+        const prog     = wrapper.querySelector('.upload-progress-' + fieldId);
+        const bar      = wrapper.querySelector('.bar-' + fieldId);
+
+        function getPhotos() { try { return JSON.parse(dataIn.value) || []; } catch { return []; } }
+        function setPhotos(arr) { dataIn.value = JSON.stringify(arr); }
+
+        function makeThumb(path, previewSrc) {
+            const div = document.createElement('div');
+            div.className = 'photo-thumb';
+            div.dataset.path = path;
+            div.innerHTML = '<img src="' + (previewSrc || path) + '" alt=""><button type="button" class="remove-photo" title="Supprimer">✕</button>';
+            div.querySelector('.remove-photo').addEventListener('click', function() {
+                div.remove();
+                setPhotos(getPhotos().filter(p => p !== path));
+            });
+            return div;
+        }
+
+        // Supprimer photos existantes
+        grid.querySelectorAll('.remove-photo').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const thumb = btn.closest('.photo-thumb');
+                setPhotos(getPhotos().filter(p => p !== thumb.dataset.path));
+                thumb.remove();
+            });
+        });
+
+        fileInp.addEventListener('change', async function() {
+            const files = Array.from(fileInp.files);
+            if (!files.length) return;
+
+            prog.style.display = 'block';
+            let done = 0;
+
+            for (const file of files) {
+                const preview = URL.createObjectURL(file);
+                const thumb = makeThumb('__pending__', preview);
+                thumb.classList.add('uploading');
+                grid.appendChild(thumb);
+
+                try {
+                    const fd = new FormData();
+                    fd.append('file', file);
+                    const res  = await fetch('/admin/upload-photo', { method: 'POST', body: fd });
+                    const data = await res.json();
+
+                    if (data.path) {
+                        thumb.dataset.path = data.path;
+                        thumb.querySelector('img').src = data.path;
+                        thumb.classList.remove('uploading');
+                        thumb.querySelector('.remove-photo').addEventListener('click', function() {
+                            thumb.remove();
+                            setPhotos(getPhotos().filter(p => p !== data.path));
+                        });
+                        const photos = getPhotos();
+                        photos.push(data.path);
+                        setPhotos(photos);
+                    } else {
+                        thumb.remove();
+                    }
+                } catch(e) {
+                    thumb.remove();
+                }
+
+                done++;
+                bar.style.width = Math.round((done / files.length) * 100) + '%';
+            }
+
+            setTimeout(() => { prog.style.display = 'none'; bar.style.width = '0%'; }, 1000);
+            fileInp.value = '';
+        });
+    })();
+    </script>
+
+{% else %}
+    {# Vue liste / détail #}
+    {% set photos = field.value ?? [] %}
+    {% if photos|length > 0 %}
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+            {% for photo in photos|slice(0, 3) %}
+                <img src="{{ photo }}" style="width:50px;height:50px;object-fit:cover;border-radius:4px;">
+            {% endfor %}
+            {% if photos|length > 3 %}
+                <span class="badge badge-secondary" style="align-self:center;">+{{ photos|length - 3 }}</span>
+            {% endif %}
+        </div>
+    {% else %}
+        <span class="badge badge-secondary">0 photo</span>
+    {% endif %}
+{% endif %}

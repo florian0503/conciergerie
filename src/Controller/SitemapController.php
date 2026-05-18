@@ -13,8 +13,8 @@ class SitemapController extends AbstractController
     #[Route('/sitemap.xml', name: 'app_sitemap', defaults: ['_format' => 'xml'])]
     public function index(ArticleRepository $articleRepository, LogementRepository $logementRepository): Response
     {
-        $logements = $logementRepository->findAll();
-        $articles  = $articleRepository->findAll();
+        $logements = $logementRepository->findBy(['publie' => true]);
+        $articles  = $articleRepository->findBy(['publie' => true]);
 
         $response = $this->render('sitemap/index.xml.twig', [
             'logements' => $logements,

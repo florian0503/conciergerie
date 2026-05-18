@@ -45,7 +45,7 @@ class Logement
     private ?string $revenus = null;
 
     #[ORM\Column]
-    private ?int $imgIndex = null;
+    private int $imgIndex = 1;
 
     #[ORM\Column(type: Types::JSON)]
     private array $photos = [];

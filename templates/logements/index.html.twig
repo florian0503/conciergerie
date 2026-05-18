@@ -34,13 +34,9 @@
         <div class="lg-filters-bar">
             <div class="lg-filters">
                 <button class="lg-filter is-active" data-filter="tous">Tous</button>
-                <button class="lg-filter" data-filter="presquile">Presqu'île</button>
-                <button class="lg-filter" data-filter="vieux-lyon">Vieux Lyon</button>
-                <button class="lg-filter" data-filter="croix-rousse">Croix-Rousse</button>
-                <button class="lg-filter" data-filter="confluence">Confluence</button>
-                <button class="lg-filter" data-filter="terreaux">Terreaux</button>
-                <button class="lg-filter" data-filter="monts-dor">Monts d'Or</button>
-                <button class="lg-filter" data-filter="part-dieu">Part-Dieu</button>
+                {% for quartier in quartiers %}
+                    <button class="lg-filter" data-filter="{{ quartier.slug }}">{{ quartier.nom }}</button>
+                {% endfor %}
             </div>
             <span class="lg-count"><span id="lg-count-num">{{ logements|length }}</span> biens</span>
         </div>
@@ -49,7 +45,7 @@
 
             {% for logement in logements %}
             <a href="{{ path('app_logement_show', {slug: logement.slug}) }}" class="lg-card reveal ld-card-link" data-delay="{{ loop.index }}" data-quartier="{{ logement.quartierSlug }}">
-                <div class="lg-img lg-img--{{ logement.imgIndex }}">
+                <div class="lg-img lg-img--{{ logement.imgIndex }}"{% if logement.photos is not empty %} data-bg="{{ logement.photos[0] }}"{% endif %}>
                     <span class="lg-badge">{{ logement.type }}</span>
                     <span class="lg-rating">★ {{ logement.note }}</span>
                 </div>
@@ -72,6 +68,9 @@
 {% block javascripts %}
     {{ parent() }}
     <script>
+    document.querySelectorAll('[data-bg]').forEach(function (el) {
+        el.style.backgroundImage = 'url(' + el.dataset.bg + ')';
+    });
     document.addEventListener('DOMContentLoaded', function () {
         var filters  = document.querySelectorAll('.lg-filter');
         var cards    = document.querySelectorAll('.lg-card');

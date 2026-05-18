@@ -16,6 +16,9 @@ class Quartier
     #[ORM\Column(length: 100)]
     private ?string $nom = null;
 
+    #[ORM\Column(length: 100, unique: true, nullable: true)]
+    private ?string $slug = null;
+
     #[ORM\Column]
     private int $position = 0;
 
@@ -59,6 +62,18 @@ class Quartier
     public function setPublie(bool $publie): static
     {
         $this->publie = $publie;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(?string $slug): static
+    {
+        $this->slug = $slug;
 
         return $this;
     }
