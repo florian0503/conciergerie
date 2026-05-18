@@ -28,6 +28,7 @@ class PhotosType extends AbstractType implements DataTransformerInterface
         if (empty($value)) {
             return '[]';
         }
+
         return json_encode(array_values((array) $value));
     }
 
@@ -38,6 +39,7 @@ class PhotosType extends AbstractType implements DataTransformerInterface
             return [];
         }
         $decoded = json_decode($value, true);
+
         return is_array($decoded) ? $decoded : [];
     }
 

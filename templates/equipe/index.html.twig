@@ -34,7 +34,7 @@
 
             {% for membre in membres %}
             <article class="eq-card reveal" data-delay="{{ loop.index }}">
-                <div class="eq-photo eq-photo--{{ membre.photoSlug }}"{% if membre.photoSlug starts with '/' %} style="background-image:url('{{ membre.photoSlug }}')"{% endif %}></div>
+                <div class="eq-photo eq-photo--{{ membre.photoSlug }}"{% if membre.photoSlug starts with '/' %} data-bg="{{ membre.photoSlug }}"{% endif %}></div>
                 <div class="eq-info">
                     <p class="eq-role">{{ membre.role }}</p>
                     <h2 class="eq-name">{{ membre.nom }}</h2>
@@ -62,4 +62,13 @@
     </div>
 </section>
 
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+<script>
+document.querySelectorAll('[data-bg]').forEach(function (el) {
+    el.style.backgroundImage = 'url(' + el.dataset.bg + ')';
+});
+</script>
 {% endblock %}

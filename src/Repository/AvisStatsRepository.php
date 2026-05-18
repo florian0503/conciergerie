@@ -21,6 +21,7 @@ class AvisStatsRepository extends ServiceEntityRepository
             $this->getEntityManager()->persist($stats);
             $this->getEntityManager()->flush();
         }
+
         return $stats;
     }
 }

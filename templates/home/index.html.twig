@@ -188,7 +188,7 @@
             {% for logement in logements_home %}
             <a href="{{ path('app_logement_show', {slug: logement.slug}) }}"
                class="listing-card{% if loop.first %} listing-card--large{% endif %}{% if loop.index == 3 %} listing-card--bottom-left{% endif %}">
-                <div class="listing-img"{% if logement.photos is not empty %} style="background-image:url('{{ logement.photos[0] }}')"{% endif %}></div>
+                <div class="listing-img"{% if logement.photos is not empty %} data-bg="{{ logement.photos[0] }}"{% endif %}></div>
                 <div class="listing-info">
                     <p class="listing-name">{{ logement.nom }}</p>
                     <p class="listing-meta">{{ logement.quartier }} · {{ logement.type }} · {{ logement.voyageurs }} voyageurs</p>
@@ -286,6 +286,9 @@
 {% block javascripts %}
 {{ parent() }}
 <script>
+document.querySelectorAll('[data-bg]').forEach(function (el) {
+    el.style.backgroundImage = 'url(' + el.dataset.bg + ')';
+});
 document.addEventListener('DOMContentLoaded', function () {
     /* ── Reviews carousel infini (mobile) ── */
     if (window.innerWidth <= 600) {
